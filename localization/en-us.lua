@@ -406,7 +406,7 @@ return {
                 }
             },
             c_fmod_balloons = {
-                name = "Balloons",
+                name = "Ballooons",
                 text = {
                     "All cards held in hand gain",
                     "extra chips equal to {C:attention}double",
