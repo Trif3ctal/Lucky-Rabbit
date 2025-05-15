@@ -5,7 +5,8 @@
 	"author": [
 		"Fennex", 
 		"Trif", 
-		"HarmoniousJoker"
+		"HarmoniousJoker",
+		"gayle"
 	],
 	"description": "Vanilla+ content mod that adds new jokers, boss blinds, a new consumable type, and more to expand upon the base game. It's time to get silly!",
 	"prefix": "fmod",
@@ -13,7 +14,7 @@
 	"priority": 0,
 	"badge_colour": "f0c87e",
 	"badge_text_colour": "FFFFFF",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"dependencies": [
 		"Steamodded (>=1.0.0~BETA-0312b)",
 		"Lovely (>=0.7.1)"
