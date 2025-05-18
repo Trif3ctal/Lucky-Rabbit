@@ -1,5 +1,8 @@
 FMOD = {}
 
+-- load util functions
+assert(SMODS.load_file("utilities/functions.lua"))()
+
 -- config tab
 local config = SMODS.current_mod.config
 
@@ -84,6 +87,12 @@ SMODS.optional_features = {
 -- file loading
 
 local files = {
+    atlas = {
+        list = {
+            "atlas"
+        },
+        direct
+    },
     jokers = {
         list = {
             "fennex",
@@ -206,66 +215,6 @@ local files = {
     }
 }
 
--- atlases
-
-SMODS.Atlas {
-    key = "Jokers",
-    path = "Jokers.png",
-    px = 71,
-    py = 95
-}
-
-SMODS.Atlas {
-    key = "Consumables",
-    path = "Consumables.png",
-    px = 71,
-    py = 95,
-}
-
-SMODS.Atlas {
-	key = "modicon",
-	path = "Fennex_Mod_Icon.png",
-	px = 32,
-	py = 32
-}
-
-SMODS.Atlas {
-    key = "Vouchers",
-    path = "Vouchers.png",
-    px = 71,
-    py = 95
-}
-
-SMODS.Atlas {
-    key = "Blinds",
-    path = "Blinds.png",
-    atlas_table = 'ANIMATION_ATLAS',
-    frames = 21,
-    px = 34,
-    py = 34
-}
-
-SMODS.Atlas {
-    key = "Tags",
-    path = "Tags.png",
-    px = 34,
-    py = 34
-}
-
-SMODS.Atlas {
-    key = "Boosters",
-    path = "Booster.png",
-    px = 71,
-    py = 95
-}
-
-SMODS.Atlas {
-    key = "Decks",
-    path = "Decks.png",
-    px = 71,
-    py = 95
-}
-
 -- load everything
 
 function FMOD.load_files(items, path)
@@ -273,6 +222,7 @@ function FMOD.load_files(items, path)
         assert(SMODS.load_file(path .. "/" .. items[i] .. '.lua'))()
     end
 end
+assert(SMODS.load_file("content/atlas.lua"))()
 
 if config.jokers_enabled then
     FMOD.load_files(files.jokers.list, files.jokers.directory)
@@ -348,268 +298,6 @@ end
 
 if config.tags_enabled then
     FMOD.load_files(files.tags.list, files.tags.directory)
-end
-
--- various functions and hooks
-
-local base_calculate_joker = Card.calculate_joker
-function Card.calculate_joker(self,context)
-    local ret = base_calculate_joker(self, context)
-    if context.joker_main then
-        if self.force_trigger then
-            self.force_trigger = false
-            if self.ability.t_chips > 0 then
-                return {
-                    message = localize{type='variable',key='a_chips',vars={self.ability.t_chips}},
-                    chip_mod = self.ability.t_chips
-                }
-            end
-            if self.ability.t_mult > 0 then
-                return {
-                    message = localize{type='variable',key='a_mult',vars={self.ability.t_mult}},
-                    mult_mod = self.ability.t_mult
-                }
-            end
-            if self.ability.Xmult > 0 then
-                return {
-                    message = localize{type='variable',key='a_xmult',vars={self.ability.x_mult}},
-                    colour = G.C.RED,
-                    Xmult_mod = self.ability.x_mult
-                }
-            end
-        end
-    end
-    return ret
-end
-
-local base_modify_hand = Blind.modify_hand
-function Blind:modify_hand(cards, poker_hands, text, mult, hand_chips)
-    local mult, hand_chips, modded = base_modify_hand(self, cards, poker_hands, text, mult, hand_chips)
-
-    if G.GAME.new_poker_hand then
-
-        G.GAME.hands[G.GAME.old_poker_hand].played = G.GAME.hands[G.GAME.old_poker_hand].played - 1
-        G.GAME.hands[G.GAME.old_poker_hand].played_this_round = G.GAME.hands[G.GAME.old_poker_hand].played_this_round - 1
-
-        G.GAME.hands[G.GAME.new_poker_hand].played = G.GAME.hands[G.GAME.new_poker_hand].played + 1
-        G.GAME.hands[G.GAME.new_poker_hand].played_this_round = G.GAME.hands[G.GAME.new_poker_hand].played_this_round + 1
-
-        G.GAME.last_hand_played = G.GAME.new_poker_hand
-        set_hand_usage(G.GAME.new_poker_hand)
-        G.GAME.hands[G.GAME.new_poker_hand].visible = true
-
-        if self.name == 'The Eye' then
-
-            if self.hands[G.GAME.old_poker_hand] then
-                self.hands[G.GAME.old_poker_hand] = false
-            end
-            self.hands[G.GAME.new_poker_hand] = true
-
-        elseif self.name == 'The Mouth' then
-
-            self.only_hand = G.GAME.new_poker_hand
-
-        end
-
-        mult = G.GAME.hands[G.GAME.new_poker_hand].mult
-        hand_chips = G.GAME.hands[G.GAME.new_poker_hand].chips
-        modded = false
-
-        G.GAME.new_poker_hand = false
-
-    end
-
-    return mult, hand_chips, modded
-end
-
-local gnb = get_new_boss
-function FMOD.get_new_boss()
-    if G.GAME.selected_back.effect.center.key == "b_fmod_reaper" then
-		local boss = tostring(FMOD.random_showdown_blind('reaper'))
-		if boss then G.FORCE_BOSS = boss end
-	else
-		G.FORCE_BOSS = nil
-	end
-    local gnb_val = gnb()
-
-    G.FORCE_BOSS = nil
-
-    return gnb_val
-end
-
-function FMOD.random_showdown_blind(seed)
-    local eligible_bosses = {}
-    for k, v in pairs(G.P_BLINDS) do
-        if not v.boss then
-        elseif v.boss.showdown then
-            eligible_bosses[k] = true
-        elseif not v.boss.showdown then
-            eligible_bosses[k] = nil
-        end
-    end
-    for k, v in pairs(G.GAME.banned_keys) do
-        if eligible_bosses[k] then eligible_bosses[k] = nil end
-    end
-    local _, boss = pseudorandom_element(eligible_bosses, pseudoseed(seed or 'seed'))
-    return boss
-end
-
-local reroll_ref = G.FUNCS.reroll_boss
-G.FUNCS.reroll_boss = function(e)
-	if G.GAME.selected_back.effect.center.key == "b_fmod_reaper" then
-		local boss = tostring(FMOD.random_showdown_blind('reaper'))
-		if boss then G.FORCE_BOSS = boss end
-	else
-		G.FORCE_BOSS = nil
-	end
-	local reroll_val = reroll_ref(e)
-
-    G.FORCE_BOSS = nil
-
-	return reroll_val
-end
-
-function FMOD.reset_hyperfix_rank()
-    G.GAME.current_round.hyperfix_card.rank = 'Ace'
-    local valid_hyperfix_cards = {}
-    for k, v in ipairs(G.playing_cards) do
-        if not SMODS.has_no_rank(v) then
-            valid_hyperfix_cards[#valid_hyperfix_cards+1] = v
-        end
-    end
-    if valid_hyperfix_cards[1] then
-        local hyperfix_card = pseudorandom_element(valid_hyperfix_cards, pseudoseed('hyperfix'..G.GAME.round_resets.ante))
-        while hyperfix_card.id == G.GAME.hyperfix_card.id do
-            hyperfix_card = pseudorandom_element(valid_hyperfix_cards, pseudoseed('hyperfix'..G.GAME.round_resets.ante))
-        end
-        G.GAME.current_round.hyperfix_card.rank = hyperfix_card.base.value
-        G.GAME.current_round.hyperfix_card.id = hyperfix_card.base.id
-    end
-end
-
-function FMOD.reset_hyperfix_full_card(type)
-    local rank = 'Ace'
-    local suit = 'Spades'
-    local id = 14
-    local valid_hyperfix_cards = {}
-    for k, v in ipairs(G.playing_cards) do
-        if not SMODS.has_no_rank(v) and not SMODS.has_no_suit(v) then
-            valid_hyperfix_cards[#valid_hyperfix_cards+1] = v
-        end
-    end
-    if valid_hyperfix_cards[1] then
-        local hyperfix_card = pseudorandom_element(valid_hyperfix_cards, pseudoseed('hyperfix_'..G.GAME.round_resets.ante))
-        rank = hyperfix_card.base.value
-        suit = hyperfix_card.base.suit
-        id = hyperfix_card.base.id
-    end
-    if type == 'rank' then
-        return rank, id
-    elseif type == 'suit' then
-        return suit
-    end
-end
-
-function FMOD.get_food_jokers(seed)
-    local possible_jokers = {
-        'j_gros_michel',
-        'j_egg',
-        'j_ice_cream',
-        'j_cavendish',
-        'j_turtle_bean',
-        'j_diet_cola',
-        'j_popcorn',
-        'j_ramen',
-        'j_selzer',
-    }
-    if G.P_CENTER_POOLS.Joker then for k, v in pairs(G.P_CENTER_POOLS.Joker) do
-        if v.pools and v.pools.Food then
-            possible_jokers[#possible_jokers+1] = v.key
-        end
-    end
-    end
-    local key = pseudorandom_element(possible_jokers, pseudoseed(seed)) or 'j_gros_michel'
-    return key
-end
-
-function FMOD.get_fmod_legendaries(seed)
-    local possible_jokers = {}
-    if G.P_CENTER_POOLS.Joker then for k, v in pairs(G.P_CENTER_POOLS.Joker) do
-        if v.pools and v.pools.Fmod_Legendary then
-            possible_jokers[#possible_jokers+1] = v.key
-        end
-    end
-    end
-    local key = pseudorandom_element(possible_jokers, pseudoseed(seed)) or 'j_fmod_steve'
-    return key
-end
-
-local shuffle_ref = CardArea.shuffle
-function CardArea:shuffle(_seed)
-    local g = shuffle_ref(self, _seed)
-    if self == G.deck then
-        local priorities = {}
-        local others = {}
-        for k, v in pairs(self.cards) do
-            if FMOD.has_marking(v) == 'fmod_crease_mark' then
-                table.insert(priorities, v)
-            else
-                table.insert(others, v)
-            end
-        end
-        for _, card in ipairs(priorities) do
-            table.insert(others, card)
-        end
-        self.cards = others
-        self:set_ranks()
-    end
-    return g
-end
-
-function FMOD.is_marking(str)
-    for _, v in ipairs(FMOD.ENABLED_MARKINGS) do
-        if 'fmod_' .. v == str then
-            return true
-        end
-    end
-end
-
-function FMOD.has_marking(card)
-    for k, v in pairs(card and card.ability or {}) do
-        if FMOD.is_marking(k) then
-            return k, v
-        end
-    end
-end
-function FMOD.set_marking(card, mark)
-    local key = 'fmod_' .. mark .. '_mark'
-    if card and FMOD.is_marking(key) then
-        -- remove existing marks before applying
-        for k, _ in pairs(card.ability) do
-            if FMOD.is_marking(k) then
-                card.ability[k] = nil
-            end
-        end
-
-        SMODS.Stickers[key]:apply(card, true)
-    end
-end
-
-function FMOD.marking_tooltip(mark)
-    local key = 'fmod_' .. mark .. '_mark'
-    local marking = SMODS.Stickers[key]
-    local vars = {}
-    if not marking then return end
-    if marking.loc_vars then
-        local dummy_card = { ability = {} }
-        marking:apply(dummy_card, true)
-        vars = marking:loc_vars({}, dummy_card).vars
-    end
-    return {
-        set = 'Other',
-        key = key,
-        vars = vars
-    }
 end
 
 -- define marking objects
@@ -716,21 +404,6 @@ end
 
 -- friends of jimbo skins
 
-SMODS.Atlas {
-    key = 'peppered_diamonds_lc',
-    path = 'collabs/peppered_diamonds_lc.png',
-    px = 71,
-    py = 95
-}
-
-SMODS.Atlas {
-    key = 'peppered_diamonds_hc',
-    path = 'collabs/peppered_diamonds_hc.png',
-    px = 71,
-    py = 95
-}
-
-
 SMODS.DeckSkin {
     key = "peppered_diamonds",
     suit = "Diamonds",
@@ -753,20 +426,6 @@ SMODS.DeckSkin {
     },
 }
 
-SMODS.Atlas {
-    key = 'yttd_clubs_lc',
-    path = 'collabs/yttd_clubs_lc.png',
-    px = 71,
-    py = 95
-}
-
-SMODS.Atlas {
-    key = 'yttd_clubs_hc',
-    path = 'collabs/yttd_clubs_hc.png',
-    px = 71,
-    py = 95
-}
-
 SMODS.DeckSkin {
     key = "yttd_clubs",
     suit = "Clubs",
@@ -787,20 +446,6 @@ SMODS.DeckSkin {
             atlas = 'fmod_yttd_clubs_hc'
         }
     },
-}
-
-SMODS.Atlas {
-    key = 'catgirl_hearts_lc',
-    path = 'collabs/catgirl_hearts_lc.png',
-    px = 71,
-    py = 95
-}
-
-SMODS.Atlas {
-    key = 'catgirl_hearts_hc',
-    path = 'collabs/catgirl_hearts_hc.png',
-    px = 71,
-    py = 95
 }
 
 SMODS.DeckSkin {
