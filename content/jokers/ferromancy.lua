@@ -4,23 +4,11 @@ SMODS.Enhancement:take_ownership('m_steel',
             if #SMODS.find_card('j_fmod_ferromancy') > 0 then
                 card.ability.h_x_mult = 0
                 card.ability.h_dollars = 5
+                    * (card.ability.jest_charged_applied and card.ability.jest_charged_applied.factor or 1)
             else
-                card.ability.h_x_mult = 1.5
-            end
-        end
-    },
-    true
-)
-
-SMODS.Enhancement:take_ownership('m_gold',
-    {
-        update = function(self, card, dt)
-            if #SMODS.find_card('j_fmod_ferromancy') > 0 then
-                card.ability.h_x_mult = 2
                 card.ability.h_dollars = 0
-            else
-                card.ability.h_x_mult = 1
-                card.ability.h_dollars = 3
+                card.ability.h_x_mult = 1.5
+                    * (card.ability.jest_charged_applied and card.ability.jest_charged_applied.factor or 1)
             end
         end
     },
@@ -44,10 +32,12 @@ SMODS.Enhancement:take_ownership('m_gold',
         update = function(self, card, dt)
             if #SMODS.find_card('j_fmod_ferromancy') > 0 then
                 card.ability.h_x_mult = 2
+                    * (card.ability.jest_charged_applied and card.ability.jest_charged_applied.factor or 1)
                 card.ability.h_dollars = 0
             else
                 card.ability.h_x_mult = 1
                 card.ability.h_dollars = 3
+                    * (card.ability.jest_charged_applied and card.ability.jest_charged_applied.factor or 1)
             end
         end
     },
