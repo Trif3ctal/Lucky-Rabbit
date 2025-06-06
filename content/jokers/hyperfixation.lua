@@ -58,7 +58,7 @@ SMODS.Joker{
                     card.ability.extra.retriggers = card.ability.extra.retriggers + 1
                     -- (same as Wee)
                     return {
-                        extra = {focus = card, message = localize('k_fmod_upgraded')},
+                        extra = {focus = card, message = localize('k_upgrade_ex')},
                         card = card,
                     }
                 end

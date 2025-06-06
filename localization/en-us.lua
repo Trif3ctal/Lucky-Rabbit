@@ -832,7 +832,6 @@ return {
         dictionary = {
             k_fmod_fuel = "Fueled!",
             k_fmod_drained = "Drained!",
-            k_fmod_upgraded = "Upgraded!",
             k_fmod_neil_deal = "Discounted!",
             k_fmod_sillypack = "Silly Pack",
             r_fmod_mostplayed = "(most played rank)",
