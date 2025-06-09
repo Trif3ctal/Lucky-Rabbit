@@ -292,6 +292,40 @@ return {
                     "Mult per {C:attention}Voucher{} owned",
                     "{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive})"
                 }
+            },
+            j_fmod_dating_sim = {
+                name = "Dating Sim",
+                text = {
+                    "Played {C:hearts}Hearts{} permanently",
+                    "gain {C:chips}+#1#{} Chips when",
+                    "scored"
+                }
+            },
+            j_fmod_rhythm_game = {
+                name = "Rhythm Game",
+                text = {
+                    "Played {C:diamonds}Diamonds{C:attention} retrigger",
+                    "when scored"
+                }
+            },
+            j_fmod_dungeon_crawler = {
+                name = "Dungeon Crawler",
+                text = {
+                    "If played hand contains a",
+                    "scoring {C:spades}Spade{}, a {C:spades}Spade in",
+                    "that hand is given a random",
+                    "{C:attention}Enhancement{}, {C:attention}Seal{}, or {C:attention}Marking{}",
+                    "{C:inactive}(Won't override existing modifiers)"
+                }
+            },
+            j_fmod_fighting_game = {
+                name = "Fighting Game",
+                text = {
+                    "Played {C:clubs}Clubs{} have a",
+                    "{C:green}#1# in #2#{} chance to",
+                    "give {C:attention}+#3# hand size{}",
+                    "until end of round"
+                }
             }
         },
         Tag = {
