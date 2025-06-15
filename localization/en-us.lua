@@ -326,6 +326,21 @@ return {
                     "give {C:attention}+#3# hand size{}",
                     "until end of round"
                 }
+            },
+            j_fmod_free_shipping = {
+                name = "Free Shipping",
+                text = {
+                    "Consumables created",
+                    "by {C:attention}Raffle Cards{} are",
+                    "{C:dark_edition}Negative"
+                }
+            },
+            j_fmod_comic_book_ad = {
+                name = "Comic Book Ad",
+                text = {
+                    "{C:attention}Raffle Cards{} always",
+                    "generate {V:1}Silly{} cards"
+                }
             }
         },
         Tag = {
