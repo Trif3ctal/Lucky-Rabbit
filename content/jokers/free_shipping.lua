@@ -12,4 +12,5 @@ SMODS.Joker {
     blueprint_compat = false,
     pos = { x = 4, y = 5 },
     cost = 5,
+    enhancement_gate = "m_fmod_raffle_card"
 }
