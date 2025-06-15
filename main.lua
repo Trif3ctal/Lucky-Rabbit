@@ -197,6 +197,7 @@ local files = {
             "baby",
             "priest",
             "light",
+            "thorn",
             "elder",
             "dice",
             "flux",

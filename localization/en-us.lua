@@ -460,6 +460,13 @@ return {
                     "All cards are",
                     "drawn face down"
                 }
+            },
+            bl_fmod_thorn = {
+                name = "The Thorn",
+                text = {
+                    "Cards with seals",
+                    "are debuffed"
+                }
             }
         },
         Back = {
