@@ -341,6 +341,14 @@ return {
                     "{C:attention}Raffle Cards{} always",
                     "generate {V:1}Silly{} cards"
                 }
+            },
+            j_fmod_lottery = {
+                name = "Lottery",
+                text = {
+                    "{C:green}#1# in #2#{} chance to gain",
+                    "between {C:money}$#3#{} and {C:money}$#4# {C:attention}sell",
+                    "{C:attention}value{} at end of round"
+                }
             }
         },
         Tag = {
@@ -897,7 +905,8 @@ return {
         },
         v_dictionary={
             a_fmod_discards = "+#1# Discards",
-            a_fmod_silly_card = "+#1# Silly"
+            a_fmod_silly_card = "+#1# Silly",
+            a_fmod_money = "+$#1#",
         },
         labels = {
             fmod_ink_mark = "Inked",

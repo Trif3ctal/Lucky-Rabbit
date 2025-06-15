@@ -131,6 +131,7 @@ local files = {
             "fighting_game",
             "free_shipping",
             "comic_book_ad",
+            "lottery",
             "steve",
             "pomni",
             "loonette",
