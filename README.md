@@ -7,6 +7,7 @@ As of now, this mod adds:
 - **39** fun new Jokers
 - **23** new Silly consumable cards
 - **3** brand-new card modifiers known as **Markings**
+- **2** new Enhancements to expand your deck
 - **12** upgraded and helpful Vouchers
 - **5** practical Decks
 - **4** skip-worthy Tags
