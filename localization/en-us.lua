@@ -699,6 +699,14 @@ return {
                     "{C:attention}Clip{} of the {C:attention}left{} card",
                     "onto the {C:attention}right{} card",
                 }
+            },
+            c_fmod_hall_of_mirrors = {
+                name = "Hall of Mirrors",
+                text = {
+                    "Enhances {C:attention}#1#",
+                    "selected cards into",
+                    "{C:attention}Copycat Cards{}",
+                }
             }
         },
         Voucher = {
@@ -801,6 +809,14 @@ return {
                     "a random {C:attention}Consumable",
                     "when scored",
                     "{C:inactive}(Must have room)"
+                }
+            },
+            m_fmod_copycat_card = {
+                name = "Copycat Card",
+                text = {
+                    "All Copycat cards in deck",
+                    "become the same random",
+                    "{C:attention}rank{} after scoring"
                 }
             }
         },

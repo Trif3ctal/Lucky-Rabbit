@@ -179,6 +179,7 @@ local files = {
             "unicycle",
             "cannon",
             "barker",
+            "hall_of_mirrors",
             "suspenders",
             "soully"
         },
@@ -187,6 +188,7 @@ local files = {
     enhancements = {
         list = {
             "raffle_card",
+            "copycat_card",
         },
         directory = "content/enhancements"
     },
@@ -287,6 +289,7 @@ if LR_CONFIG.silly_enabled then
             ["c_fmod_cannon"] = true,
             ["c_fmod_barker"] = true,
             ["c_fmod_suspenders"] = true,
+            ["c_fmod_hall_of_mirrors"] = true,
         },
         loc_txt = {
             name = "Silly",
