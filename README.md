@@ -4,11 +4,11 @@ Lucky Rabbit is a WIP Vanilla+ Balatro mod that adds new Jokers, boss blinds, a 
 *Note: This mod requires [Steamodded](https://github.com/Steamopollys/Steamodded/archive/refs/heads/main.zip) and [Lovely](https://github.com/ethangreen-dev/lovely-injector/releases/latest) (obviously)*
 
 As of now, this mod adds:
-- **39** fun new Jokers
+- **42** fun new Jokers
 - **23** new Silly consumable cards
 - **3** brand-new card modifiers known as **Markings**
 - **2** new Enhancements to expand your deck
-- **12** upgraded and helpful Vouchers
+- **15** upgraded and helpful Vouchers
 - **5** practical Decks
 - **4** skip-worthy Tags
 - **11** tough new Boss Blinds
