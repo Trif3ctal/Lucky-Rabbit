@@ -799,6 +799,30 @@ return {
                     "{C:attention}Booster Pack{}",
                     "to each shop"
                 }
+            },
+            v_fmod_grab_bag = {
+                name = "Grab Bag",
+                text = {
+                    "Open a free {C:attention}Remix{}",
+                    "{C:attention}Pack{} upon clearing",
+                    "a {C:attention}Boss Blind{}"
+                }
+            },
+            v_fmod_gachapon = {
+                name = "Gachapon",
+                text = {
+                    "{C:attention}Remix Packs{}",
+                    "appear in the",
+                    "{C:attention}shop"
+                }
+            },
+            v_fmod_mystery_box = {
+                name = "Mystery Box",
+                text = {
+                    "+1 {C:attention}Booster Pack{}",
+                    "available in the",
+                    "{C:attention}shop"
+                }
             }
         },
         Enhanced = {
@@ -885,6 +909,38 @@ return {
                     "be used immediately"
                 }
             },
+            p_fmod_remix_small_1 = {
+                name = "Remix Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to {C:attention}#2#",
+                    "{C:attention}Jokers{}, {C:attention}Playing{} cards, or",
+                    "{C:attention}Consumables{} to add or use"
+                }
+            },
+            p_fmod_remix_small_2 = {
+                name = "Remix Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to {C:attention}#2#",
+                    "{C:attention}Jokers{}, {C:attention}Playing{} cards, or",
+                    "{C:attention}Consumables{} to add or use"
+                }
+            },
+            p_fmod_remix_jumbo = {
+                name = "Jumbo Remix Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to {C:attention}#2#",
+                    "{C:attention}Jokers{}, {C:attention}Playing{} cards, or",
+                    "{C:attention}Consumables{} to add or use"
+                }
+            },
+            p_fmod_remix_mega = {
+                name = "Mega Remix Pack",
+                text = {
+                    "Choose {C:attention}#1#{} of up to {C:attention}#2#",
+                    "{C:attention}Jokers{}, {C:attention}Playing{} cards, or",
+                    "{C:attention}Consumables{} to add or use"
+                }
+            },
             fmod_ink_mark = {
                 name = "Inked",
                 text = {
@@ -914,6 +970,7 @@ return {
             k_fmod_drained = "Drained!",
             k_fmod_neil_deal = "Discounted!",
             k_fmod_sillypack = "Silly Pack",
+            k_fmod_remixpack = "Remix Pack",
             r_fmod_mostplayed = "(most played rank)",
             k_fmod_config_restart = "Requires Restart",
             k_fmod_config_jokers = "Enable Jokers",
@@ -924,6 +981,7 @@ return {
             k_fmod_config_decks = "Enable Decks",
             k_fmod_config_markings = "Enable Markings",
             k_fmod_config_enhancements = "Enable Enhancements",
+            k_fmod_config_remix = "Enable Remix Packs",
             k_fmod_planet_orbit = "+1 Planet",
         },
         v_dictionary={

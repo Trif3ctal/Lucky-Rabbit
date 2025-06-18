@@ -7,4 +7,5 @@ return {
     decks_enabled = true,
     markings_enabled = true,
     enhancements_enabled = true,
+    remix_enabled = true,
 }

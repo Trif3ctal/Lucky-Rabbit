@@ -71,7 +71,12 @@ SMODS.current_mod.config_tab = function()
                                 label = localize("k_fmod_config_enhancements"),
                                 ref_table = LR_CONFIG,
                                 ref_value = "enhancements_enabled"
-                            }
+                            },
+                            create_toggle {
+                                label = localize("k_fmod_config_remix"),
+                                ref_table = LR_CONFIG,
+                                ref_value = "remix_enabled"
+                            },
                         }
                     }
                 }
@@ -152,7 +157,10 @@ local files = {
             "fire_sale",
             "coupon",
             "extreme_couponing",
-            "shopaholic"
+            "shopaholic",
+            "grab_bag",
+            "gachapon",
+            "mystery_box",
         },
         directory = "content/vouchers"
     },
@@ -230,7 +238,8 @@ local files = {
     },
     boosters = {
         list = {
-            "boosters" -- just using one file for ease of use
+            "silly_packs",
+            "remix_packs",
         },
         directory = "content/boosters"
     },
@@ -312,7 +321,7 @@ if LR_CONFIG.silly_enabled then
         --overlay_pos = { x = 4, y = 2 }
     }
     LR_UTIL.load_files(files.consumables.list, files.consumables.directory)
-    LR_UTIL.load_files(files.boosters.list, files.boosters.directory)
+    assert(SMODS.load_file("content/boosters/silly_packs.lua"))()
 end
 
 if LR_CONFIG.vouchers_enabled then
@@ -333,6 +342,10 @@ end
 
 if LR_CONFIG.enhancements_enabled then
     LR_UTIL.load_files(files.enhancements.list, files.enhancements.directory)
+end
+
+if LR_CONFIG.remix_enabled then
+    assert(SMODS.load_file("content/boosters/silly_packs.lua"))()
 end
 
 -- define marking objects
