@@ -345,7 +345,7 @@ if LR_CONFIG.enhancements_enabled then
 end
 
 if LR_CONFIG.remix_enabled then
-    assert(SMODS.load_file("content/boosters/silly_packs.lua"))()
+    assert(SMODS.load_file("content/boosters/remix_packs.lua"))()
 end
 
 -- define marking objects
