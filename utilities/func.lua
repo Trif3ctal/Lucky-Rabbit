@@ -181,11 +181,14 @@ function CardArea:shuffle(_seed)
 end
 
 function LR_UTIL.is_marking(str)
-    for _, v in ipairs(LR_UTIL.ENABLED_MARKINGS) do
-        if 'fmod_' .. v == str then
-            return true
+    if LR_CONFIG and LR_CONFIG.markings_enabled then
+        for _, v in ipairs(LR_UTIL.ENABLED_MARKINGS) do
+            if 'fmod_' .. v == str then
+                return true
+            end
         end
     end
+    return false
 end
 
 function LR_UTIL.has_marking(card)
