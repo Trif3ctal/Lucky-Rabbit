@@ -67,10 +67,16 @@ SMODS.Enhancement {
                         }))
                     end
                 end
-                card.ability.copy_master = false
                 for i = 1, #G.playing_cards do
                     local _card = G.playing_cards[i]
-                    if SMODS.has_enhancement(_card, "m_fmod_copycat_card") then
+                    local changable = true
+                    for n = 1, #copycats do
+                        if _card == copycats[n] then
+                            changable = false
+                            break
+                        end
+                    end
+                    if changable and SMODS.has_enhancement(_card, "m_fmod_copycat_card") then
                         G.E_MANAGER:add_event(Event({
                             func = function()
                                 assert(SMODS.change_base(_card, nil, rank))
@@ -79,6 +85,7 @@ SMODS.Enhancement {
                         }))
                     end
                 end
+                card.ability.copy_master = false
             end
         end
     end
