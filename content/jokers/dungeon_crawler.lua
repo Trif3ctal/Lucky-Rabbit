@@ -28,13 +28,13 @@ SMODS.Joker {
             if spade_in_hand then
                 local valid_pairs = {}
                 for _, card_ in ipairs(spade_list) do
-                    if not card_.ability.no_dc then
+                    if not next(SMODS.get_enhancements(card_)) or not card_.ability.no_dc then
                         table.insert(valid_pairs, { card = card_, mod = "enhancement" })
                     end
-                    if not card_.ability.no_dc_seal then
+                    if not card_.seal or not card_.ability.no_dc_seal then
                         table.insert(valid_pairs, { card = card_, mod = "seal" })
                     end
-                    if LR_CONFIG.markings_enabled and not card_.ability.no_dc_mrk then
+                    if LR_CONFIG.markings_enabled and not LR_UTIL.has_marking(card_) or not card_.ability.no_dc_mrk then
                         table.insert(valid_pairs, { card = card_, mod = "marking" })
                     end
                 end
