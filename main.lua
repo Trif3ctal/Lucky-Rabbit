@@ -122,6 +122,7 @@ local files = {
             "ghost_trick",
             "detective",
             "nerdcubed",
+            "strange_dreams",
             "terminal_velocity",
             "claw_machine",
             "orbit",

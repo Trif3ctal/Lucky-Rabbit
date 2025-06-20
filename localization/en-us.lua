@@ -356,6 +356,15 @@ return {
                     "{C:attention}Cards{} that were previously",
                     "played this {C:attention}Ante{} give {C:money}$#1#",
                 }
+            },
+            j_fmod_strange_dreams = {
+                name = "Strange Dreams",
+                text = {
+                    "After hand played, turn",
+                    "a random {C:attention}unscored{} card",
+                    "into the {C:attention}rightmost scored",
+                    "card"
+                }
             }
         },
         Tag = {
