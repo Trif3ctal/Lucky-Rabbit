@@ -120,6 +120,7 @@ local files = {
             "pub_burger",
             "wordle",
             "ghost_trick",
+            "detective",
             "nerdcubed",
             "terminal_velocity",
             "claw_machine",

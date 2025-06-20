@@ -349,6 +349,13 @@ return {
                     "between {C:money}$#3#{} and {C:money}$#4# {C:attention}sell",
                     "{C:attention}value{} at end of round"
                 }
+            },
+            j_fmod_detective = {
+                name = "Detective",
+                text = {
+                    "{C:attention}Cards{} that were previously",
+                    "played this {C:attention}Ante{} give {C:money}$#1#",
+                }
             }
         },
         Tag = {
