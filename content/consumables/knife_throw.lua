@@ -5,7 +5,7 @@ SMODS.Consumable {
     config = {
         max_highlighted = 3,
         extra = {
-            chance = 2,
+            odds = 2,
         }
     },
     pos = {x = 8, y = 1 },
@@ -18,7 +18,7 @@ SMODS.Consumable {
         local destroyed_cards = {}
         for i = 1, #G.hand.highlighted do
             local k_card = G.hand.highlighted[i]
-            if pseudorandom(pseudoseed('knifethrow')) < G.GAME.probabilities.normal/card.ability.extra.chance then
+            if pseudorandom(pseudoseed('knifethrow')) < G.GAME.probabilities.normal/card.ability.extra.odds then
                 table.insert(outcomes, { k_card = k_card, success = true })
             else
                 table.insert(outcomes, { k_card = k_card, success = false })

@@ -7,19 +7,19 @@ SMODS.Joker {
 	unlocked = true,
 	discovered = true,
 	blueprint_compat = true,
-	config = { extra = { chance = 3, h_size = 1, total_size = 0 } },
+	config = { extra = { odds = 3, h_size = 1, total_size = 0 } },
 	loc_vars = function(self, info_queue, card)
         return {
             vars = {
                 G.GAME.probabilities.normal or 1,
-                card.ability.extra.chance,
+                card.ability.extra.odds,
                 card.ability.extra.h_size
             }
         }
 	end,
 	calculate = function(self, card, context)
 		if context.individual and context.cardarea == G.play then
-			if context.other_card:is_suit('Clubs') and pseudorandom("fighting_game") < G.GAME.probabilities.normal / card.ability.extra.chance then
+			if context.other_card:is_suit('Clubs') and pseudorandom("fighting_game") < G.GAME.probabilities.normal / card.ability.extra.odds then
                 G.E_MANAGER:add_event(Event({
                     trigger = 'after',
                     func = function()

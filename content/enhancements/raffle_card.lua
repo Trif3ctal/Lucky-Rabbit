@@ -4,11 +4,11 @@ SMODS.Enhancement {
     pos = { x = 3, y = 0 },
     config = {
         extra = {
-            chance = 5,
+            odds = 5,
         }
     },
     loc_vars = function(self, info_queue, card)
-        return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.chance } }
+        return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
     end,
     calculate = function(self, card, context)
         if context.main_scoring and context.cardarea == G.play then
@@ -20,7 +20,7 @@ SMODS.Enhancement {
             if next(SMODS.find_card('j_fmod_comic_book_ad')) then
                 silly = true
             end
-            if pseudorandom("raffle_cons") < G.GAME.probabilities.normal / card.ability.extra.chance and (free or (#G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit)) then
+            if pseudorandom("raffle_cons") < G.GAME.probabilities.normal / card.ability.extra.odds and (free or (#G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit)) then
                 G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
                 local selected = ""
                 local passed = false
