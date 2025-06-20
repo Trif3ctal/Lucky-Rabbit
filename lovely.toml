@@ -49,9 +49,9 @@ times = 1
 [[patches]]
 [patches.regex]
 target = 'functions/common_events.lua'
-pattern = '''and not next\(find_joker\("Showman"\)\)'''
+pattern = '''and not SMODS\.showman\(\s*(v\.key|'[^']+')\s*\)'''
 position = "at"
-payload = '''and not (next(find_joker("Showman")) or G.GAME.selected_back.effect.center.key == "b_fmod_recursive")'''
+payload = '''and not (SMODS.showman($1) or G.GAME.selected_back.effect.center.key == "b_fmod_recursive")'''
 times = 4
 
 # -------- fennex deck ---------
@@ -161,6 +161,65 @@ if LR_UTIL and card and card.ability then
 end
 '''
 
+# -------- pinhole marking --------
+
+[[patches]]
+[patches.pattern]
+target = "functions/state_events.lua"
+pattern = '''draw_card(G.play,G.discard, it*100/play_count,'down', false, v)'''
+position = "at"
+payload = '''
+if LR_UTIL.has_marking(v) == "fmod_pinhole_mark" then
+    draw_card(G.play, G.deck, it*100/play_count, 'down', nil, v, 0.005, false, nil, math.max((21-k)/20,0.7))
+else
+    draw_card(G.play,G.discard, it*100/play_count,'down', false, v)
+end'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''local stay_flipped = G.GAME and G.GAME.blind and G.GAME.blind:stay_flipped(to, card, from)
+if G.GAME.modifiers.flipped_cards and to == G.hand then
+    if pseudorandom(pseudoseed('flipped_card')) < 1/G.GAME.modifiers.flipped_cards then
+        stay_flipped = true
+    end
+end
+to:emplace(card, nil, stay_flipped)'''
+position = "at"
+payload = '''local stay_flipped = G.GAME and G.GAME.blind and G.GAME.blind:stay_flipped(to, card, from)
+if G.GAME.modifiers.flipped_cards and to == G.hand then
+    if pseudorandom(pseudoseed('flipped_card')) < 1/G.GAME.modifiers.flipped_cards then
+        stay_flipped = true
+    end
+end
+if to == G.deck and #G.deck.cards > 0 and LR_UTIL.has_marking(card) == "fmod_pinhole_mark" then
+    local poss_deck = {}
+    for k, v in ipairs(G.deck.cards) do
+        poss_deck[#poss_deck+1] = k
+    end
+    local rand_card = pseudorandom_element(poss_deck, pseudoseed("pinhole"))
+    table.insert(G.deck.cards, rand_card, card)
+    card:set_card_area(to)
+    play_sound('card1', 0.85 + percent*0.2/100, 0.6*(vol or 1))
+    to:set_ranks()
+    to:align_cards()
+else
+    to:emplace(card, nil, stay_flipped)
+end'''
+match_indent = true
+times = 1
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''if card then drawn = true end'''
+position = "at"
+payload = '''if card and not (LR_UTIL.has_marking(card) == "fmod_pinhole_mark") then drawn = true end'''
+match_indent = true
+times = 1
+
 # -------- ink marking --------
 
 [[patches]]
@@ -192,57 +251,6 @@ payload = "if pseudorandom(pseudoseed('flipped_card')) < 1/G.GAME.modifiers.flip
 match_indent = true
 times = 1
 
-# -------- pinhole marking --------
-
-[[patches]]
-[patches.pattern]
-target = "functions/state_events.lua"
-pattern = '''draw_card(G.play,G.discard, it*100/play_count,'down', false, v)'''
-position = "at"
-payload = '''
-if LR_UTIL.has_marking(v) == "fmod_pinhole_mark" then
-    draw_card(G.play, G.deck, it*100/play_count, 'down', nil, v, 0.005, false, nil, math.max((21-k)/20,0.7))
-else
-    draw_card(G.play,G.discard, it*100/play_count,'down', false, v)
-end'''
-match_indent = true
-times = 1
-
-[[patches]]
-[patches.pattern]
-target = "functions/common_events.lua"
-pattern = '''if card then drawn = true end
-local stay_flipped = G.GAME and G.GAME.blind and G.GAME.blind:stay_flipped(to, card, from)
-if G.GAME.modifiers.flipped_cards and to == G.hand then
-    if pseudorandom(pseudoseed('flipped_card')) < 1/G.GAME.modifiers.flipped_cards then
-        stay_flipped = true
-    end
-end
-to:emplace(card, nil, stay_flipped)'''
-position = "at"
-payload = '''if card and not (LR_UTIL.has_marking(card) == "fmod_pinhole_mark") then drawn = true end
-local stay_flipped = G.GAME and G.GAME.blind and G.GAME.blind:stay_flipped(to, card, from)
-if G.GAME.modifiers.flipped_cards and to == G.hand then
-    if pseudorandom(pseudoseed('flipped_card')) < 1/G.GAME.modifiers.flipped_cards then
-        stay_flipped = true
-    end
-end
-if to == G.deck and #G.deck.cards > 0 and LR_UTIL.has_marking(card) == "fmod_pinhole_mark" then
-    local poss_deck = {}
-    for k, v in ipairs(G.deck.cards) do
-        poss_deck[#poss_deck+1] = k
-    end
-    local rand_card = pseudorandom_element(poss_deck, pseudoseed("pinhole"))
-    table.insert(G.deck.cards, rand_card, card)
-    card:set_card_area(to)
-    play_sound('card1', 0.85 + percent*0.2/100, 0.6*(vol or 1))
-    to:set_ranks()
-    to:align_cards()
-else
-    to:emplace(card, nil, stay_flipped)
-end'''
-match_indent = true
-times = 1
 
 # -------- hyperfixation --------
 
