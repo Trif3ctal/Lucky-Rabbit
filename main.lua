@@ -136,6 +136,8 @@ local files = {
             "rhythm_game",
             "dungeon_crawler",
             "fighting_game",
+            "feline_fleecer",
+            "tem_shop",
             "free_shipping",
             "comic_book_ad",
             "lottery",

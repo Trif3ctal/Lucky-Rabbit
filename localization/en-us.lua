@@ -373,6 +373,22 @@ return {
                     "creates a {C:dark_edition}Polychrome{} copy",
                     "with a {C:red}Red Seal{}"
                 }
+            },
+            j_fmod_feline_fleecer = {
+                name = "Feline Fleecer",
+                text = {
+                    "Add a free {C:attention}Remix Pack",
+                    "to the {C:attention}Shop{} upon",
+                    "beating a {C:attention}Blind"
+                }
+            },
+            j_fmod_tem_shop = {
+                name = "Tem Shop",
+                text = {
+                    "{C:attention}Sell value{} of all cards",
+                    "starts off at {C:attention}75%{} of",
+                    "their {C:attention}base{} price",
+                }
             }
         },
         Tag = {
@@ -1012,6 +1028,7 @@ return {
             a_fmod_discards = "+#1# Discards",
             a_fmod_silly_card = "+#1# Silly",
             a_fmod_money = "+$#1#",
+            a_fmod_booster = "+#1# Booster",
         },
         labels = {
             fmod_ink_mark = "Inked",

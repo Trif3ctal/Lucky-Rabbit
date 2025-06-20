@@ -424,3 +424,18 @@ payload = '''
 '''
 times = 1
 match_indent = true
+
+# -------- tem shop --------
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''self.sell_cost = math.max(1, math.floor(self.cost/2)) + (self.ability.extra_value or 0)'''
+position = "at"
+payload = '''if next(SMODS.find_card("j_fmod_tem_shop")) then
+    self.sell_cost = math.max(1, math.floor((self.cost/4) * 3)) + (self.ability.extra_value or 0)
+else
+    self.sell_cost = math.max(1, math.floor(self.cost/2)) + (self.ability.extra_value or 0)
+end'''
+times = 1
+match_indent = true
