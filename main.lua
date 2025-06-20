@@ -141,6 +141,7 @@ local files = {
             "lottery",
             "steve",
             "pomni",
+            "ransome",
             "loonette",
             "fennex_the_clown",
         },

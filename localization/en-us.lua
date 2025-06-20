@@ -365,6 +365,14 @@ return {
                     "into the {C:attention}rightmost scored",
                     "card"
                 }
+            },
+            j_fmod_ransome = {
+                name = "Ransome",
+                text = {
+                    "When a card is {C:attention}destroyed{},",
+                    "creates a {C:dark_edition}Polychrome{} copy",
+                    "with a {C:red}Red Seal{}"
+                }
             }
         },
         Tag = {
