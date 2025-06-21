@@ -141,6 +141,7 @@ local files = {
             "free_shipping",
             "comic_book_ad",
             "lottery",
+            "debut_album",
             "steve",
             "pomni",
             "ransome",

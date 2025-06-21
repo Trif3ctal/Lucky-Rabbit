@@ -389,6 +389,14 @@ return {
                     "starts off at {C:attention}75%{} of",
                     "their {C:attention}base{} price",
                 }
+            },
+            j_fmod_debut_album = {
+                name = "Debut Album",
+                text = {
+                    "{C:white,X:mult}X#1#{} Mult, {C:white,X:mult}-X#2#{} Mult",
+                    "per hand played",
+                    "{C:inactive}(Self destructs at {C:white,X:mult}X1{C:inactive} Mult)",
+                }
             }
         },
         Tag = {
@@ -1023,6 +1031,7 @@ return {
             k_fmod_config_enhancements = "Enable Enhancements",
             k_fmod_config_remix = "Enable Remix Packs",
             k_fmod_planet_orbit = "+1 Planet",
+            k_fmod_debut_destruct = "Finished!"
         },
         v_dictionary={
             a_fmod_discards = "+#1# Discards",
