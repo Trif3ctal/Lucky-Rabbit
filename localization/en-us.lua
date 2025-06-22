@@ -397,6 +397,14 @@ return {
                     "per hand played",
                     "{C:inactive}(Self destructs at {C:white,X:mult}X1{C:inactive} Mult)",
                 }
+            },
+            j_fmod_zany_to_the_max = {
+                name = "Zany to the Max",
+                text = {
+                    "If played hand is a {C:attention}Three of a Kind,",
+                    "gain {C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult, or {C:white,X:mult}+X#3#{} Mult",
+                    "{C:inactive}(Currently {C:chips}+#4#{C:inactive} Chips, {C:mult}+#5#{C:inactive} Mult, {C:white,X:mult}X#6#{C:inactive} Mult)",
+                }
             }
         },
         Tag = {

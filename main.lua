@@ -142,6 +142,7 @@ local files = {
             "comic_book_ad",
             "lottery",
             "debut_album",
+            "zany_to_the_max",
             "steve",
             "pomni",
             "ransome",
