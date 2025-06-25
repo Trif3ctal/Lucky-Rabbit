@@ -10,7 +10,7 @@ SMODS.Joker {
     },
     unlocked = true,
     discovered = true,
-    blueprint_compat = true,
+    blueprint_compat = false,
     pos = { x = 0, y = 6 },
     soul_pos = { x = 1, y = 6 },
     cost = 8,
@@ -18,7 +18,7 @@ SMODS.Joker {
         return { vars = { card.ability.extra.copies } }
     end,
     calculate = function(self, card, context)
-        if context.discard and not card.ability.extra.used and #context.full_hand == 1 and G.GAME.current_round.discards_used <= 0 then
+        if context.discard and not card.ability.extra.used and #context.full_hand == 1 and G.GAME.current_round.discards_used <= 0 and not context.blueprint then
             local cards = {}
             card.ability.extra.used = true
             for i = 1, card.ability.extra.copies do
@@ -52,7 +52,7 @@ SMODS.Joker {
                 end
             }
         end
-        if context.end_of_round and context.cardarea == G.jokers then
+        if context.end_of_round and context.cardarea == G.jokers and not context.blueprint then
             card.ability.extra.used = false
         end
     end
