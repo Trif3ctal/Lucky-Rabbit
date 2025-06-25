@@ -422,6 +422,15 @@ return {
                     "create {C:attention}#1#{} temporary copies",
                     "{C:inactive}(Destroyed at end of round)",
                 }
+            },
+            j_fmod_prismatic_joker = {
+                name = "Prismatic Joker",
+                text = {
+                    "If played hand contains a",
+                    "{C:attention}Four of a Kind{}, all {C:attention}scored",
+                    "cards become {C:attention}Copycat",
+                    "{C:attention}Cards"
+                }
             }
         },
         Tag = {
@@ -1056,7 +1065,8 @@ return {
             k_fmod_config_enhancements = "Enable Enhancements",
             k_fmod_config_remix = "Enable Remix Packs",
             k_fmod_planet_orbit = "+1 Planet",
-            k_fmod_debut_destruct = "Finished!"
+            k_fmod_debut_destruct = "Finished!",
+            k_fmod_copycat = "Copycat!"
         },
         v_dictionary={
             a_fmod_discards = "+#1# Discards",

@@ -144,6 +144,7 @@ local files = {
             "debut_album",
             "zany_to_the_max",
             "friend_inside_me",
+            "prismatic_joker",
             "ghostly_joker",
             "steve",
             "pomni",
