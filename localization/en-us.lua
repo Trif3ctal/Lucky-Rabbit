@@ -405,6 +405,14 @@ return {
                     "gain {C:chips}+#1#{} Chips, {C:mult}+#2#{} Mult, or {C:white,X:mult}+X#3#{} Mult",
                     "{C:inactive}(Currently {C:chips}+#4#{C:inactive} Chips, {C:mult}+#5#{C:inactive} Mult, {C:white,X:mult}X#6#{C:inactive} Mult)",
                 }
+            },
+            j_fmod_ghostly_joker = {
+                name = "Ghostly Joker",
+                text = {
+                    "Creates a {C:attention}Death{} {C:tarot}Tarot{} card for",
+                    "every {C:attention}fourth{} scoring {C:attention}4 {C:inactive}[#1#]",
+                    "{C:inactive}(Must have room)"
+                }
             }
         },
         Tag = {

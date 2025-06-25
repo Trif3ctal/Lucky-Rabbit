@@ -143,6 +143,7 @@ local files = {
             "lottery",
             "debut_album",
             "zany_to_the_max",
+            "ghostly_joker",
             "steve",
             "pomni",
             "ransome",
