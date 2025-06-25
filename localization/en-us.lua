@@ -413,6 +413,15 @@ return {
                     "every {C:attention}fourth{} scoring {C:attention}4 {C:inactive}[#1#]",
                     "{C:inactive}(Must have room)"
                 }
+            },
+            j_fmod_friend_inside_me = {
+                name = "Friend Inside Me",
+                text = {
+                    "If {C:attention}first discard{} of round has",
+                    "only {C:attention}1{} card, {C:attention}destroy{} it and",
+                    "create {C:attention}#1#{} temporary copies",
+                    "{C:inactive}(Destroyed at end of round)",
+                }
             }
         },
         Tag = {

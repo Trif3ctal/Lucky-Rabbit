@@ -77,6 +77,28 @@ G.FUNCS.reroll_boss = function(e)
 	return reroll_val
 end
 
+-- taken from MoreFluff, who took it from Entropy, thanks Ruby (and notmario)
+local e_round = end_round
+function end_round()
+  e_round()
+  local remove_temp = {}
+  for i, v in pairs({G.jokers, G.hand, G.consumeables, G.discard, G.deck}) do
+    for ind, card in pairs(v.cards) do
+      if card.ability then
+        if card.ability.lr_temp then
+          if card.area ~= G.hand and card.area ~= G.play and card.area ~= G.jokers and card.area ~= G.consumeables then card.states.visible = false end
+          card:remove_from_deck()
+          card:start_dissolve()
+          if card.ability.lr_temp then remove_temp[#remove_temp+1] = card end
+        end
+      end
+    end
+  end
+  if #remove_temp > 0 then
+    SMODS.calculate_context({remove_playing_cards = true, removed = remove_temp})
+  end
+end
+
 function LR_UTIL.reset_hyperfix_rank()
     -- If this function somehow isn't working, fail fast
     G.GAME.current_round.hyperfix_card.rank = "This is a bug"
