@@ -14,9 +14,11 @@ SMODS.Joker {
         for i = 1, #G.consumeables.cards do
             G.consumeables.cards[i]:set_cost()
         end
-        for i = 1, #G.shop_jokers.cards do
-            G.shop_jokers.cards[i]:set_cost()
-        end
+        if G.shop_jokers then 
+	    for i = 1, #G.shop_jokers.cards do
+                G.shop_jokers.cards[i]:set_cost()
+            end 
+	end
     end,
     remove_from_deck = function(self, card, from_debuff)
         for i = 1, #G.jokers.cards do
@@ -25,8 +27,10 @@ SMODS.Joker {
         for i = 1, #G.consumeables.cards do
             G.consumeables.cards[i]:set_cost()
         end
-        for i = 1, #G.shop_jokers.cards do
-            G.shop_jokers.cards[i]:set_cost()
-        end
+        if G.shop_jokers then 
+	    for i = 1, #G.shop_jokers.cards do
+                G.shop_jokers.cards[i]:set_cost()
+            end 
+	end
     end,
 }
