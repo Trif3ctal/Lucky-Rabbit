@@ -138,8 +138,8 @@ function LR_UTIL.reset_hyperfix_full_card()
     end
     if valid_hyperfix_cards[1] then
         local hyperfix_card = pseudorandom_element(valid_hyperfix_cards, pseudoseed('hyperfix_'..G.GAME.round_resets.ante))
-        rank = hyperfix_card.base.value
-        suit = hyperfix_card.base.suit
+        local rank = hyperfix_card.base.value
+        local suit = hyperfix_card.base.suit
         return rank, suit
     end
     return "Ace", "Spades"
@@ -282,4 +282,11 @@ function LR_UTIL.num_vouchers()
 		end
 	end
 	return count
+end
+
+function SMODS.current_mod.reset_game_globals(run_start)
+    if run_start then
+        G.GAME.hyperfix_card.rank, G.GAME.hyperfix_card.suit = LR_UTIL.reset_hyperfix_full_card()
+    end
+    LR_UTIL.reset_hyperfix_rank()
 end

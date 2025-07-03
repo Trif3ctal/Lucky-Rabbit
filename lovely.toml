@@ -269,28 +269,6 @@ times = 1
 [[patches]]
 [patches.pattern]
 target = 'game.lua'
-pattern = '''reset_idol_card()'''
-position = "after"
-payload = '''
-G.GAME.hyperfix_card.rank, G.GAME.hyperfix_card.suit = LR_UTIL.reset_hyperfix_full_card()
-LR_UTIL.reset_hyperfix_rank()
-'''
-match_indent = true
-times = 1
-
-[[patches]]
-[patches.pattern]
-target = 'functions/state_events.lua'
-pattern = '''reset_idol_card()'''
-position = "after"
-payload = '''LR_UTIL.reset_hyperfix_rank()
-'''
-match_indent = true
-times = 1
-
-[[patches]]
-[patches.pattern]
-target = 'game.lua'
 pattern = '''idol_card = {suit = 'Spades', rank = 'Ace'},'''
 position = "after"
 payload = '''hyperfix_card = {rank = '2'},
