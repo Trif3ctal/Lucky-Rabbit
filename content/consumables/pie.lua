@@ -27,7 +27,7 @@ SMODS.Consumable {
                     if SMODS.has_enhancement(leftmost, 'm_stone') then
                         G.hand.highlighted[i]:set_ability('m_stone', nil, false)
                     else
-                        SMODS.change_base(G.hand.highlighted[i], nil, leftmost.base.value)
+                        assert(SMODS.change_base(G.hand.highlighted[i], nil, leftmost.base.value))
                         card:juice_up(0.3, 0.5)
                     end
                 end

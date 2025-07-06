@@ -24,7 +24,7 @@ SMODS.Consumable {
         for i=1, #G.hand.highlighted do
             G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
                 if G.hand.highlighted[i] ~= leftmost then
-                    SMODS.change_base(G.hand.highlighted[i], leftmost.base.suit, nil)
+                    assert(SMODS.change_base(G.hand.highlighted[i], leftmost.base.suit, nil))
                     card:juice_up(0.3, 0.5)
                 end
             return true end }))
