@@ -9,7 +9,7 @@ SMODS.Consumable {
     atlas = "Consumables",
     pos = { x = 9, y = 1 },
     cost = 5,
-    use = function(self, card, context, copier)
+    use = function(self, card, context)
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
             local save_edition = nil
             if G.jokers.highlighted[1].edition then
@@ -25,7 +25,7 @@ SMODS.Consumable {
             return true end }))
         delay(0.6)
     end,
-    can_use = function(self, card, context, copier)
+    can_use = function(self, card)
         if #G.jokers.highlighted == card.ability.extra.cards and #G.jokers.cards >= 2 then
             return true
         end

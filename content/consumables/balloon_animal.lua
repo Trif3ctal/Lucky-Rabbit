@@ -20,7 +20,7 @@ SMODS.Consumable {
             return true end }))
         delay(0.6)
     end,
-    can_use = function(self, card, context, copier)
+    can_use = function(self, card)
         if G.STATE == G.STATES.SELECTING_HAND or G.STATE == G.STATES.SMODS_BOOSTER_OPENED then
             return true
         end
