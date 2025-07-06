@@ -289,4 +289,5 @@ function SMODS.current_mod.reset_game_globals(run_start)
         G.GAME.hyperfix_card.rank, G.GAME.hyperfix_card.suit = LR_UTIL.reset_hyperfix_full_card()
     end
     LR_UTIL.reset_hyperfix_rank()
+    LR_UTIL.reset_ncradle_card()
 end

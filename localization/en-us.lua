@@ -431,6 +431,17 @@ return {
                     "cards become {C:attention}Copycat",
                     "{C:attention}Cards"
                 }
+            },
+            j_fmod_newtons_cradle = {
+                name = "Newton's Cradle",
+                text = {
+                    "For every non-{C:attention}High Card{} hand",
+                    "played consisting of only {V:1}#1#{},",
+                    "the {C:attention}rightmost{} card gains {C:attention}#3#{}",
+                    "retriggers {C:inactive}(Currently {C:attention}#2#{C:inactive})",
+                    "{C:inactive}(Retriggers reset, suit changes",
+                    "{C:inactive}at end of round)",
+                }
             }
         },
         Tag = {

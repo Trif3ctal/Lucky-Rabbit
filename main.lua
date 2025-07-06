@@ -124,6 +124,7 @@ local files = {
             "nerdcubed",
             "strange_dreams",
             "terminal_velocity",
+            "newtons_cradle",
             "claw_machine",
             "orbit",
             "rabbit",
