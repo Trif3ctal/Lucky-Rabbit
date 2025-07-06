@@ -108,10 +108,10 @@ times = 1
 [[patches]]
 [patches.pattern]
 target = "functions/common_events.lua"
-pattern = '''local card = Card(area.T.x + area.T.w/2, area.T.y, G.CARD_W, G.CARD_H, front, center,'''
+pattern = '''local card = Card(area.T.x + area.T.w/2, area.T.y, G.CARD_W, G.CARD_H, SMODS.set_create_card_front or front, center,'''
 position = "before"
 payload = '''if center.key == 'c_fmod_trapeze' and G.GAME.trapeze_count >= 5 then
-    center = G.P_CENTERS[pseudorandom_element({"c_soul", "c_fmod_soully"}, pseudoseed("trapeze"))]
+    center = G.P_CENTERS[pseudorandom_element({"c_soul", "c_fmod_soully", MINTY and "c_minty_wand", GB and "c_gb_shatter", next(SMODS.find_mod("VISIBILITY")) and "c_vis_hamsa"}, pseudoseed("trapeze"))]
     G.GAME.trapeze_count = 0
 end'''
 match_indent = true

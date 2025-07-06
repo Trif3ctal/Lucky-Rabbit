@@ -9,6 +9,9 @@ SMODS.Consumable {
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue+1] = G.P_CENTERS.c_soul
         info_queue[#info_queue+1] = G.P_CENTERS.c_fmod_soully
+        if GB then info_queue[#info_queue+1] = G.P_CENTERS.c_gb_shatter end
+        if MINTY then info_queue[#info_queue+1] = G.P_CENTERS.c_minty_wand end
+        if next(SMODS.find_mod("VISIBILITY")) then info_queue[#info_queue+1] = G.P_CENTERS.c_vis_hamsa end
         return { vars = { G.GAME.trapeze_count, card.ability.extra.amount } }
     end,
     atlas = "Consumables",
