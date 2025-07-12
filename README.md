@@ -19,4 +19,5 @@ __Feel free to check out [the in-depth mod progress spreadsheet!](https://docs.g
 *Give us feedback or notify us of issues at [the official Balatro Discord thread!](https://discord.com/channels/1116389027176787968/1342484578236895274)*
 -
 
-![image](https://github.com/user-attachments/assets/971a669a-ae21-4699-8caa-a58b7ee9748b)
+
+![asdfdfasdfasdff](https://github.com/user-attachments/assets/f1eb29aa-a48c-4b1f-9995-575dcc6508a7)
