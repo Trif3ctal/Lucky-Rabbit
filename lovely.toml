@@ -417,3 +417,17 @@ else
 end'''
 times = 1
 match_indent = true
+
+# -------- orbit fix --------
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = 'self.sell_cost = math.max(1, math.floor(self.cost/2)) + (self.ability.extra_value or 0)'
+position = "before"
+payload = '''
+if self.ability.fmod_halve then
+    self.cost = math.max(1, math.floor(self.cost - (self.cost * 0.5)))
+end'''
+times = 1
+match_indent = true

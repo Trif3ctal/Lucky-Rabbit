@@ -17,11 +17,13 @@ SMODS.Joker {
                 if G.consumeables.cards[i].ability.set == "Planet" and (not G.consumeables.cards[i].edition or G.consumeables.cards[i].edition.key ~= "e_negative") then
                     G.E_MANAGER:add_event(Event({
                         func = function()
-                            SMODS.add_card{
+                            local _card = SMODS.add_card{
                                 set = "Planet",
                                 key_append = "orbit",
                                 edition = "e_negative"
                             }
+                            _card.ability.fmod_halve = true
+                            _card:set_cost()
                             return true
                         end
                     }))

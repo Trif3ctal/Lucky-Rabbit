@@ -223,6 +223,7 @@ return {
                     "If holding a non-{C:dark_edition}Negative",
                     "{C:planet}Planet{} card at end of round,",
                     "create a random {C:dark_edition}Negative {C:planet}Planet{}",
+                    "with {C:attention}halved{} sell value",
                 }
             },
             j_fmod_calculator = {
