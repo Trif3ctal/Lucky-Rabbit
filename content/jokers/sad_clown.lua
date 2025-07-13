@@ -41,12 +41,10 @@ SMODS.Joker {
                             return true
                         end
                     }))
-                else
-                    card.ability.extra.discards_remaining = card.ability.extra.discards
                 end
-            end
-            if not context.blueprint then
+            elseif not context.blueprint then
                 card.ability.extra.discards_remaining = card.ability.extra.discards_remaining - 1
+                return nil, true
             end
         end
     end,
