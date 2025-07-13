@@ -2,7 +2,7 @@ SMODS.Joker {
     key = "ghost_trick",
     config = {
         extra = {
-            odds = 5
+            odds = 7
         }
     },
     loc_vars = function(self, info_queue, card)
