@@ -19,6 +19,7 @@ SMODS.Joker {
     discovered = true,
     pos = { x = 6, y = 1 },
     blueprint_compat = false,
+    eternal_compat = false,
     cost = 6,
     add_to_deck = function(self, card, from_debuff)
         card.ability.extra.base_discard = G.GAME.round_resets.discards
