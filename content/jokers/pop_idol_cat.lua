@@ -4,7 +4,8 @@ SMODS.Joker {
     atlas = "Jokers",
     config = {
         extra = {
-            plus_chance = 1
+            plus_chance = 1,
+            plus_amt = 0
         }
     },
     loc_vars = function(self, info_queue, card)
@@ -17,16 +18,21 @@ SMODS.Joker {
     blueprint_compat = false,
     cost = 5,
     calculate = function(self, card, context)
-        if context.individual and context.cardarea == G.play and SMODS.has_enhancement(context.other_card, "m_lucky") then
-            G.GAME.pop_idol_plus = (G.GAME.pop_idol_plus or 0) + card.ability.extra.plus_chance
+        if context.individual and context.cardarea == G.play and context.other_card.lucky_trigger and not context.blueprint then
+            card.ability.extra.plus_amt = card.ability.extra.plus_amt + 1
             return {
                 message = "+"..card.ability.extra.plus_chance,
                 colour = G.C.GREEN,
                 message_card = card
             }
         end
+        if context.mod_probability and not context.blueprint and (context.identifier == "lucky_mult" or context.identifier == "lucky_money") then
+            return {
+                numerator = context.numerator + card.ability.extra.plus_amt
+            }
+        end
         if context.end_of_round and context.cardarea == G.jokers then
-            G.GAME.pop_idol_plus = 0
+            card.ability.extra.plus_amt = 0
             return {
                 message = localize("k_reset"),
                 card = card

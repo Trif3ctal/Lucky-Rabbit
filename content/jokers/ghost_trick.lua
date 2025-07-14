@@ -6,8 +6,9 @@ SMODS.Joker {
         }
     },
     loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'fmod_ghosttrick')
         info_queue[#info_queue+1] = {key = 'e_negative_consumable', set = 'Edition', config = {extra = 1}}
-        return { vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
+        return { vars = { numerator, denominator } }
     end,
     rarity = 2,
     atlas = "Jokers",
@@ -30,7 +31,7 @@ SMODS.Joker {
 					end,
 				}))
 			else
-				if pseudorandom(pseudoseed('ghost_trick')) < G.GAME.probabilities.normal/card.ability.extra.odds then
+				if SMODS.pseudorandom_probability(card, 'ghost_trick', 1, card.ability.extra.odds, 'fmod_ghosttrick') then
                     G.E_MANAGER:add_event(Event({
                         trigger = 'before',
                         delay = 0.0,

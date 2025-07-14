@@ -9,17 +9,12 @@ SMODS.Joker {
 	blueprint_compat = true,
 	config = { extra = { odds = 3, h_size = 1, total_size = 0 } },
 	loc_vars = function(self, info_queue, card)
-        return {
-            vars = {
-                G.GAME.probabilities.normal or 1,
-                card.ability.extra.odds,
-                card.ability.extra.h_size
-            }
-        }
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'fmod_fight')
+        return { vars = { numerator, denominator, card.ability.extra.h_size } }
 	end,
 	calculate = function(self, card, context)
 		if context.individual and context.cardarea == G.play then
-			if context.other_card:is_suit('Clubs') and pseudorandom("fighting_game") < G.GAME.probabilities.normal / card.ability.extra.odds then
+			if context.other_card:is_suit('Clubs') and SMODS.pseudorandom_probability(card, 'fighting_game', 1, card.ability.extra.odds, 'fmod_fight') then
                 G.E_MANAGER:add_event(Event({
                     trigger = 'after',
                     func = function()

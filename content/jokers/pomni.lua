@@ -10,7 +10,8 @@ SMODS.Joker {
         }
     },
     loc_vars = function(self, info_queue, card)
-        return { vars = {card.ability.extra.base_ante, card.ability.extra.skip_amt, (G.GAME.probabilities.normal or 1), card.ability.extra.odds, card.ability.extra.chance_ante, card.ability.extra.blind_count } }
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'fmod_pomni')
+        return { vars = {card.ability.extra.base_ante, card.ability.extra.skip_amt, numerator, denominator, card.ability.extra.chance_ante, card.ability.extra.blind_count } }
     end,
     pools = {
         ["Fmod_Legendary"] = true,
@@ -28,7 +29,7 @@ SMODS.Joker {
             card.ability.extra.blind_count = card.ability.extra.blind_count + 1
             if card.ability.extra.blind_count == card.ability.extra.skip_amt then
                 card.ability.extra.blind_count = 0
-                if pseudorandom('tadc') < G.GAME.probabilities.normal/card.ability.extra.odds then
+                if SMODS.pseudorandom_probability(card, 'pomni', 1, card.ability.extra.odds) then
                     ease_ante(-card.ability.extra.chance_ante)
                     G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
                     G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - card.ability.extra.chance_ante

@@ -8,20 +8,11 @@ SMODS.Blind {
     debuff = {
         old_prob = 1,
     },
-    set_blind = function(self)
-        self.debuff.old_prob = G.GAME.probabilities.normal or 1
-        for k, v in pairs(G.GAME.probabilities) do
-            G.GAME.probabilities[k] = 0
-        end
-    end,
-    defeat = function (self)
-        for k, v in pairs(G.GAME.probabilities) do
-            G.GAME.probabilities[k] = self.debuff.old_prob
-        end
-    end,
-    disable = function (self)
-        for k, v in pairs(G.GAME.probabilities) do
-            G.GAME.probabilities[k] = self.debuff.old_prob
+    calculate = function(self, blind, context)
+        if context.fix_probability then
+            return {
+                numerator = 0
+            }
         end
     end
 }

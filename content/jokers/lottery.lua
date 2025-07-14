@@ -15,10 +15,11 @@ SMODS.Joker {
 	discovered = true,
 	blueprint_compat = false,
 	loc_vars = function(self, info_queue, card)
-        return { vars = { G.GAME.probabilities.normal, card.ability.extra.odds, card.ability.extra.min, card.ability.extra.max } }
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'fmod_lottery')
+        return { vars = { numerator, denominator, card.ability.extra.min, card.ability.extra.max } }
 	end,
 	calculate = function(self, card, context)
-		if context.end_of_round and context.main_eval and context.game_over == false and pseudorandom("lottery") < G.GAME.probabilities.normal / card.ability.extra.odds and not context.blueprint then
+		if context.end_of_round and context.main_eval and context.game_over == false and SMODS.pseudorandom_probability(card, 'lottery', 1, card.ability.extra.odds, 'fmod_lottery') and not context.blueprint then
             local money = math.floor(pseudorandom(pseudoseed("lottery2")) * card.ability.extra.max) + 1
             card.ability.extra_value = (card.ability.extra_value or 0) + money
             card:set_cost()

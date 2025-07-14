@@ -1,8 +1,3 @@
-local aij = false
-if next(SMODS.find_mod("allinjest")) then
-    aij = true
-end
-
 SMODS.Enhancement {
     key = "raffle_card",
     atlas = "Decks",
@@ -13,7 +8,8 @@ SMODS.Enhancement {
         }
     },
     loc_vars = function(self, info_queue, card)
-        return { vars = { (G.GAME.probabilities.normal or 1), (aij and 5 or card.ability.extra.odds) } }
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'fmod_raffle')
+        return { vars = { numerator, denominator } }
     end,
     calculate = function(self, card, context)
         if context.main_scoring and context.cardarea == G.play then
@@ -25,7 +21,7 @@ SMODS.Enhancement {
             if next(SMODS.find_card('j_fmod_comic_book_ad')) then
                 silly = true
             end
-            if pseudorandom("raffle_cons") < G.GAME.probabilities.normal / (aij and 5 or card.ability.extra.odds) and (free or (#G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit)) then
+            if SMODS.pseudorandom_probability(card, 'raffle_cons', 1, card.ability.extra.odds, 'fmod_raffle') and (free or (#G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit)) then
                 G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
                 local selected = ""
                 local passed = false

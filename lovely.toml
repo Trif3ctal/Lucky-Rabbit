@@ -337,40 +337,6 @@ payload = '''
 times = 1
 match_indent = false
 
-# -------- pop idol cat --------
-
-[[patches]]
-[patches.pattern]
-target = "card.lua"
-pattern = '''if pseudorandom('lucky_money') < G.GAME.probabilities.normal/15 then'''
-position = "at"
-payload = '''if pseudorandom('lucky_money') < (G.GAME.probabilities.normal + (G.GAME.pop_idol_plus or 0))/15 then'''
-times = 1
-match_indent = true
-
-[[patches]]
-[patches.pattern]
-target = "card.lua"
-pattern = '''if pseudorandom('lucky_mult') < G.GAME.probabilities.normal/5 then'''
-position = "at"
-payload = '''if pseudorandom('lucky_mult') < (G.GAME.probabilities.normal + (G.GAME.pop_idol_plus or 0))/5 then'''
-times = 1
-match_indent = true
-
-[[patches]]
-[patches.pattern]
-target = 'game.lua'
-pattern = '''hyperfix_card = {
-    rank = 'Ace',
-    suit = 'Spades',
-},'''
-position = "after"
-payload = '''
-pop_idol_plus = 0,
-'''
-match_indent = true
-times = 1
-
 # ------bepis' implementation of ferromancy
 [[patches]]
 [patches.pattern]
