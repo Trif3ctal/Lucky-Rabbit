@@ -708,9 +708,9 @@ return {
                 name = "Tightrope",
                 text = {
                     "{C:green}50%{} chance to create",
-                    "{C:attention}1{} copy of {C:attention}1{} selected card",
+                    "{C:attention}#1#{} copy of {C:attention}#2#{} selected card",
                     "{C:green}25%{} chance to create",
-                    "{C:attention}2{} copies",
+                    "{C:attention}#3#{} copies",
                     "{C:green}25%{} chance to {C:red}destroy{}",
                     "selected card",
                     "{C:inactive}(Odds cannot be changed)"
