@@ -2,7 +2,7 @@ SMODS.Consumable {
     key = "tightrope",
     set = "Silly",
     config = {
-        max_highlighted = 5,
+        max_highlighted = 1,
         extra = {
             copy_1_amt = 1,
             copy_2_amt = 2,
