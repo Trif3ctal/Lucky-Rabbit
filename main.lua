@@ -222,7 +222,7 @@ local files = {
             "elder",
             "dice",
             "flux",
-            "final_horn",
+            -- "final_horn",
             "final_sword",
             "final_shield",
         },
