@@ -5,6 +5,7 @@ if next(SMODS.find_mod("paperback")) then
             set = "Silly",
             config = {
                 max_highlighted = 2,
+                min_highlighted = 2
             },
             loc_vars = function(self, info_queue, card)
                 return { vars = { card.ability.max_highlighted } }
@@ -34,6 +35,11 @@ if next(SMODS.find_mod("paperback")) then
                 end
                 delay(0.2)
                 local leftmost = G.hand.highlighted[1]
+                for i = 1, #G.hand.highlighted do
+                    if G.hand.highlighted[i].T.x < leftmost.T.x then
+                        leftmost = G.hand.highlighted[i]
+                    end
+                end
                 for i = 1, #G.hand.highlighted do
                     G.E_MANAGER:add_event(Event({
                         trigger = 'after',
@@ -68,10 +74,15 @@ if next(SMODS.find_mod("paperback")) then
                 delay(0.5)
             end,
             can_use = function(self, card)
-                if G.hand and #G.hand.highlighted <= card.ability.max_highlighted and #G.hand.highlighted > 1 and PB_UTIL.has_paperclip(G.hand.highlighted[1]) then
+                local leftmost = G.hand.highlighted[1]
+                for i = 1, #G.hand.highlighted do
+                    if G.hand.highlighted[i].T.x < leftmost.T.x then
+                        leftmost = G.hand.highlighted[i]
+                    end
+                end
+                if G.hand and #G.hand.highlighted <= card.ability.max_highlighted and #G.hand.highlighted >= card.ability.min_highlighted and PB_UTIL.has_paperclip(leftmost) then
                     return true
                 end
-                return false
             end,
             --[[set_badges = function(self, card, badges)
                 SMODS.create_mod_badges({ mod = SMODS.find_mod("paperback")[1] }, badges)

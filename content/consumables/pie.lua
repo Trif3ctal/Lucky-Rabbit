@@ -3,6 +3,7 @@ SMODS.Consumable {
     set = "Silly",
     config = {
         max_highlighted = 2,
+        min_highlighted = 2
     },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.max_highlighted } }
@@ -21,6 +22,11 @@ SMODS.Consumable {
         end
         delay(0.2)
         local leftmost = G.hand.highlighted[1]
+        for i = 1, #G.hand.highlighted do
+            if G.hand.highlighted[i].T.x < leftmost.T.x then
+                leftmost = G.hand.highlighted[i]
+            end
+        end
         for i=1, #G.hand.highlighted do
             G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
                 if G.hand.highlighted[i] ~= leftmost then
@@ -41,11 +47,13 @@ SMODS.Consumable {
         delay(0.5)
     end,
     can_use = function(self, card)
-        if G.hand and #G.hand.highlighted <= card.ability.max_highlighted and #G.hand.highlighted > 1 then
-            if not SMODS.has_no_rank(G.hand.highlighted[1]) then
-                return true
+        if G.hand and #G.hand.highlighted <= card.ability.max_highlighted and #G.hand.highlighted >= card.ability.min_highlighted then
+            for i = 1, #G.hand.highlighted do
+                if SMODS.has_no_rank(G.hand.highlighted[i]) then
+                    return false
+                end
             end
-		end
-		return false
+            return true
+        end
     end,
 }
