@@ -9,7 +9,7 @@ SMODS.Blind {
         old_prob = 1,
     },
     calculate = function(self, blind, context)
-        if context.fix_probability then
+        if context.fix_probability and not blind.disabled then
             return {
                 numerator = 0
             }

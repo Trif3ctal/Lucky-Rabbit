@@ -15,7 +15,7 @@ SMODS.Blind {
                         G.hand.cards[b]:juice_up()
                     end
                 end
-                G.playing_cards[i]:set_debuff(false)
+                SMODS.debuff_card(G.playing_cards[i], false, 'flux')
                 SMODS.juice_up_blind()
             end
             G.GAME.blind.suit1 = pseudorandom_element(SMODS.Suits, pseudoseed('flux1')).name or 'Spades'
@@ -26,7 +26,7 @@ SMODS.Blind {
             for i = 1, #G.playing_cards do
                 local card = G.playing_cards[i]
                 if (card.base.suit == G.GAME.blind.suit1 or card.base.suit == G.GAME.blind.suit2) and not SMODS.has_no_rank(card) then
-                    card:set_debuff(true)
+                    SMODS.debuff_card(card, true, 'flux')
                     for b = 1, #G.hand.cards do
                         if card == G.hand.cards[b] then
                             card:juice_up()
@@ -40,5 +40,9 @@ SMODS.Blind {
     press_play = function(self)
         G.GAME.blind.prepped = true
     end,
+    defeat = function(self)
+        for i = 1, #G.playing_cards do
+            SMODS.debuff_card(G.playing_cards[i], false, 'flux')
+        end
+    end
 }
-
