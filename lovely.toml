@@ -79,27 +79,17 @@ pattern = "local blind_amt = get_blind_amount(G.GAME.round_resets.blind_ante)*bl
 position = "after"
 match_indent = true
 payload = '''
-if G.GAME.selected_back.effect.center.key == "b_fmod_reaper" and blind_choice.config.boss and G.GAME.reaper_set then
-    G.GAME.reaper_set = false
-    blind_amt = blind_amt * 2
+if G.GAME.selected_back.effect.center.key == "b_fmod_reaper" and blind_choice.config.boss then
+    blind_amt = get_blind_amount(G.GAME.round_resets.blind_ante)*(blind_choice.config.mult*2)*G.GAME.starting_params.ante_scaling
 end
 '''
-
-[[patches]]
-[patches.pattern]
-target = 'game.lua'
-pattern = '''juggler_count = 0,'''
-position = "after"
-payload = '''reaper_set = false,'''
-match_indent = true
-times = 1
 
 # -------- trapeze --------
 
 [[patches]]
 [patches.pattern]
 target = 'game.lua'
-pattern = '''reaper_set = false,'''
+pattern = '''juggler_count = 0,'''
 position = "after"
 payload = '''trapeze_count = 0,'''
 match_indent = true
