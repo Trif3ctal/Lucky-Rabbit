@@ -1,58 +1,10 @@
--- various functions and hooks
-
-local base_calculate_joker = Card.calculate_joker
-function Card.calculate_joker(self,context)
-    local ret = base_calculate_joker(self, context)
-    if context.joker_main then
-        if self.force_trigger then
-            self.force_trigger = false
-            if self.ability.t_chips > 0 then
-                return {
-                    message = localize{type='variable',key='a_chips',vars={self.ability.t_chips}},
-                    chip_mod = self.ability.t_chips
-                }
-            end
-            if self.ability.t_mult > 0 then
-                return {
-                    message = localize{type='variable',key='a_mult',vars={self.ability.t_mult}},
-                    mult_mod = self.ability.t_mult
-                }
-            end
-            if self.ability.Xmult > 0 then
-                return {
-                    message = localize{type='variable',key='a_xmult',vars={self.ability.x_mult}},
-                    colour = G.C.RED,
-                    Xmult_mod = self.ability.x_mult
-                }
-            end
-        end
-    end
-    return ret
-end
-
-local gnb = get_new_boss
-function get_new_boss()
-    if G.GAME.selected_back.effect.center.key == "b_fmod_reaper" then
-		local boss = tostring(LR_UTIL.random_showdown_blind('reaper'))
-		if boss then G.FORCE_BOSS = boss end
-	else
-		G.FORCE_BOSS = nil
-	end
-    local gnb_val = gnb()
-
-    G.FORCE_BOSS = nil
-
-    return gnb_val
-end
+----- functions ------
 
 function LR_UTIL.random_showdown_blind(seed)
     local eligible_bosses = {}
     for k, v in pairs(G.P_BLINDS) do
-        if not v.boss then
-        elseif v.boss.showdown then
+        if v.boss and v.boss.showdown then
             eligible_bosses[k] = true
-        elseif not v.boss.showdown then
-            eligible_bosses[k] = nil
         end
     end
     for k, v in pairs(G.GAME.banned_keys) do
@@ -60,43 +12,6 @@ function LR_UTIL.random_showdown_blind(seed)
     end
     local _, boss = pseudorandom_element(eligible_bosses, pseudoseed(seed or 'seed'))
     return boss
-end
-
-local reroll_ref = G.FUNCS.reroll_boss
-G.FUNCS.reroll_boss = function(e)
-	if G.GAME.selected_back.effect.center.key == "b_fmod_reaper" then
-		local boss = tostring(LR_UTIL.random_showdown_blind('reaper'))
-		if boss then G.FORCE_BOSS = boss end
-	else
-		G.FORCE_BOSS = nil
-	end
-	local reroll_val = reroll_ref(e)
-
-    G.FORCE_BOSS = nil
-
-	return reroll_val
-end
-
--- taken from MoreFluff, who took it from Entropy, thanks Ruby (and notmario)
-local e_round = end_round
-function end_round()
-  e_round()
-  local remove_temp = {}
-  for i, v in pairs({G.jokers, G.hand, G.consumeables, G.discard, G.deck}) do
-    for ind, card in pairs(v.cards) do
-      if card.ability then
-        if card.ability.lr_temp then
-          if card.area ~= G.hand and card.area ~= G.play and card.area ~= G.jokers and card.area ~= G.consumeables then card.states.visible = false end
-          card:remove_from_deck()
-          card:start_dissolve()
-          if card.ability.lr_temp then remove_temp[#remove_temp+1] = card end
-        end
-      end
-    end
-  end
-  if #remove_temp > 0 then
-    SMODS.calculate_context({remove_playing_cards = true, removed = remove_temp})
-  end
 end
 
 function LR_UTIL.reset_hyperfix_rank()
@@ -180,28 +95,7 @@ function LR_UTIL.get_fmod_legendaries(seed)
     return key
 end
 
-local shuffle_ref = CardArea.shuffle
-function CardArea:shuffle(_seed)
-    local g = shuffle_ref(self, _seed)
-    if self == G.deck then
-        local priorities = {}
-        local others = {}
-        for k, v in pairs(self.cards) do
-            if LR_UTIL.has_marking(v) == 'fmod_crease_mark' then
-                table.insert(priorities, v)
-            else
-                table.insert(others, v)
-            end
-        end
-        for _, card in ipairs(priorities) do
-            table.insert(others, card)
-        end
-        self.cards = others
-        self:set_ranks()
-    end
-    return g
-end
-
+-- most marking functions are based off of paperback's paperclip code, credits to their team
 function LR_UTIL.is_marking(str)
     if LR_CONFIG and LR_CONFIG.markings_enabled then
         for _, v in ipairs(LR_UTIL.ENABLED_MARKINGS) do
@@ -251,6 +145,41 @@ function LR_UTIL.marking_tooltip(mark)
     }
 end
 
+function LR_UTIL.num_vouchers()
+    if not G.GAME.used_vouchers then return 0 end
+	local count = 0
+	for k, v in pairs(G.GAME.used_vouchers) do
+		if v then
+			count = count + 1
+		end
+	end
+	return count
+end
+
+------ hooks ------
+
+local shuffle_ref = CardArea.shuffle
+function CardArea:shuffle(_seed)
+    local g = shuffle_ref(self, _seed)
+    if self == G.deck then
+        local priorities = {}
+        local others = {}
+        for k, v in pairs(self.cards) do
+            if LR_UTIL.has_marking(v) == 'fmod_crease_mark' then
+                table.insert(priorities, v)
+            else
+                table.insert(others, v)
+            end
+        end
+        for _, card in ipairs(priorities) do
+            table.insert(others, card)
+        end
+        self.cards = others
+        self:set_ranks()
+    end
+    return g
+end
+
 local set_base_ref = Card.set_base
 function Card:set_base(card, initial)
     set_base_ref(self, card, initial)
@@ -273,16 +202,59 @@ function Card:set_base(card, initial)
     end
 end
 
-function LR_UTIL.num_vouchers()
-    if not G.GAME.used_vouchers then return 0 end
-	local count = 0
-	for k, v in pairs(G.GAME.used_vouchers) do
-		if v then
-			count = count + 1
-		end
+local gnb = get_new_boss
+function get_new_boss()
+    if G.GAME.selected_back.effect.center.key == "b_fmod_reaper" then
+		local boss = tostring(LR_UTIL.random_showdown_blind('reaper'))
+		if boss then G.FORCE_BOSS = boss end
+	else
+		G.FORCE_BOSS = nil
 	end
-	return count
+    local gnb_val = gnb()
+
+    G.FORCE_BOSS = nil
+
+    return gnb_val
 end
+
+local reroll_ref = G.FUNCS.reroll_boss
+G.FUNCS.reroll_boss = function(e)
+	if G.GAME.selected_back.effect.center.key == "b_fmod_reaper" then
+		local boss = tostring(LR_UTIL.random_showdown_blind('reaper'))
+		if boss then G.FORCE_BOSS = boss end
+	else
+		G.FORCE_BOSS = nil
+	end
+	local reroll_val = reroll_ref(e)
+
+    G.FORCE_BOSS = nil
+
+	return reroll_val
+end
+
+-- taken from MoreFluff, who took it from Entropy, thanks Ruby (and notmario)
+local e_round = end_round
+function end_round()
+    e_round()
+    local remove_temp = {}
+    for i, v in pairs({ G.jokers, G.hand, G.consumeables, G.discard, G.deck }) do
+        for ind, card in pairs(v.cards) do
+            if card.ability then
+                if card.ability.lr_temp then
+                    if card.area ~= G.hand and card.area ~= G.play and card.area ~= G.jokers and card.area ~= G.consumeables then card.states.visible = false end
+                    card:remove_from_deck()
+                    card:start_dissolve()
+                    if card.ability.lr_temp then remove_temp[#remove_temp + 1] = card end
+                end
+            end
+        end
+    end
+    if #remove_temp > 0 then
+        SMODS.calculate_context({ remove_playing_cards = true, removed = remove_temp })
+    end
+end
+
+------ misc ------
 
 function SMODS.current_mod.reset_game_globals(run_start)
     if run_start then
