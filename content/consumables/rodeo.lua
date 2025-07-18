@@ -3,6 +3,7 @@ SMODS.Consumable {
     set = "Silly",
     config = {
         max_highlighted = 2,
+        min_highlighted = 2,
     },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue+1] = G.P_CENTERS.e_foil
@@ -14,7 +15,10 @@ SMODS.Consumable {
     pos = { x = 5, y = 1 },
     cost = 5,
     use = function(self, card, context, copier)
-        local cards = { G.hand.highlighted[1], G.hand.highlighted[2] }
+        local cards = {}
+        for i = 1, #G.hand.highlighted do
+            cards[i] = G.hand.highlighted[i]
+        end
         local destroy_card = pseudorandom_element(cards, pseudoseed('rodeo'))
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
             play_sound('tarot1')
@@ -31,7 +35,7 @@ SMODS.Consumable {
                 return true end }))
                 delay(0.6)
                 G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
-                    G.hand.highlighted[i]:set_edition(poll_edition('rodeo', nil, true, true), nil, true)
+                    G.hand.highlighted[i]:set_edition(poll_edition('rodeo', nil, true, true, { 'e_polychrome', 'e_holo', 'e_foil' }), nil, true)
                 return true end }))
                 local percent = 0.85 + (i-0.999)/(#G.hand.highlighted-0.998)*0.3
                 G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.15,func = function()
