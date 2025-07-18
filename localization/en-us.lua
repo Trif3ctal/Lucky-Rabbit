@@ -801,6 +801,20 @@ return {
                     "selected cards into",
                     "{C:attention}Copycat Cards{}",
                 }
+            },
+            c_fmod_crisis = {
+                name = "Crisis",
+                text = {
+                    "Set {C:attention}Ante{} to {C:attention}1{}.",
+                    "All cards and stats",
+                    "are {C:attention}preserved."
+                }
+            },
+            c_fmod_crisis_col = {
+                name = "Crisis",
+                text = {
+                    "...?"
+                }
             }
         },
         Voucher = {

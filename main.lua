@@ -200,7 +200,8 @@ local files = {
             "barker",
             "hall_of_mirrors",
             "suspenders",
-            "soully"
+            "soully",
+            "crisis"
         },
         directory = 'content/consumables'
     },
@@ -310,6 +311,7 @@ if LR_CONFIG.silly_enabled then
             ["c_fmod_barker"] = true,
             ["c_fmod_suspenders"] = true,
             ["c_fmod_hall_of_mirrors"] = true,
+            ["c_fmod_crisis"] = true,
         },
         loc_txt = {
             name = "Silly",
