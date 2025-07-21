@@ -760,8 +760,8 @@ return {
             c_fmod_greasepaint = {
                 name = "Greasepaint",
                 text = {
-                    "Select up to {C:attention}#1#{} cards to",
-                    "{C:attention}mark{} with {C:attention}Ink{}",
+                    "Select up to {C:attention}#1#{} cards",
+                    "to {C:attention}mark{} with {C:attention}Ink{}",
                 }
             },
             c_fmod_unicycle = {
@@ -1053,7 +1053,8 @@ return {
                 name = "Inked",
                 text = {
                     "Cannot be",
-                    "{C:attention}flipped"
+                    "{C:attention}debuffed",
+                    "or {C:attention}flipped"
                 }
             },
             fmod_crease_mark = {

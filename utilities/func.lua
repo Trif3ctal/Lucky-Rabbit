@@ -114,6 +114,7 @@ function LR_UTIL.has_marking(card)
         end
     end
 end
+
 function LR_UTIL.set_marking(card, mark)
     local key = 'fmod_' .. mark .. '_mark'
     if card and LR_UTIL.is_marking(key) then
@@ -262,4 +263,8 @@ function SMODS.current_mod.reset_game_globals(run_start)
     end
     LR_UTIL.reset_hyperfix_rank()
     LR_UTIL.reset_ncradle_card()
+end
+
+SMODS.current_mod.set_debuff = function(card)
+    if LR_UTIL.has_marking(card) == 'fmod_ink_mark' then return "prevent_debuff" end
 end
