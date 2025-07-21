@@ -5,8 +5,7 @@ SMODS.Voucher {
     config = {
         extra = {
             slot = 1
-        },
-        boost_num = 0
+        }
     },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.slot } }
@@ -19,14 +18,13 @@ SMODS.Voucher {
         G.E_MANAGER:add_event(Event({func = function()
             SMODS.change_booster_limit(card.ability.extra.slot)
             local booster = G.shop_booster.cards[#G.shop_booster.cards]
-            card.ability.boost_num = #G.shop_booster.cards
             if booster then booster.ability.couponed = true end
             booster:set_cost()
         return true end}))
     end,
     calculate = function(self, card, context)
         if context.starting_shop then
-            local booster = G.shop_booster.cards[card.ability.boost_num]
+            local booster = G.shop_booster.cards[#G.shop_booster.cards]
             if booster then booster.ability.couponed = true end
             booster:set_cost()
         end
