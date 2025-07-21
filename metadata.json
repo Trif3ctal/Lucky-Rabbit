@@ -13,7 +13,7 @@
 	"priority": 1,
 	"badge_colour": "f0c87e",
 	"badge_text_colour": "FFFFFF",
-	"version": "1.2.2",
+	"version": "1.2.2a",
 	"dependencies": [
 		"Steamodded (>=1.0.0~BETA-0711a)",
 		"Lovely (>=0.7.1)"
