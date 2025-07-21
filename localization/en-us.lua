@@ -204,8 +204,8 @@ return {
                 name = "Pop Idol Cat",
                 text = {
                     "Increase the {C:green}odds{} of {C:attention}Lucky",
-                    "{C:attention}Cards{} by {C:green}#1#{} every time",
-                    "one is triggered, {C:attention}resets{}",
+                    "{C:attention}Cards{} by {C:green}#1#{} every time one",
+                    "{C:green}successfully{} triggers, {C:attention}resets{}",
                     "after hand played"
                 }
             },

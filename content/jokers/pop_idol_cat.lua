@@ -31,7 +31,7 @@ SMODS.Joker {
                 numerator = context.numerator + card.ability.extra.plus_amt
             }
         end
-        if context.end_of_round and context.cardarea == G.jokers then
+        if context.after and context.cardarea == G.jokers then
             card.ability.extra.plus_amt = 0
             return {
                 message = localize("k_reset"),
