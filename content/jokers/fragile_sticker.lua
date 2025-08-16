@@ -3,7 +3,8 @@ SMODS.Enhancement:take_ownership('m_glass', {
         if next(SMODS.find_card("j_fmod_fragile_sticker")) then
             return nil
         end
-        if context.destroy_card and context.cardarea == G.play and context.destroy_card == card and pseudorandom('glass') < G.GAME.probabilities.normal/card.ability.extra then
+        if context.destroy_card and context.cardarea == G.play and context.destroy_card == card and SMODS.pseudorandom_probability(card, 'glass', 1, card.ability.extra) then
+            card.glass_trigger = true
             return { remove = true }
         end
     end,
