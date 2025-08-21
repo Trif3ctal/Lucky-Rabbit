@@ -255,6 +255,14 @@ function end_round()
     end
 end
 
+local flip = Card.flip
+function Card:flip()
+    if LR_UTIL.has_marking(self) == 'fmod_ink_mark' and self.facing == 'front' and self.area ~= G.deck then
+        return false
+    end
+    flip(self)
+end
+
 ------ misc ------
 
 function SMODS.current_mod.reset_game_globals(run_start)
