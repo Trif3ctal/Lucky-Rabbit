@@ -17,12 +17,8 @@ SMODS.Booster {
         for k, v in ipairs(SMODS.ConsumableType.ctype_buffer) do
             types[#types + 1] = v
         end
-        if i == 1 then
-            return SMODS.create_card({set = pseudorandom_element(types, "remix_sm_1"), skip_materialize = true, area = G.pack_cards})
-        elseif i == 2 then
-            return SMODS.create_card({set = pseudorandom_element(types, "remix_sm_2"), skip_materialize = true, area = G.pack_cards})
-        else
-            return SMODS.create_card({set = pseudorandom_element(types, "remix_sm_3"), skip_materialize = true, area = G.pack_cards})
+        for k = 1, i do
+            return SMODS.create_card({set = pseudorandom_element(types, "remix_sm_" .. k), skip_materialize = true, area = G.pack_cards})
         end
     end,
     ease_background_colour = function(self)
@@ -49,12 +45,8 @@ SMODS.Booster {
         for k, v in ipairs(SMODS.ConsumableType.ctype_buffer) do
             types[#types + 1] = v
         end
-        if i == 1 then
-            return SMODS.create_card({set = pseudorandom_element(types, "remix_sm_1"), skip_materialize = true, area = G.pack_cards})
-        elseif i == 2 then
-            return SMODS.create_card({set = pseudorandom_element(types, "remix_sm_2"), skip_materialize = true, area = G.pack_cards})
-        else
-            return SMODS.create_card({set = pseudorandom_element(types, "remix_sm_3"), skip_materialize = true, area = G.pack_cards})
+        for k = 1, i do
+            return SMODS.create_card({set = pseudorandom_element(types, "remix_sm_" .. k), skip_materialize = true, area = G.pack_cards})
         end
     end,
     ease_background_colour = function(self)
@@ -81,16 +73,8 @@ SMODS.Booster {
         for k, v in ipairs(SMODS.ConsumableType.ctype_buffer) do
             types[#types + 1] = v
         end
-        if i == 1 then
-            return SMODS.create_card({set = pseudorandom_element(types, "remix_ju_1"), skip_materialize = true, area = G.pack_cards})
-        elseif i == 2 then
-            return SMODS.create_card({set = pseudorandom_element(types, "remix_ju_2"), skip_materialize = true, area = G.pack_cards})
-        elseif i == 3 then
-            return SMODS.create_card({set = pseudorandom_element(types, "remix_ju_3"), skip_materialize = true, area = G.pack_cards})
-        elseif i == 4 then
-            return SMODS.create_card({set = pseudorandom_element(types, "remix_ju_4"), skip_materialize = true, area = G.pack_cards})
-        else
-            return SMODS.create_card({set = pseudorandom_element(types, "remix_ju_5"), skip_materialize = true, area = G.pack_cards})
+        for k = 1, i do
+            return SMODS.create_card({set = pseudorandom_element(types, "remix_sm_" .. k), skip_materialize = true, area = G.pack_cards})
         end
     end,
     ease_background_colour = function(self)
@@ -117,16 +101,8 @@ SMODS.Booster {
         for k, v in ipairs(SMODS.ConsumableType.ctype_buffer) do
             types[#types + 1] = v
         end
-        if i == 1 then
-            return SMODS.create_card({set = pseudorandom_element(types, "remix_me_1"), skip_materialize = true, area = G.pack_cards})
-        elseif i == 2 then
-            return SMODS.create_card({set = pseudorandom_element(types, "remix_me_2"), skip_materialize = true, area = G.pack_cards})
-        elseif i == 3 then
-            return SMODS.create_card({set = pseudorandom_element(types, "remix_me_3"), skip_materialize = true, area = G.pack_cards})
-        elseif i == 4 then
-            return SMODS.create_card({set = pseudorandom_element(types, "remix_me_4"), skip_materialize = true, area = G.pack_cards})
-        else
-            return SMODS.create_card({set = pseudorandom_element(types, "remix_me_5"), skip_materialize = true, area = G.pack_cards})
+        for k = 1, i do
+            return SMODS.create_card({set = pseudorandom_element(types, "remix_sm_" .. k), skip_materialize = true, area = G.pack_cards})
         end
     end,
     ease_background_colour = function(self)
