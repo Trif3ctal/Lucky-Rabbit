@@ -443,6 +443,13 @@ return {
                     "{C:inactive}(Retriggers reset, suit changes",
                     "{C:inactive}at end of round)",
                 }
+            },
+            j_fmod_working_joker = {
+                name = "Working Joker",
+                text = {
+                    "{C:attention}5{}s, {C:attention}6{}s, {C:attention}7{}s, {C:attention}8{}s, and {C:attention}9{}s each give",
+                    "{C:mult}+#1#{} Mult when scored",
+                }
             }
         },
         Tag = {
