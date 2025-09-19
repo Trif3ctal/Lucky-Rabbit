@@ -458,7 +458,17 @@ return {
                     "card in full deck",
                     "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)"
                 }
-            }
+            },
+            j_fmod_and_thats_not_all = {
+                name = "And That's Not All!",
+                text = {
+                    "{C:mult}+#1#{} Mult for each",
+                    "{C:attention}Bonus{} Card scored",
+                    "{C:mult}-#1#{} Mult for each",
+                    "{C:attention}Bonus{} Card discarded",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)"
+                }
+            },
         },
         Tag = {
             tag_fmod_appraisal = {

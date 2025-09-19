@@ -149,6 +149,7 @@ local files = {
             "ghostly_joker",
             "working_joker",
             "hypeman",
+            "and_thats_not_all",
             "steve",
             "pomni",
             "ransome",
