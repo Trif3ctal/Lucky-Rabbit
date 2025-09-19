@@ -450,6 +450,14 @@ return {
                     "{C:attention}5{}s, {C:attention}6{}s, {C:attention}7{}s, {C:attention}8{}s, and {C:attention}9{}s each give",
                     "{C:mult}+#1#{} Mult when scored",
                 }
+            },
+            j_fmod_hypeman = {
+                name = "Hypeman",
+                text = {
+                    "{C:mult}+#1#{} Mult for each {C:attention}Mult{}",
+                    "card in full deck",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)"
+                }
             }
         },
         Tag = {
