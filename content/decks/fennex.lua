@@ -3,7 +3,7 @@ SMODS.Back {
     atlas = 'Decks',
     pos = { x = 1, y = 1 },
     unlocked = true,
-    discovered = true,
+    discovered = false,
     config = {
         jokers = {
             'j_fmod_fennex'

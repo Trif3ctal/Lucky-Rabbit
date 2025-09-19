@@ -6,7 +6,7 @@ if LR_CONFIG.enhancements_enabled then
         rarity = 2,
         cost = 8,
         unlocked = true,
-        discovered = true,
+        discovered = false,
         blueprint_compat = false,
         loc_vars = function(self, info_queue, card)
             info_queue[#info_queue + 1] = G.P_CENTERS.m_fmod_copycat_card

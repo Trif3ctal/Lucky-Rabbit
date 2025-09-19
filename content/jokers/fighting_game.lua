@@ -5,7 +5,7 @@ SMODS.Joker {
 	rarity = 2,
 	cost = 5,
 	unlocked = true,
-	discovered = true,
+	discovered = false,
 	blueprint_compat = true,
 	config = { extra = { odds = 3, h_size = 1, total_size = 0 } },
 	loc_vars = function(self, info_queue, card)

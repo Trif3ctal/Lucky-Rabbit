@@ -2,7 +2,7 @@ SMODS.Blind {
     key = "light",
     atlas = "Blinds",
     pos = { x = 0, y = 5 },
-    discovered = true,
+    discovered = false,
     boss = { min = 2 },
     boss_colour = HEX('d8d5c0'),
     calculate = function(self, card, context)

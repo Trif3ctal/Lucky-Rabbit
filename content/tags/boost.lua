@@ -4,7 +4,7 @@ SMODS.Tag({
     pos = { x = 2, y = 0 },
     config = {
     },
-    discovered = true,
+    discovered = false,
     apply = function(self, tag, context)
         if context.type == 'voucher_add' then
             tag:yep('+', G.C.BOOSTER, function()

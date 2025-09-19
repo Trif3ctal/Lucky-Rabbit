@@ -5,5 +5,5 @@ SMODS.Back {
     config = {
     },
     unlocked = true,
-    discovered = true,
+    discovered = false,
 }

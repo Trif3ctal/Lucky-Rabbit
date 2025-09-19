@@ -2,7 +2,7 @@ SMODS.Blind {
     key = "flux",
     atlas = "Blinds",
     pos = { x = 0, y = 10 },
-    discovered = true,
+    discovered = false,
     boss = { min = 3 },
     boss_colour = HEX('702791'),
     suit1 = 'Spades',

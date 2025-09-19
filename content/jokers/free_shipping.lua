@@ -9,7 +9,7 @@ if LR_CONFIG.enhancements_enabled then
         rarity = 2,
         atlas = "Jokers",
         unlocked = true,
-        discovered = true,
+        discovered = false,
         blueprint_compat = false,
         pos = { x = 4, y = 5 },
         cost = 5,

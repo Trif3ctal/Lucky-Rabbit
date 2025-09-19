@@ -5,7 +5,7 @@ SMODS.Joker {
 	rarity = 2,
 	cost = 4,
 	unlocked = true,
-	discovered = true,
+	discovered = false,
 	blueprint_compat = true,
     eternal_compat = false,
     pixel_size = { w = 71, h = 70 },

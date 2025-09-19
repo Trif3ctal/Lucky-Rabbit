@@ -6,7 +6,7 @@ if LR_CONFIG.remix_enabled then
         rarity = 2,
         cost = 5,
         unlocked = true,
-        discovered = true,
+        discovered = false,
         blueprint_compat = true,
         loc_vars = function(self, info_queue)
             info_queue[#info_queue + 1] = G.P_CENTERS.p_fmod_remix_small_1

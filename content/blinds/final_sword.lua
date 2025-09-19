@@ -2,7 +2,7 @@ SMODS.Blind {
     key = "final_sword",
     atlas = "Blinds",
     pos = { x = 0, y = 13 },
-    discovered = true,
+    discovered = false,
     boss = { showdown = true, min = 8 },
     boss_colour = HEX('becacc'),
     debuff_hand = function(self, cards, hand, handname, check)

@@ -7,7 +7,7 @@ if LR_CONFIG.silly_enabled then
             voucher = 'v_fmod_circus'
         },
         unlocked = true,
-        discovered = true,
+        discovered = false,
         loc_vars = function(self, info_queue, card)
             return {
                 vars = {

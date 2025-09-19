@@ -5,7 +5,7 @@ SMODS.Joker {
 	rarity = 1,
 	cost = 4,
 	unlocked = true,
-	discovered = true,
+	discovered = false,
 	blueprint_compat = true,
 	loc_vars = function(self, info_queue, card)
         info_queue[#info_queue+1] = {key = 'e_negative_consumable', set = 'Edition', config = {extra = 1}}

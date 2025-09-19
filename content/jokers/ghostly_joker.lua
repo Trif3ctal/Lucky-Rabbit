@@ -8,7 +8,7 @@ SMODS.Joker {
         }
     },
     unlocked = true,
-    discovered = true,
+    discovered = false,
     blueprint_compat = false,
     pos = { x = 3, y = 6 },
     soul_pos = { x = 4, y = 6,

@@ -5,7 +5,7 @@ SMODS.Joker {
 	rarity = 2,
 	cost = 5,
 	unlocked = true,
-	discovered = true,
+	discovered = false,
 	blueprint_compat = true,
 	config = { extra = { retriggers = 1 } },
     calculate = function(self, card, context)

@@ -1,7 +1,7 @@
 SMODS.Joker {
     key = "ransome",
     unlocked = true,
-    discovered = true,
+    discovered = false,
     blueprint_compat = true,
     rarity = 4,
     cost = 20,

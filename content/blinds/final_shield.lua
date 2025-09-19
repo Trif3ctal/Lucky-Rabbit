@@ -2,7 +2,7 @@ SMODS.Blind {
     key = "final_shield",
     atlas = "Blinds",
     pos = { x = 0, y = 15 },
-    discovered = true,
+    discovered = false,
     boss = { showdown = true, min = 8 },
     boss_colour = HEX('ff9933'),
     debuff = {

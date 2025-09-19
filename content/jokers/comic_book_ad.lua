@@ -8,7 +8,7 @@ if LR_CONFIG.silly_enabled then
         rarity = 1,
         atlas = "Jokers",
         unlocked = true,
-        discovered = true,
+        discovered = false,
         blueprint_compat = false,
         pos = { x = 5, y = 5 },
         cost = 4,

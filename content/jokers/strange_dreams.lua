@@ -10,7 +10,7 @@ SMODS.Joker {
         }
     },
 	unlocked = true,
-	discovered = true,
+	discovered = false,
 	blueprint_compat = false,
 	calculate = function(self, card, context)
 		if context.individual and context.cardarea == 'unscored' and not context.blueprint then

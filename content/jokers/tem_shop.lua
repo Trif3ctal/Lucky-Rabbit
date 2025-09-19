@@ -5,7 +5,7 @@ SMODS.Joker {
 	rarity = 2,
 	cost = 5,
 	unlocked = true,
-	discovered = true,
+	discovered = false,
 	blueprint_compat = false,
     add_to_deck = function(self, card, from_debuff)
         for i = 1, #G.jokers.cards do

@@ -15,7 +15,7 @@ SMODS.Joker {
     rarity = 4,
     atlas = "Jokers",
     unlocked = true,
-    discovered = true,
+    discovered = false,
     pos = { x = 7, y = 3 },
     soul_pos = { x = 7, y = 4 },
     blueprint_compat = true,

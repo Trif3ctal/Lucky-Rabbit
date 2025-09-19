@@ -3,7 +3,7 @@ SMODS.Back {
     atlas = 'Decks',
     pos = { x = 2, y = 1 },
     unlocked = true,
-    discovered = true,
+    discovered = false,
     config = {
         discards = -2
     },

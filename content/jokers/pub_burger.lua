@@ -16,7 +16,7 @@ SMODS.Joker {
         Food = true
     },
     unlocked = true,
-    discovered = true,
+    discovered = false,
     pos = { x = 6, y = 1 },
     blueprint_compat = false,
     eternal_compat = false,

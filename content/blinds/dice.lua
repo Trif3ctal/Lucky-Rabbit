@@ -2,7 +2,7 @@ SMODS.Blind {
     key = "dice",
     atlas = "Blinds",
     pos = { x = 0, y = 9 },
-    discovered = true,
+    discovered = false,
     boss = { min = 4 },
     boss_colour = HEX('90c7e6'),
     debuff = {

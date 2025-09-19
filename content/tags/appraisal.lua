@@ -8,7 +8,7 @@ SMODS.Tag {
         money = 2,
         tally = 0
     },
-    discovered = true,
+    discovered = false,
     loc_vars = function(self, info_queue, card)
         return { vars = { self.config.money, (self.config.money * (LR_UTIL.get_enhanced() or '0')) } }
     end,

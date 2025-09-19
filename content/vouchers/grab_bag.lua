@@ -14,7 +14,8 @@ if LR_CONFIG and LR_CONFIG.remix_enabled then
         },
         atlas = 'Vouchers',
         pos = { x = 0, y = 2 },
-        discovered = true,
+        unlocked = true,
+        available = true,
         loc_vars = function(self, info_queue)
             info_queue[#info_queue + 1] = G.P_CENTERS.p_fmod_remix_small_1
         end,

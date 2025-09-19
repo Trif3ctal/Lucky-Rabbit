@@ -14,7 +14,7 @@ SMODS.Joker{
     rarity = 2,
     atlas = "Jokers",
     unlocked = true,
-    discovered = true,
+    discovered = false,
     pixel_size = { w = 64, h = 95 },
     pos = { x = 9, y = 2 },
     cost = 4,

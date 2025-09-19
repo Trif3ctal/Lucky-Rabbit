@@ -13,7 +13,7 @@ SMODS.Joker {
         return { vars = { card.ability.extra.plus_chance } }
     end,
     unlocked = true,
-    discovered = true,
+    discovered = false,
     pos = { x = 2, y = 1 },
     blueprint_compat = false,
     cost = 5,

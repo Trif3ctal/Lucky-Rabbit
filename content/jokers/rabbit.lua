@@ -17,7 +17,7 @@ SMODS.Joker {
         }
     end,
     unlocked = true,
-    discovered = true,
+    discovered = false,
     pos = { x = 8, y = 2 },
     blueprint_compat = true,
     cost = 8,

@@ -2,7 +2,7 @@ SMODS.Blind {
     key = "baby",
     atlas = "Blinds",
     pos = { x = 0, y = 2 },
-    discovered = true,
+    discovered = false,
     boss = { min = 2 },
     boss_colour = HEX('ffc0cb'),
     stay_flipped = function(self, area, card)

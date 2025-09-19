@@ -2,7 +2,7 @@ SMODS.Blind {
     key = "tool",
     atlas = "Blinds",
     pos = { x = 0, y = 1 },
-    discovered = true,
+    discovered = false,
     boss = { min = 5 },
     boss_colour = HEX('9c6838'),
     set_blind = function(self)

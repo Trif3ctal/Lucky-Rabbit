@@ -7,7 +7,7 @@ if LR_CONFIG.silly_enabled then
         config = {
             type = "new_blind_choice",
         },
-        discovered = true,
+        discovered = false,
         loc_vars = function(self, info_queue, card)
             info_queue[#info_queue + 1] = G.P_CENTERS.p_fmod_silly_mega
             return { vars = { colours = { HEX("ff98e2") } } }

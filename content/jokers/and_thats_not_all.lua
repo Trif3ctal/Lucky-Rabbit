@@ -14,7 +14,7 @@ SMODS.Joker {
     pos = { x = 7, y = 6 },
     rarity = 1,
     unlocked = true,
-    discovered = true,
+    discovered = false,
     blueprint_compat = true,
     cost = 5,
     calculate = function(self, card, context)
