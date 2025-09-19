@@ -7,9 +7,11 @@ SMODS.Joker {
     },
     loc_vars = function(self, info_queue, card)
         local mult = 0
-        for i = 1, #G.playing_cards do
-            if SMODS.has_enhancement(G.playing_cards[i], "m_mult") then
-                mult = mult + 1
+        if G.playing_cards then
+            for i = 1, #G.playing_cards do
+                if SMODS.has_enhancement(G.playing_cards[i], "m_mult") then
+                    mult = mult + 1
+                end
             end
         end
         info_queue[#info_queue+1] = G.P_CENTERS.m_mult
