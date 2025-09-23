@@ -355,3 +355,19 @@ if self.ability.fmod_halve then
 end'''
 times = 1
 match_indent = true
+
+
+# -------- double down seal patch --------
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "local seals = card:calculate_seal(context)"
+position = "after"
+payload = '''
+for i=1, #SMODS.find_card("j_fmod_double_down") do
+    local seal2 = card:calculate_seal(context)
+    seals = SMODS.merge_effects({seals, {message = localize('k_again_ex'), message_card = SMODS.find_card("j_fmod_double_down")[i]}, seal2})
+end'''
+times = 2
+match_indent = true

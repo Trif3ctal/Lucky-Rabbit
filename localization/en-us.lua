@@ -469,6 +469,13 @@ return {
                     "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)"
                 }
             },
+            j_fmod_double_down = {
+                name = "Double Down",
+                text = {
+                    "{C:attention}Seal{} effects are",
+                    "triggered {C:attention}twice{}"
+                }
+            }
         },
         Tag = {
             tag_fmod_appraisal = {
