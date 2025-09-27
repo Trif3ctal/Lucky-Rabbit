@@ -11,6 +11,10 @@ SMODS.Joker {
     discovered = false,
     blueprint_compat = false,
     cost = 6,
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue+1] = G.P_CENTERS.m_fmod_raffle_card
+        return {}
+    end,
     calculate = function(self, card, context)
         if context.before and context.main_eval and not context.blueprint then
             local diamonds = 0
