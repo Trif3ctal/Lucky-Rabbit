@@ -14,7 +14,7 @@ SMODS.Joker {
     rarity = 2,
     unlocked = true,
     discovered = false,
-    blueprint_compat = true,
+    blueprint_compat = false,
     cost = 6,
     calculate = function(self, card, context)
         if context.individual and context.other_card.seal then
