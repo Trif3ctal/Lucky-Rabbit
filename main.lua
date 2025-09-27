@@ -150,6 +150,7 @@ local files = {
             "working_joker",
             "hypeman",
             "and_thats_not_all",
+            "skee_ball",
             "double_down",
             "steve",
             "pomni",

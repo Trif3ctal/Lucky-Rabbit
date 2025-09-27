@@ -475,6 +475,14 @@ return {
                     "{C:attention}Seal{} effects are",
                     "triggered {C:attention}twice{}"
                 }
+            },
+            j_fmod_skee_ball = {
+                name = "Skee Ball",
+                text = {
+                    "If {C:attention}all{} cards in played hand",
+                    "are {C:diamonds}Diamonds{} or {C:clubs}Clubs{}, all",
+                    "cards become {C:attention}Raffle Cards{}"
+                },
             }
         },
         Tag = {
@@ -1125,13 +1133,14 @@ return {
             k_fmod_config_remix = "Enable Remix Packs",
             k_fmod_planet_orbit = "+1 Planet",
             k_fmod_debut_destruct = "Finished!",
-            k_fmod_copycat = "Copycat!"
+            k_fmod_copycat = "Copycat!",
         },
         v_dictionary={
             a_fmod_discards = "+#1# Discards",
             a_fmod_silly_card = "+#1# Silly",
             a_fmod_money = "+$#1#",
             a_fmod_booster = "+#1# Booster",
+            a_fmod_skee = "+#1# Tickets!"
         },
         labels = {
             fmod_ink_mark = "Inked",
