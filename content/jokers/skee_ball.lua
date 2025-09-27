@@ -26,7 +26,7 @@ SMODS.Joker {
                     clubs = clubs + 1
                 end
             end
-            if diamonds == #context.full_hand or clubs == #context.full_hand then
+            if #context.full_hand >= 5 and (diamonds == #context.full_hand or clubs == #context.full_hand) then
                 for i = 1, #context.full_hand do
                     local card_ = context.full_hand[i]
                     G.E_MANAGER:add_event(Event({

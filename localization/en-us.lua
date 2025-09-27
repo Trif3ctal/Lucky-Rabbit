@@ -479,8 +479,8 @@ return {
             j_fmod_skee_ball = {
                 name = "Skee Ball",
                 text = {
-                    "If {C:attention}all{} cards in played hand",
-                    "are {C:diamonds}Diamonds{} or {C:clubs}Clubs{}, all",
+                    "If {C:attention}played hand{} consists entirely of",
+                    "{C:attention}5+ {C:diamonds}Diamonds{} or {C:clubs}Clubs{}, all {C:attention}played",
                     "cards become {C:attention}Raffle Cards{}"
                 },
             }
