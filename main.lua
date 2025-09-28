@@ -151,6 +151,7 @@ local files = {
             "hypeman",
             "and_thats_not_all",
             "skee_ball",
+            "bouncer",
             "double_down",
             "steve",
             "pomni",

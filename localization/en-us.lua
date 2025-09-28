@@ -483,6 +483,13 @@ return {
                     "{C:attention}5+ {C:diamonds}Diamonds{} or {C:clubs}Clubs{}, all {C:attention}played",
                     "cards become {C:attention}Raffle Cards{}"
                 },
+            },
+            j_fmod_bouncer = {
+                name = "Bouncer",
+                text = {
+                    "{C:blue}Common {C:attention}Jokers{} no longer",
+                    "appear {C:attention}naturally"
+                }
             }
         },
         Tag = {
