@@ -496,7 +496,7 @@ return {
                 text = {
                     "If played hand is a {C:attention}Full House{},",
                     "this Joker {C:attention}copies{} the effect of",
-                    "a random compatible owned Joker"
+                    "a {C:attention}random{} compatible owned Joker"
                 }
             }
         },

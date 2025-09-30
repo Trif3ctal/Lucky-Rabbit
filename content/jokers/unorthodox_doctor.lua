@@ -34,7 +34,7 @@ SMODS.Joker {
     discovered = false,
     pos = { x = 9, y = 6 },
     blueprint_compat = true,
-    cost = 6,
+    cost = 8,
     calculate = function(self, card, context)
         if context.before and next(context.poker_hands["Full House"]) and not context.blueprint then
             local compatible = {}
