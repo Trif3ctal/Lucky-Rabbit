@@ -151,9 +151,9 @@ local files = {
             "hypeman",
             "and_thats_not_all",
             "skee_ball",
-            "bouncer",
-            "double_down",
             "unorthodox_doctor",
+            "double_down",
+            "bouncer",
             "steve",
             "pomni",
             "ransome",
@@ -204,6 +204,7 @@ local files = {
             "greasepaint",
             "unicycle",
             "cannon",
+            "showgirl",
             "barker",
             "hall_of_mirrors",
             "suspenders",
@@ -266,7 +267,8 @@ local files = {
         list = {
             "crease_mark",
             "pinhole_mark",
-            "ink_mark"
+            "ink_mark",
+            "gilded_mark"
         },
         directory = "content/markings"
     }
@@ -315,6 +317,7 @@ if LR_CONFIG.silly_enabled then
             ["c_fmod_greasepaint"] = true,
             ["c_fmod_unicycle"] = true,
             ["c_fmod_cannon"] = true,
+            ["c_fmod_showgirl"] = true,
             ["c_fmod_barker"] = true,
             ["c_fmod_suspenders"] = true,
             ["c_fmod_hall_of_mirrors"] = true,
@@ -465,7 +468,8 @@ if LR_CONFIG.markings_enabled then
     LR_UTIL.ENABLED_MARKINGS = {
         "crease_mark",
         "pinhole_mark",
-        "ink_mark"
+        "ink_mark",
+        "gilded_mark"
     }
     LR_UTIL.load_files(files.markings.list, files.markings.directory)
 end

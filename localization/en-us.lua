@@ -870,6 +870,13 @@ return {
                 text = {
                     "...?"
                 }
+            },
+            c_fmod_showgirl = {
+                name = "Showgirl",
+                text = {
+                    "Select up to {C:attention}#1#{} cards",
+                    "to {C:attention}mark{} with {C:attention}Gilded"
+                }
             }
         },
         Voucher = {
@@ -1125,6 +1132,13 @@ return {
                     "{C:attention}Returns{} to the",
                     "deck when played",
                 }
+            },
+            fmod_gilded_mark = {
+                name = "Gilded",
+                text = {
+                    "{C:green,E:1}Probability{} checks on this",
+                    "card are {C:attention}doubled{}"
+                }
             }
         }
     },
@@ -1162,6 +1176,7 @@ return {
             fmod_ink_mark = "Inked",
             fmod_crease_mark = "Creased",
             fmod_pinhole_mark = "Pinholed",
+            fmod_gilded_mark = "Gilded",
         },
     }
 }
