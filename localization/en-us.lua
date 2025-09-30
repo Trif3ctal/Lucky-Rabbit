@@ -490,6 +490,14 @@ return {
                     "{C:blue}Common {C:attention}Jokers{} no longer",
                     "appear {C:attention}naturally"
                 }
+            },
+            j_fmod_unorthodox_doctor = {
+                name = "Unorthodox Doctor",
+                text = {
+                    "If played hand is a {C:attention}Full House{},",
+                    "this Joker {C:attention}copies{} the effect of",
+                    "a random compatible owned Joker"
+                }
             }
         },
         Tag = {
@@ -1141,6 +1149,7 @@ return {
             k_fmod_planet_orbit = "+1 Planet",
             k_fmod_debut_destruct = "Finished!",
             k_fmod_copycat = "Copycat!",
+            k_fmod_copied = "Copied!"
         },
         v_dictionary={
             a_fmod_discards = "+#1# Discards",
