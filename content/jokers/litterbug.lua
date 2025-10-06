@@ -25,36 +25,27 @@ SMODS.Joker {
             }
         end
 
-        if context.press_play and not context.blueprint then
+        if context.press_play and #G.hand.cards - #G.hand.highlighted > 0 then
+            local selected_card = nil
             G.E_MANAGER:add_event(Event({
                 func = function()
-                    local any_selected = nil
                     local text = nil
-                    local _cards = {}
-                    for k, v in ipairs(G.hand.cards) do
-                        _cards[#_cards + 1] = v
+                    selected_card = pseudorandom_element(G.hand.cards, pseudoseed('litterbug'))
+                    G.hand:add_to_highlighted(selected_card, true)
+                    play_sound('card1', 1)
+                    if not selected_card.debuff and not SMODS.has_no_rank(selected_card) then
+                        card.ability.extra.mult_gain = (0.01 * selected_card.base.nominal)
+                        card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
+                        text = true
                     end
-                    if G.hand.cards[1] then
-                        local selected_card, card_key = pseudorandom_element(_cards, pseudoseed('litterbug'))
-                        if not selected_card.debuff and not SMODS.has_no_rank(selected_card) then
-                            card.ability.extra.mult_gain = (0.01 * selected_card.base.nominal)
-                            card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
-                            text = true
-                        end
-                        G.hand:add_to_highlighted(selected_card, true)
-                        table.remove(_cards, card_key)
-                        any_selected = true
-                        play_sound('card1', 1)
-                    end
-                    delay(0.7)
                     if text then
-                        card_eval_status_text(card, "extra", nil, nil, nil, {
+                        SMODS.calculate_effect({
                             message = localize { type = "variable", key = "a_xmult", vars = { card.ability.extra.mult } },
-                            colour = G.C.MULT,
-                            card = card
-                        })
+                            card = card,
+                            colour = G.C.MULT
+                        }, card)
                     end
-                    if any_selected then G.FUNCS.discard_cards_from_highlighted(nil, true) end
+                    G.FUNCS.discard_cards_from_highlighted(nil, true)
                     return true
                 end
             }))
