@@ -3,6 +3,7 @@ SMODS.Joker{
     config = {
         extra = {
             retriggers = 0,
+            inc = 1,
             amt_needed = 5,
             current_amt = 5,
         }
@@ -55,12 +56,11 @@ SMODS.Joker{
                 }))
                 if card.ability.extra.current_amt == 0 then
                     card.ability.extra.current_amt = card.ability.extra.amt_needed
-                    card.ability.extra.retriggers = card.ability.extra.retriggers + 1
-                    -- (same as Wee)
-                    return {
-                        extra = {focus = card, message = localize('k_upgrade_ex')},
-                        card = card,
-                    }
+                    SMODS.scale_card(card, {
+                        ref_table = card.ability.extra,
+                        ref_value = 'retriggers',
+                        scalar_value = 'inc',
+                    })
                 end
             end
         end

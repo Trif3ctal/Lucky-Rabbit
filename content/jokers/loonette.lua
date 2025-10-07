@@ -29,7 +29,12 @@ SMODS.Joker {
             if not context.other_card:is_face() and not SMODS.has_no_rank(context.other_card) then
                 local xmult = card.ability.extra.xmult
                 if not context.blueprint then
-                    card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.increase
+                    SMODS.scale_card(card, {
+                        ref_table = card.ability.extra,
+                        ref_value = 'xmult',
+                        scalar_value = 'increase',
+                        no_message = true
+                    })
                 end
                 return {
                 x_mult = xmult,

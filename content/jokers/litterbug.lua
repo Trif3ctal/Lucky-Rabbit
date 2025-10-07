@@ -29,21 +29,17 @@ SMODS.Joker {
             local selected_card = nil
             G.E_MANAGER:add_event(Event({
                 func = function()
-                    local text = nil
                     selected_card = pseudorandom_element(G.hand.cards, pseudoseed('litterbug'))
                     G.hand:add_to_highlighted(selected_card, true)
                     play_sound('card1', 1)
                     if not selected_card.debuff and not SMODS.has_no_rank(selected_card) then
                         card.ability.extra.mult_gain = (0.01 * selected_card.base.nominal)
-                        card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
-                        text = true
-                    end
-                    if text then
-                        SMODS.calculate_effect({
-                            message = localize { type = "variable", key = "a_xmult", vars = { card.ability.extra.mult } },
-                            card = card,
-                            colour = G.C.MULT
-                        }, card)
+                        SMODS.scale_card(card, {
+                            ref_table = card.ability.extra,
+                            ref_value = 'mult',
+                            scalar_value = 'mult_gain',
+                            message_key = 'a_xmult',
+                        })
                     end
                     G.FUNCS.discard_cards_from_highlighted(nil, true)
                     return true

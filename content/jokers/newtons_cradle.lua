@@ -28,15 +28,12 @@ SMODS.Joker {
                 context.other_card.ability.ncradle_set = true
             end
             -- if it's the last card in the scoring hand and the entire hand consists of that suit, increment retriggers
-            -- also, juice up to signify the increasing
             if context.other_card == context.scoring_hand[#context.scoring_hand] and card.ability.extra.suit_count >= #context.scoring_hand and not card.ability.extra.increased then
-                card.ability.extra.retriggers = card.ability.extra.retriggers + card.ability.extra.retrigger_gain
-                G.E_MANAGER:add_event(Event({
-                    func = function()
-                        card:juice_up()
-                        return true
-                    end
-                }))
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = 'retriggers',
+                    scalar_value = 'retrigger_gain',
+                })
                 -- keep increasing from happening again this hand
                 card.ability.extra.increased = true
             end

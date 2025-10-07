@@ -59,13 +59,16 @@ SMODS.Joker {
                     colour = G.C.RED
                 }
             else
-                card.ability.extra.discards = card.ability.extra.discards - card.ability.extra.discard_mod
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = 'discards',
+                    scalar_value = 'discard_mod',
+                    operation = '-',
+                    message_key = 'a_chips_minus',
+                    message_colour = G.C.RED,
+                })
                 G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.discard_mod
                 ease_discard(-(card.ability.extra.discard_mod), nil, false)
-                return {
-                    message = localize{type='variable',key='a_chips_minus',vars={card.ability.extra.discard_mod}},
-                    colour = G.C.RED
-                }
             end
         end
     end

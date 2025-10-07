@@ -18,11 +18,11 @@ SMODS.Joker {
     cost = 4,
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and not context.blueprint then
-            card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
-            return {
-                message_card = card,
-                message = localize('k_upgrade_ex')
-            }
+            SMODS.scale_card(card, {
+                ref_table = card.ability.extra,
+                ref_value = 'chips',
+                scalar_value = 'chip_gain',
+            })
         end
         if context.joker_main then
             return {

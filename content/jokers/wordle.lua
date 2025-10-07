@@ -28,12 +28,11 @@ SMODS.Joker{
                 if not SMODS.has_no_rank(playingcard) and not playingcard.debuff and playingcard:get_id() == 3
                 or playingcard:get_id() == 7 or playingcard:get_id() == 8
                 or playingcard:get_id() == 12 then
-                    card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
-                    return {
-                        message = localize("k_upgrade_ex"),
-                        colour = G.C.CHIPS,
-                        card = card
-                    }
+                    SMODS.scale_card(card, {
+                        ref_table = card.ability.extra,
+                        ref_value = 'chips',
+                        scalar_value = 'chip_gain',
+                    })
                 end
             end
         end

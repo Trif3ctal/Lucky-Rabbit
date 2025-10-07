@@ -23,17 +23,17 @@ SMODS.Joker{
         if context.remove_playing_cards and not context.blueprint then
             for i = 1, #context.removed do
                 if card.ability.extra.destroy_amt <= 1 then
-                    card.ability.extra.h_size = card.ability.extra.h_size + card.ability.extra.h_inc
                     card.ability.extra.destroy_amt = card.ability.extra.destroy
                     G.hand:change_size(card.ability.extra.h_inc)
                     if #G.hand.cards > 1 then
                         G.FUNCS.draw_from_deck_to_hand(card.ability.extra.h_inc)
                     end
-                    return {
-                        delay = 0.2,
-                        message = localize{type = 'variable',key = 'a_handsize', vars = {card.ability.extra.h_inc}}, 
-                        colour = G.C.ORANGE
-                    }
+                    SMODS.scale_card(card, {
+                        ref_table = card.ability.extra,
+                        ref_value = 'h_size',
+                        scalar_value = 'h_inc',
+                        message_key = 'a_handsize',
+                    })
                 else
                     card.ability.extra.destroy_amt = card.ability.extra.destroy_amt - 1
                 end

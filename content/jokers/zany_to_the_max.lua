@@ -25,18 +25,32 @@ SMODS.Joker {
             local pseudo = pseudorandom(pseudoseed('zany_to_the_max'))
             -- 33% chance #1
             if pseudo <= 0.33 then
-                card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chip_gain
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = 'chips',
+                    scalar_value = 'chip_gain',
+                    message_key = 'a_chips',
+                    message_colour = G.C.CHIPS
+                })
                 -- 33% chance #2
             elseif pseudo <= 0.66 then
-                card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = 'mult',
+                    scalar_value = 'mult_gain',
+                    message_key = 'a_mult',
+                    message_colour = G.C.MULT
+                })
                 -- 33% chance #3
             else
-                card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_gain
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = 'xmult',
+                    scalar_value = 'xmult_gain',
+                    message_key = 'a_xmult',
+                    message_colour = G.C.MULT
+                })
             end
-            return {
-                message = localize("k_upgrade_ex"),
-                colour = G.C.CHIPS
-            }
         end
         if context.joker_main then
             local ret = {}

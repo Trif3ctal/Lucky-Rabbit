@@ -21,7 +21,12 @@ SMODS.Joker{
 	calculate = function(self,card,context)
 		if context.individual and context.cardarea == G.hand and not context.end_of_round and context.other_card:get_id() == 7 then
             if SMODS.pseudorandom_probability(card, 'claw', 1, card.ability.extra.odds, 'fmod_claw') and not context.blueprint then
-                card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.increase
+                SMODS.scale_card(card, {
+                    ref_table = card.ability.extra,
+                    ref_value = 'xmult',
+                    scalar_value = 'increase',
+                    message_key = 'a_xmult',
+                })
             end
             if not context.other_card.debuff then
                 return {
