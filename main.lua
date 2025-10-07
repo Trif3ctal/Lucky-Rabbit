@@ -154,6 +154,7 @@ local files = {
             "unorthodox_doctor",
             "double_down",
             "edibles",
+            "assassin",
             "bouncer",
             "steve",
             "pomni",

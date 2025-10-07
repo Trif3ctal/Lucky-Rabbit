@@ -507,6 +507,14 @@ return {
                     "{C:attention}scored cards{} by {C:attention}1{}",
                     "{C:inactive}({C:attention}#1#{} uses remaining)"
                 }
+            },
+            j_fmod_assassin = {
+                name = "Assassin",
+                text = {
+                    "On the {C:attention}final{} hand of the",
+                    "round, {C:attention}destroy{} leftmost",
+                    "{C:attention}card{} held in hand"
+                }
             }
         },
         Tag = {
@@ -1172,7 +1180,8 @@ return {
             k_fmod_planet_orbit = "+1 Planet",
             k_fmod_debut_destruct = "Finished!",
             k_fmod_copycat = "Copycat!",
-            k_fmod_copied = "Copied!"
+            k_fmod_copied = "Copied!",
+            k_fmod_destroyed = "Destroyed!",
         },
         v_dictionary={
             a_fmod_discards = "+#1# Discards",
