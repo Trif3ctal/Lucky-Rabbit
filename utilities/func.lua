@@ -181,28 +181,6 @@ function CardArea:shuffle(_seed)
     return g
 end
 
-local set_base_ref = Card.set_base
-function Card:set_base(card, initial)
-    set_base_ref(self, card, initial)
-    if self.playing_card and not initial and next(SMODS.find_card("j_fmod_trans_joker")) then
-        for k, v in ipairs(G.jokers.cards) do
-            if v.ability.name == 'j_fmod_trans_joker' then
-                G.E_MANAGER:add_event(Event({
-                    func = function()
-                        v:juice_up()
-                        card_eval_status_text(self, 'extra', nil, nil, nil, {
-                            message = localize { type = 'variable', key = 'a_mult', vars = {v.ability.extra.mult} },
-                            colour = G.C.RED,
-                        })
-                        self.ability.perma_mult = self.ability.perma_mult + v.ability.extra.mult
-                        return true
-                    end
-                }))
-            end
-        end
-    end
-end
-
 local gnb = get_new_boss
 function get_new_boss()
     if G.GAME.selected_back.effect.center.key == "b_fmod_reaper" then
