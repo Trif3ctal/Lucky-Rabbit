@@ -153,6 +153,7 @@ local files = {
             "skee_ball",
             "unorthodox_doctor",
             "double_down",
+            "edibles",
             "bouncer",
             "steve",
             "pomni",

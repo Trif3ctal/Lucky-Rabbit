@@ -498,6 +498,15 @@ return {
                     "this Joker {C:attention}copies{} the effect of",
                     "a {C:attention}random{} compatible owned Joker"
                 }
+            },
+            j_fmod_edibles = {
+                name = "Edibles",
+                text = {
+                    "If played hand contains a {C:attention}Four",
+                    "{C:attention}of a Kind{}, {C:attention}increase{} rank of all",
+                    "{C:attention}scored cards{} by {C:attention}1{}",
+                    "{C:inactive}({C:attention}#1#{} uses remaining)"
+                }
             }
         },
         Tag = {
@@ -1170,7 +1179,8 @@ return {
             a_fmod_silly_card = "+#1# Silly",
             a_fmod_money = "+$#1#",
             a_fmod_booster = "+#1# Booster",
-            a_fmod_skee = "+#1# Tickets!"
+            a_fmod_skee = "+#1# Tickets!",
+            a_fmod_uses = "-#1# Use"
         },
         labels = {
             fmod_ink_mark = "Inked",
