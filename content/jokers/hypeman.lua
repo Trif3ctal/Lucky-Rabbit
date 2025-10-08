@@ -24,6 +24,7 @@ SMODS.Joker {
     discovered = false,
     blueprint_compat = true,
     cost = 5,
+    enhancement_gate = 'm_mult',
     calculate = function(self, card, context)
         if context.joker_main then
             local mult = 0

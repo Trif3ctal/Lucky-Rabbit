@@ -17,6 +17,7 @@ SMODS.Joker {
     pos = { x = 2, y = 1 },
     blueprint_compat = false,
     cost = 5,
+    enhancement_gate = "m_lucky",
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play and context.other_card.lucky_trigger and not context.blueprint then
             SMODS.scale_card(card, {

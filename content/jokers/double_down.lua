@@ -16,6 +16,14 @@ SMODS.Joker {
     discovered = false,
     blueprint_compat = false,
     cost = 6,
+    in_pool = function(self, args)
+        for _, playing_card in ipairs(G.playing_cards or {}) do
+            if playing_card.seal then
+                return true
+            end
+        end
+        return false
+    end,
     calculate = function(self, card, context)
         if context.individual and context.other_card.seal then
             if context.cardarea == G.play and context.other_card.seal == "Gold" then
