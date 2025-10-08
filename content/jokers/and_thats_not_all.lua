@@ -17,6 +17,7 @@ SMODS.Joker {
     discovered = false,
     blueprint_compat = true,
     cost = 5,
+    enhancement_gate = 'm_bonus',
     calculate = function(self, card, context)
         if context.discard and not context.blueprint and SMODS.has_enhancement(context.other_card, "m_bonus") then
             if card.ability.extra.mult ~= 0 then
