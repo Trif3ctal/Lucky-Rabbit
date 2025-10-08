@@ -633,6 +633,13 @@ return {
                     "Cards with seals",
                     "are debuffed"
                 }
+            },
+            bl_fmod_rhythm = {
+                name = "The Rhythm",
+                text = {
+                    "Lose $1 for each",
+                    "Joker triggered"
+                }
             }
         },
         Back = {

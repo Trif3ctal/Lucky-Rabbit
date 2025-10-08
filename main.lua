@@ -90,7 +90,8 @@ end
 SMODS.optional_features = {
     cardareas = {
         unscored = true,
-    }
+    },
+    post_trigger = true
 }
 
 
@@ -228,6 +229,7 @@ local files = {
             "tool",
             "baby",
             "priest",
+            "rhythm",
             "light",
             "thorn",
             "elder",
