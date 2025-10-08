@@ -7,28 +7,19 @@ SMODS.Blind {
     boss_colour = HEX('d69a18'),
     calculate = function(self, blind, context)
         if not blind.disabled then
-            if context.post_trigger and context.other_card then
-                blind.triggered = true
-                ease_dollars(-1)
+            if context.post_trigger and context.other_ret
+                and not (context.other_context.end_of_round or context.other_context.setting_blind) then
                 G.E_MANAGER:add_event(Event({
-                    trigger = 'immediate',
-                    func = (function()
+                    trigger = 'after',
+                    delay = 0.1,
+                    func = function()
                         SMODS.juice_up_blind()
-                        G.E_MANAGER:add_event(Event({
-                            trigger = 'after',
-                            delay = 0.06 * G.SETTINGS.GAMESPEED,
-                            blockable = false,
-                            blocking = false,
-                            func = function()
-                                play_sound('tarot2', 0.76, 0.4)
-                                return true
-                            end
-                        }))
-                        play_sound('tarot2', 1, 0.4)
-                        return true
-                    end)
+                        return true;
+                    end
                 }))
-                delay(0.4)
+                delay(0.23)
+                ease_dollars(-1)
+                blind.triggered = true
             end
         end
     end
