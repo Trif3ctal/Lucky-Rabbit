@@ -2,13 +2,13 @@ SMODS.Joker {
     key = "unorthodox_doctor",
     config = {
         extra = {
-            copied = nil
+            copied = nil,
+            key = nil
         }
     },
     loc_vars = function(self, info_queue, card)
         if card.area and card.area == G.jokers then
-            local copied = card.ability.extra.copied
-            if copied then
+            if card.ability.extra.copied_id then
                 main_end = {
                     {
                         n = G.UIT.C,
@@ -16,9 +16,9 @@ SMODS.Joker {
                         nodes = {
                             {
                                 n = G.UIT.C,
-                                config = { ref_table = card, align = "m", colour = copied and mix_colours(G.C.GREEN, G.C.JOKER_GREY, 0.8), r = 0.05, padding = 0.06 },
+                                config = { ref_table = card, align = "m", colour = card.ability.extra.copied_id and mix_colours(G.C.GREEN, G.C.JOKER_GREY, 0.8), r = 0.05, padding = 0.06 },
                                 nodes = {
-                                    { n = G.UIT.T, config = { text = ' ' .. localize{ type = "name_text", set = "Joker", key = copied.config.center.key} .. ' ', colour = G.C.UI.TEXT_LIGHT, scale = 0.32 * 0.8 } },
+                                    { n = G.UIT.T, config = { text = ' ' .. localize{ type = "name_text", set = "Joker", key = card.ability.extra.key} .. ' ', colour = G.C.UI.TEXT_LIGHT, scale = 0.32 * 0.8 } },
                                 }
                             }
                         }
@@ -44,18 +44,25 @@ SMODS.Joker {
                 end
             end
             if #compatible > 0 then
-                card.ability.extra.copied = pseudorandom_element(compatible, "unorthodox")
+                local j = pseudorandom_element(compatible, "unorthodox")
+                card.ability.extra.copied_id = j.sort_id
+                card.ability.extra.key = j.config.center.key
                 return {
                     message = localize("k_fmod_copied"),
                     colour = G.C.PURPLE
                 }
             end
         end
-        if ((context.joker_type_destroyed and context.card == card.ability.extra.copied) or (context.selling_card and context.card == card.ability.extra.copied)) and not context.blueprint then
-            card.ability.extra.copied = nil
+        if ((context.joker_type_destroyed and context.card.sort_id == card.ability.extra.copied_id) or (context.selling_card and context.card.sort_id == card.ability.extra.copied_id)) and not context.blueprint then
+            card.ability.extra.copied_id = nil
+            card.ability.extra.key = nil
         end
-        if card.ability.extra.copied then
-            return SMODS.blueprint_effect(card, card.ability.extra.copied, context)
+        if card.ability.extra.copied_id then
+            for k, v in ipairs(G.jokers.cards) do
+                if v.sort_id == card.ability.extra.copied_id then
+                    return SMODS.blueprint_effect(card, v, context)
+                end
+            end
         end
     end,
 }
