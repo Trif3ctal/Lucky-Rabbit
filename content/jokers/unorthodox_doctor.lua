@@ -16,7 +16,7 @@ SMODS.Joker {
                         nodes = {
                             {
                                 n = G.UIT.C,
-                                config = { ref_table = card, align = "m", colour = card.ability.extra.copied_id and mix_colours(G.C.GREEN, G.C.JOKER_GREY, 0.8), r = 0.05, padding = 0.06 },
+                                config = { ref_table = card, align = "m", colour = mix_colours(G.C.GREEN, G.C.JOKER_GREY, 0.8), r = 0.05, padding = 0.06 },
                                 nodes = {
                                     { n = G.UIT.T, config = { text = ' ' .. localize{ type = "name_text", set = "Joker", key = card.ability.extra.key} .. ' ', colour = G.C.UI.TEXT_LIGHT, scale = 0.32 * 0.8 } },
                                 }
