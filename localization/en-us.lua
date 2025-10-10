@@ -514,6 +514,15 @@ return {
                     "Played {C:attention}Stone Cards{} are",
                     "given a random {C:attention}Seal{}",
                 }
+            },
+            j_fmod_falling_up = {
+                name = "Falling Up",
+                text = {
+                    "{C:green}#1# in #2#{} chance for played",
+                    "hand to {C:attention}not score{} and",
+                    "increase given Mult by",
+                    "{C:white,X:mult}X#3#{} {C:inactive}(Currently {C:white,X:mult}X#4#{C:inactive} Mult)"
+                }
             }
         },
         Tag = {
