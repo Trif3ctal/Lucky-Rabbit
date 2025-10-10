@@ -14,7 +14,7 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.before then
             for i = 1, #context.full_hand do
-                if SMODS.has_enhancement(context.full_hand[i], 'm_stone') then
+                if SMODS.has_enhancement(context.full_hand[i], 'm_stone') and not context.full_hand[i].debuff and not context.full_hand[i].seal then
                     context.full_hand[i]:set_seal(SMODS.poll_seal({guaranteed = true}))
                 end
             end
