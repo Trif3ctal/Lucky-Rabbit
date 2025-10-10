@@ -507,6 +507,13 @@ return {
                     "{C:attention}destroy{} leftmost",
                     "card held in hand"
                 }
+            },
+            j_fmod_pet_rock = {
+                name = "Pet Rock",
+                text = {
+                    "Played {C:attention}Stone Cards{} are",
+                    "given a random {C:attention}Seal{}",
+                }
             }
         },
         Tag = {

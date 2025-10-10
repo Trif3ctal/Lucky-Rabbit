@@ -157,6 +157,7 @@ local files = {
             "edibles",
             "assassin",
             "bouncer",
+            "pet_rock",
             "steve",
             "pomni",
             "ransome",
