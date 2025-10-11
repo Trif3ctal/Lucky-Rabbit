@@ -159,6 +159,7 @@ local files = {
             "bouncer",
             "falling_up",
             "pet_rock",
+            "elimination_game",
             "steve",
             "pomni",
             "ransome",

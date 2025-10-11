@@ -523,6 +523,14 @@ return {
                     "increase given Mult by",
                     "{C:white,X:mult}X#3#{} {C:inactive}(Currently {C:white,X:mult}X#4#{C:inactive} Mult)"
                 }
+            },
+            j_fmod_elimination_game = {
+                name = "Elimination Game",
+                text = {
+                    "This Joker gains {C:mult}+#1#{} Mult",
+                    "when a {C:attention}Joker{} is sold",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)"
+                }
             }
         },
         Tag = {
