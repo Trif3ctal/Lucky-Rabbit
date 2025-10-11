@@ -13,6 +13,11 @@ if next(SMODS.find_mod("paperback")) then
             atlas = "Consumables",
             pos = { x = 5, y = 2 },
             cost = 3,
+            in_pool = function(self, args)
+                for _, v in ipairs(G.playing_cards or {}) do
+                    if PB_UTIL.has_paperclip(v) then return true end
+                end
+            end,
             use = function(self, card, context, copier)
                 G.E_MANAGER:add_event(Event({
                     trigger = 'after',

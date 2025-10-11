@@ -20,9 +20,10 @@ SMODS.Joker {
             local diamonds = 0
             local clubs = 0
             for i = 1, #context.full_hand do
-                if context.full_hand[i]:is_suit("Diamonds") then
+                -- Debuffed cards are ok
+                if context.full_hand[i]:is_suit("Diamonds", false, true) then
                     diamonds = diamonds + 1
-                elseif context.full_hand[i]:is_suit("Clubs") then
+                elseif context.full_hand[i]:is_suit("Clubs", false, true) then
                     clubs = clubs + 1
                 end
             end
@@ -39,12 +40,7 @@ SMODS.Joker {
                             return true
                         end
                     }))
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            card_:set_ability("m_fmod_raffle_card")
-                            return true
-                        end
-                    }))
+                    card_:set_ability("m_fmod_raffle_card", nil, true)
                     G.E_MANAGER:add_event(Event({
                         trigger = 'after',
                         delay = 0.15,
