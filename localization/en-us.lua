@@ -270,7 +270,7 @@ return {
                 name = "Sad Clown",
                 text = {
                     "Create a random {V:1}Silly{} card",
-                    "every {C:attention}#1# {C:inactive}[#2#]{} discards",
+                    "every {C:attention}#1# {C:inactive}[#2#]{} cards discarded",
                     "{C:inactive}(Must have room)"
                 }
             },
