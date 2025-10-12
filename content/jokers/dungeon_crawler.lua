@@ -28,13 +28,13 @@ SMODS.Joker {
             if spade_in_hand then
                 local valid_pairs = {}
                 for _, card_ in ipairs(spade_list) do
-                    if not next(SMODS.get_enhancements(card_)) or not card_.ability.no_dc then
+                    if card_.config.center.key == "c_base" then
                         table.insert(valid_pairs, { card = card_, mod = "enhancement" })
                     end
-                    if not card_.seal or not card_.ability.no_dc_seal then
+                    if not card_.seal then
                         table.insert(valid_pairs, { card = card_, mod = "seal" })
                     end
-                    if LR_CONFIG.markings_enabled and not LR_UTIL.has_marking(card_) or not card_.ability.no_dc_mrk then
+                    if LR_CONFIG.markings_enabled and not LR_UTIL.has_marking(card_) then
                         table.insert(valid_pairs, { card = card_, mod = "marking" })
                     end
                 end
@@ -48,26 +48,18 @@ SMODS.Joker {
                         G.E_MANAGER:add_event(Event({
                             func = function()
                                 chosen:juice_up()
-                                chosen.ability.no_dc = true
                                 return true
                             end
                         }))
                     elseif modify == "seal" then
                         chosen:set_seal(SMODS.poll_seal({ guaranteed = true, key = 'dungeon_crawler2' }))
-                        G.E_MANAGER:add_event(Event({
-                            func = function()
-                                chosen.ability.no_dc_seal = true
-                                return true
-                            end
-                        }))
                     elseif modify == "marking" then
                         LR_UTIL.set_marking(chosen,
                             string.sub(
-                                pseudorandom_element(LR_UTIL.ENABLED_MARKINGS, pseudoseed('dungeon_crawler3')), 0,
+                                pseudorandom_element(LR_UTIL.ENABLED_MARKINGS, pseudoseed('dungeon_crawler3')), 1,
                                 -6))
                         G.E_MANAGER:add_event(Event({
                             func = function()
-                                chosen.ability.no_dc_mrk = true
                                 chosen:juice_up()
                                 return true
                             end
