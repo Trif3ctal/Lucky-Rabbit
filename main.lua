@@ -350,6 +350,16 @@ if LR_CONFIG.silly_enabled then
         pos = { x = 3, y = 2 },
         --overlay_pos = { x = 4, y = 2 }
     }
+    SMODS.Sound { -- silly theme by Potatert0t
+        key = "fmod_silly_music",
+        path = "music_silly.ogg",
+        volume = 0.7,
+        select_music_track = function(self)
+            if G.booster_pack and not G.booster_pack.REMOVED and SMODS.OPENED_BOOSTER and SMODS.OPENED_BOOSTER.config.center.kind == "Silly" then
+                return 1e10
+            end
+        end
+    }
     LR_UTIL.load_files(files.consumables.list, files.consumables.directory)
     assert(SMODS.load_file("content/boosters/silly_packs.lua"))()
 end

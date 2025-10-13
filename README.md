@@ -21,3 +21,5 @@ __Feel free to check out [the in-depth mod progress spreadsheet!](https://docs.g
 
 
 ![asdfdfasdfasdff](https://github.com/user-attachments/assets/f1eb29aa-a48c-4b1f-9995-575dcc6508a7)
+
+*Special thanks to Potatert0t for the Silly Pack theme, and english5040, BepisFever, and Jayd-H for programming help!*
