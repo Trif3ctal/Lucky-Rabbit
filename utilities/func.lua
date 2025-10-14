@@ -230,6 +230,24 @@ function Card:flip()
     flip(self)
 end
 
+-- for The Tool blind
+local cardarea_emplace_ref = CardArea.emplace
+function CardArea:emplace(card, ...)
+    cardarea_emplace_ref(self, card, ...)
+    if self == G.consumeables then
+        SMODS.recalc_debuff(card)
+    end
+end
+
+-- for The Tool blind
+local set_blind_ref = Blind.set_blind
+function Blind:set_blind(blind, reset, ...)
+    set_blind_ref(self, blind, reset, ...)
+    for _, v in ipairs(G.consumeables.cards) do
+        if not reset then self:debuff_card(v, true) end
+    end
+end
+
 ------ misc ------
 
 function SMODS.current_mod.reset_game_globals(run_start)
