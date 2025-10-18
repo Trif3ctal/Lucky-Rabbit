@@ -2,7 +2,7 @@ SMODS.Joker {
 	key = "falling_up",
 	atlas = "Jokers",
 	pos = { x = 7, y = 7 },
-	rarity = 3,
+	rarity = 2,
 	cost = 6,
 	unlocked = true,
 	discovered = false,
@@ -24,7 +24,7 @@ SMODS.Joker {
                 xmult = card.ability.extra.xmult,
             }
         end
-        if context.final_scoring_step and not context.blueprint then
+        if context.final_scoring_step and not context.blueprint and G.GAME.current_round.hands_left > 0 then
             if SMODS.pseudorandom_probability(card, 'falling_up', 1, card.ability.extra.odds) then
                 hand_chips = 0
                 mult = 0
