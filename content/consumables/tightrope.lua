@@ -39,7 +39,7 @@ SMODS.Consumable {
                     end
                 }))
             end
-            playing_card_joker_effects(new_cards)
+            SMODS.calculate_context({ playing_card_added = true, cards = new_cards })
         elseif pseudo <= 0.75 then
             -- 25% chance to copy twice
             local new_cards = {}
@@ -61,8 +61,8 @@ SMODS.Consumable {
                         return true
                     end
                 }))
-                playing_card_joker_effects(new_cards)
             end
+            SMODS.calculate_context({ playing_card_added = true, cards = new_cards })
         else
             -- 25% chance to destroy the card
             local destroyed = {}
