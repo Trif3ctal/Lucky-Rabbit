@@ -23,7 +23,8 @@ SMODS.Joker {
                 context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult or 0
                 context.other_card.ability.perma_x_mult = context.other_card.ability.perma_x_mult + card.ability.extra.perma_xmult
                 return {
-                    extra = { message = localize('k_upgrade_ex'), colour = G.C.CHIPS },
+                    message = localize('k_upgrade_ex'),
+                    colour = G.C.CHIPS,
                     card = card
                 }
             end
