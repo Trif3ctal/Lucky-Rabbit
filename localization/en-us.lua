@@ -531,7 +531,16 @@ return {
                     "when a {C:attention}Joker{} is sold",
                     "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)"
                 }
-            }
+            },
+            --[[j_fmod_geiru = { -- adding this but effect isn't possible right now
+                name = "Geiru Toneido",
+                text = {
+                    "Gains {X:mult,C:white}X#1#{} Mult when a {C:attention}Joker{} creates a Card,",
+                    "{X:mult,C:white}X#2#{} when a {C:attention}Seal{} creates a Card, and",
+                    "{X:mult,C:white}X#3#{} when a {C:attention}Consumable{} creates a Card",
+                    "{C:inactive}(Currently {X:mult,C:white}X#4#{C:inactive} Mult)"
+                }
+            }]]
         },
         Tag = {
             tag_fmod_appraisal = {
@@ -698,6 +707,14 @@ return {
                     "All cards in deck are",
                     "the same {C:attention}rank{} and {C:attention}suit{}",
                     "{C:red}-2{} Discards"
+                }
+            },
+            b_fmod_tricky = {
+                name = "Tricky Deck",
+                text = {
+                    "{C:attention}13{} random Cards in",
+                    "deck are {C:attention}Marked",
+                    "Start with {C:money}$2{} less"
                 }
             }
         },

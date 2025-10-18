@@ -251,6 +251,7 @@ local files = {
             "harmony",
             "reaper",
             "recursive",
+            "tricky",
         },
         directory = "content/decks"
     },
