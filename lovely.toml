@@ -80,7 +80,7 @@ position = "after"
 match_indent = true
 payload = '''
 if G.GAME.selected_back.effect.center.key == "b_fmod_reaper" and blind_choice.config.boss then
-    blind_amt = get_blind_amount(G.GAME.round_resets.blind_ante)*(blind_choice.config.mult*2)*G.GAME.starting_params.ante_scaling
+    blind_amt = blind_amt * 2
 end
 '''
 
