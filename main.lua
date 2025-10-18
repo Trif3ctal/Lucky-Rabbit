@@ -160,6 +160,7 @@ local files = {
             "falling_up",
             "pet_rock",
             "elimination_game",
+            "girl_next_door",
             "steve",
             "pomni",
             "ransome",

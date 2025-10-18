@@ -541,6 +541,15 @@ return {
                     "{C:inactive}(Currently {X:mult,C:white}X#4#{C:inactive} Mult)"
                 }
             }]]
+            j_fmod_girl_next_door = {
+                name = "Girl Next Door",
+                text = {
+                    "Gains {X:mult,C:white}X#2#{} Mult when a Card's {C:attention}suit",
+                    "is converted to {C:diamonds}Diamonds{}, loses",
+                    "{X:mult,C:white}X#3#{} Mult when a {C:attention}King{} or {C:attention}Queen",
+                    "is scored {C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
+                }
+            }
         },
         Tag = {
             tag_fmod_appraisal = {
