@@ -78,21 +78,8 @@ SMODS.Consumable {
                         return true
                     end
                 }))
-                G.E_MANAGER:add_event(Event({
-                    trigger = 'after',
-                    delay = 0.1,
-                    func = function()
-                        local d_card = destroy_card
-                        if d_card.ability.name == 'Glass Card' then
-                            d_card:shatter()
-                        else
-                            d_card:start_dissolve(nil)
-                        end
-                        return true
-                    end
-                }))
-                SMODS.calculate_context({ remove_playing_cards = true, removed = destroyed })
             end
+            SMODS.destroy_cards(destroyed)
         end
     end,
 }

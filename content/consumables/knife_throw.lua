@@ -36,20 +36,14 @@ SMODS.Consumable {
                     })
                     k_card:juice_up(0.3, 0.5)
                     k_card:set_seal(seal)
-                else
-                    if k_card.ability.name == 'Glass Card' then
-                        k_card:shatter()
-                    else
-                        k_card:start_dissolve(nil)
-                    end
                 end
             end
             card:juice_up(0.3, 0.5)
         return true end}))
+        SMODS.destroy_cards(destroyed_cards)
         G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.2,func = function()
             G.hand:unhighlight_all()
         return true end }))
         delay(0.5)
-        SMODS.calculate_context({ remove_playing_cards = true, removed = destroyed_cards })
     end,
 }

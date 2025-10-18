@@ -20,7 +20,7 @@ SMODS.Consumable {
                     if G.jokers.cards[i+1] then G.jokers.cards[i+1]:set_edition(save_edition, true, false) end
                 end
             end
-            if not G.jokers.highlighted[1].ability.eternal then G.jokers.highlighted[1]:start_dissolve(nil) end
+            if not G.jokers.highlighted[1].ability.eternal then SMODS.destroy_cards(G.jokers.highlighted[1]) end
             card:juice_up(0.3, 0.5)
             return true end }))
         delay(0.6)
