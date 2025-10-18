@@ -248,6 +248,15 @@ function Blind:set_blind(blind, reset, ...)
     end
 end
 
+-- recusive deck showman hook
+local show = SMODS.showman
+function SMODS.showman(card_key)
+    if G.GAME.selected_back.effect.center.key == "b_fmod_recursive" then
+        return true
+    end
+    return show(card_key)
+end
+
 ------ misc ------
 
 function SMODS.current_mod.reset_game_globals(run_start)

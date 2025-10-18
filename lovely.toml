@@ -8,11 +8,11 @@ priority = 0
 [[patches]]
 [patches.pattern]
 target = '=[SMODS _ "src/game_object.lua"]'
-pattern = "if G.GAME.used_vouchers.v_omen_globe and pseudorandom('omen_globe') > 0.8 then"
-position = "at"
-payload = '''if G.GAME.used_vouchers.v_fmod_circus and pseudorandom("circus") > 0.8 then
-    _card = {set = "Silly", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "sil1"}
-elseif G.GAME.used_vouchers.v_omen_globe and pseudorandom('omen_globe') > 0.8 then'''
+pattern = '''if G.GAME.used_vouchers.v_omen_globe and pseudorandom('omen_globe') > 0.8 then
+    _card = {set = "Spectral", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "ar2"}'''
+position = "after"
+payload = '''elseif G.GAME.used_vouchers.v_fmod_circus and pseudorandom("circus") > 0.8 then
+    _card = {set = "Silly", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "sil1"}'''
 match_indent = true
 times = 1
 
@@ -21,15 +21,9 @@ times = 1
 [[patches]]
 [patches.pattern]
 target = 'functions/common_events.lua'
-pattern = '''G.GAME.current_round.reroll_cost_increase = G.GAME.current_round.reroll_cost_increase or 0
-    if not skip_increment then G.GAME.current_round.reroll_cost_increase = G.GAME.current_round.reroll_cost_increase + 1 end'''
-position = "at"
-payload = '''if G.GAME.used_vouchers.v_fmod_reroll_superfluity and G.GAME.round_scores.times_rerolled.amt % 2 == 0 then
-    G.GAME.current_round.reroll_cost_increase = G.GAME.current_round.reroll_cost_increase or 0
-else
-    G.GAME.current_round.reroll_cost_increase = G.GAME.current_round.reroll_cost_increase or 0
-    if not skip_increment then G.GAME.current_round.reroll_cost_increase = G.GAME.current_round.reroll_cost_increase + 1 end
-end'''
+pattern = "G.GAME.current_round.reroll_cost_increase = G.GAME.current_round.reroll_cost_increase or 0"
+position = "after"
+payload = "if G.GAME.used_vouchers.v_fmod_reroll_superfluity and G.GAME.round_scores.times_rerolled.amt % 2 == 0 then skip_increment = true end"
 match_indent = true
 times = 1
 
@@ -44,17 +38,8 @@ payload = '''juggler_count = 0,'''
 match_indent = true
 times = 1
 
-# -------- recursive deck --------
-
-[[patches]]
-[patches.regex]
-target = 'functions/common_events.lua'
-pattern = '''and not SMODS\.showman\(\s*(v\.key|'[^']+')\s*\)'''
-position = "at"
-payload = '''and not (SMODS.showman($1) or G.GAME.selected_back.effect.center.key == "b_fmod_recursive")'''
-times = 4
-
 # -------- fennex deck ---------
+
 [[patches]]
 [patches.pattern]
 target = "functions/common_events.lua"
@@ -205,8 +190,8 @@ times = 1
 [patches.pattern]
 target = "functions/common_events.lua"
 pattern = '''if card then drawn = true end'''
-position = "at"
-payload = '''if card and not (LR_UTIL.has_marking(card) == "fmod_pinhole_mark") then drawn = true end'''
+position = "after"
+payload = '''if card and (LR_UTIL.has_marking(card) == "fmod_pinhole_mark") then drawn = false end'''
 match_indent = true
 times = 1
 
@@ -333,11 +318,10 @@ match_indent = true
 [patches.pattern]
 target = "card.lua"
 pattern = '''self.sell_cost = math.max(1, math.floor(self.cost/2)) + (self.ability.extra_value or 0)'''
-position = "at"
+position = "after"
 payload = '''if next(SMODS.find_card("j_fmod_tem_shop")) then
     self.sell_cost = math.max(1, math.floor((self.cost/4) * 3)) + (self.ability.extra_value or 0)
-else
-    self.sell_cost = math.max(1, math.floor(self.cost/2)) + (self.ability.extra_value or 0)
+    print("sell cost evaluated on " .. self.config.center.key)
 end'''
 times = 1
 match_indent = true
