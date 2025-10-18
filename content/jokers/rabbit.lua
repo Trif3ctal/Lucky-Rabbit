@@ -23,10 +23,11 @@ SMODS.Joker {
     cost = 8,
     calculate = function(self, card, context)
         if context.joker_main and next(context.poker_hands["Five of a Kind"]) and card.ability.extra.base < card.ability.extra.max_times then
+            local _card = nil
             G.E_MANAGER:add_event(Event({
                 func =  function()
                 G.playing_card = (G.playing_card and G.playing_card + 1) or 1
-                local _card = copy_card(context.full_hand[1], nil, nil, G.playing_card)
+                _card = copy_card(context.full_hand[1], nil, nil, G.playing_card)
                 _card:add_to_deck()
                 G.deck.config.card_limit = G.deck.config.card_limit + 1
                 table.insert(G.playing_cards, _card)
@@ -43,7 +44,14 @@ SMODS.Joker {
                 message = localize('k_copied_ex'),
                 colour = G.C.CHIPS,
                 card = card,
-                playing_cards_created = { true }
+                func = function()
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            SMODS.calculate_context({ playing_card_added = true, cards = { _card } })
+                            return true
+                        end
+                    }))
+                end
             }
         end
         if context.end_of_round and not context.blueprint then
