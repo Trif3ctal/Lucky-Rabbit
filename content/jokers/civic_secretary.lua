@@ -34,7 +34,7 @@ SMODS.Joker{
 					end
 				end
 			end
-            if total_chips > 0 or total_mult > 0 then
+            if to_big(total_chips) > to_big(0) or to_big(total_mult) > to_big(0) then
                 return {
                     chips = total_chips,
                     mult = total_mult,

@@ -148,6 +148,11 @@ end
 
 ------ hooks ------
 
+-- (starts crying) talisman compatibility
+to_big = to_big or function(x) return x end
+to_number = to_number or function(x) return x end
+
+
 local shuffle_ref = CardArea.shuffle
 function CardArea:shuffle(_seed)
     local g = shuffle_ref(self, _seed)

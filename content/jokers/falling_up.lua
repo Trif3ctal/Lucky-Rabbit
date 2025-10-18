@@ -26,8 +26,8 @@ SMODS.Joker {
         end
         if context.final_scoring_step and not context.blueprint and G.GAME.current_round.hands_left > 0 then
             if SMODS.pseudorandom_probability(card, 'falling_up', 1, card.ability.extra.odds) then
-                hand_chips = 0
-                mult = 0
+                hand_chips = to_big(0)
+                mult = to_big(0)
                 SMODS.scale_card(card, {
                     ref_table = card.ability.extra,
                     ref_value = 'xmult',
