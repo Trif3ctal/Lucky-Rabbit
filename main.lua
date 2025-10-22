@@ -162,6 +162,7 @@ local files = {
             "elimination_game",
             "girl_next_door",
             "prodigy_child",
+            "nightmare_eyes",
             "steve",
             "pomni",
             "ransome",

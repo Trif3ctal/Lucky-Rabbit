@@ -559,6 +559,15 @@ return {
                     "have their rank, suit, {C:attention}Enhancement{}, or",
                     "{C:red}Seal{} randomly changed (if present)"
                 }
+            },
+            j_fmod_nightmare_eyes = {
+                name = "Nightmare Eyes",
+                text = {
+                    "If no {C:attention}discards{} are remaining",
+                    "on {C:attention}final{} hand of round, give",
+                    "{X:mult,C:white}X#1#{} Mult per remaining card",
+                    "in deck {C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
+                }
             }
         },
         Tag = {
