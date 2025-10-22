@@ -550,6 +550,15 @@ return {
                     "{X:mult,C:white}X#3#{} Mult when a {C:attention}King{} or {C:attention}Queen",
                     "is scored {C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"
                 }
+            },
+            j_fmod_prodigy_child = {
+                name = "Prodigy Child",
+                text = {
+                    "{C:mult}+#1#{} Mult",
+                    "{C:attention}Scored{} cards have a {C:green}#2# in #3#{} chance to",
+                    "have their rank, suit, {C:attention}Enhancement{}, or",
+                    "{C:red}Seal{} randomly changed (if present)"
+                }
             }
         },
         Tag = {

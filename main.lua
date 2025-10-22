@@ -161,6 +161,7 @@ local files = {
             "pet_rock",
             "elimination_game",
             "girl_next_door",
+            "prodigy_child",
             "steve",
             "pomni",
             "ransome",
