@@ -568,6 +568,16 @@ return {
                     "{X:mult,C:white}X#1#{} Mult per remaining card",
                     "in deck {C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
                 }
+            },
+            j_fmod_speedrun = {
+                name = "Speedrun",
+                text = {
+                    "If round is completed within {C:attention}30",
+                    "seconds, gives {C:money}$#2#{} and {C:attention}+#1#{} temporary",
+                    "{C:attention}hand size{}. If round takes more than",
+                    "{C:attention}60{} seconds, it must be {C:red}replayed{} with",
+                    "{C:attention}-#3#{} temporary hand size"
+                }
             }
         },
         Tag = {
@@ -1255,7 +1265,8 @@ return {
             a_fmod_money = "+$#1#",
             a_fmod_booster = "+#1# Booster",
             a_fmod_skee = "+#1# Tickets!",
-            a_fmod_uses = "-#1# Use"
+            a_fmod_uses = "-#1# Use",
+            a_fmod_hsize_loss = "-#1# Hand Size",
         },
         labels = {
             fmod_ink_mark = "Inked",

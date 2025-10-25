@@ -156,6 +156,7 @@ local files = {
             "double_down",
             "edibles",
             "assassin",
+            "speedrun",
             "bouncer",
             "falling_up",
             "pet_rock",
