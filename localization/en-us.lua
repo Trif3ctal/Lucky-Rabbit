@@ -578,7 +578,14 @@ return {
                     "{C:attention}60{} seconds, it must be {C:red}replayed{} with",
                     "{C:attention}-#3#{} temporary hand size"
                 }
-            }
+            },
+            j_fmod_gumball_machine = {
+                name = "Gumball Machine",
+                text = {
+                    "{V:1}Silly Packs{} will always",
+                    "contain a {C:attention}Juggler{} card"
+                }
+            },
         },
         Tag = {
             tag_fmod_appraisal = {

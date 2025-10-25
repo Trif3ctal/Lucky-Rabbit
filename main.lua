@@ -132,6 +132,7 @@ local files = {
             "jazzercise",
             "trans_joker",
             "litterbug",
+            "gumball_machine",
             "sad_clown",
             "tax_return",
             "dating_sim",

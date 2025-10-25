@@ -12,7 +12,18 @@ SMODS.Booster {
     draw_hand = true,
     kind = "Silly",
     create_card = function(self, card, i)
-        return SMODS.create_card({set = "Silly", skip_materialize = true, area = G.pack_cards})
+        if next(SMODS.find_card('j_fmod_gumball_machine')) and i == 1 then
+            return {
+                key = 'c_fmod_juggler',
+                skip_materialize = true,
+                area = G.pack_cards
+            }
+        end
+        return {
+            set = "Silly",
+            skip_materialize = true,
+            area = G.pack_cards
+        }
     end,
     ease_background_colour = function(self)
         ease_colour(G.C.DYN_UI.MAIN, HEX("d66a5e"))
@@ -34,7 +45,18 @@ SMODS.Booster {
     draw_hand = true,
     kind = "Silly",
     create_card = function(self, card, i)
-        return SMODS.create_card({set = "Silly", skip_materialize = true, area = G.pack_cards})
+        if next(SMODS.find_card('j_fmod_gumball_machine')) and i == 1 then
+            return {
+                key = 'c_fmod_juggler',
+                skip_materialize = true,
+                area = G.pack_cards
+            }
+        end
+        return {
+            set = "Silly",
+            skip_materialize = true,
+            area = G.pack_cards
+        }
     end,
     ease_background_colour = function(self)
         ease_colour(G.C.DYN_UI.MAIN, HEX("d66a5e"))
@@ -56,7 +78,18 @@ SMODS.Booster {
     draw_hand = true,
     kind = "Silly",
     create_card = function(self, card, i)
-        return SMODS.create_card({set = "Silly", skip_materialize = true, area = G.pack_cards})
+        if next(SMODS.find_card('j_fmod_gumball_machine')) and i == 1 then
+            return {
+                key = 'c_fmod_juggler',
+                skip_materialize = true,
+                area = G.pack_cards
+            }
+        end
+        return {
+            set = "Silly",
+            skip_materialize = true,
+            area = G.pack_cards
+        }
     end,
     ease_background_colour = function(self)
         ease_colour(G.C.DYN_UI.MAIN, HEX("d66a5e"))
@@ -78,7 +111,18 @@ SMODS.Booster {
     draw_hand = true,
     kind = "Silly",
     create_card = function(self, card, i)
-        return SMODS.create_card({set = "Silly", skip_materialize = true, area = G.pack_cards})
+        if next(SMODS.find_card('j_fmod_gumball_machine')) and i == 1 then
+            return {
+                key = 'c_fmod_juggler',
+                skip_materialize = true,
+                area = G.pack_cards
+            }
+        end
+        return {
+            set = "Silly",
+            skip_materialize = true,
+            area = G.pack_cards
+        }
     end,
     ease_background_colour = function(self)
         ease_colour(G.C.DYN_UI.MAIN, HEX("d66a5e"))
@@ -100,7 +144,18 @@ SMODS.Booster {
     draw_hand = true,
     kind = "Silly",
     create_card = function(self, card, i)
-        return SMODS.create_card({set = "Silly", skip_materialize = true, area = G.pack_cards})
+        if next(SMODS.find_card('j_fmod_gumball_machine')) and i == 1 then
+            return {
+                key = 'c_fmod_juggler',
+                skip_materialize = true,
+                area = G.pack_cards
+            }
+        end
+        return {
+            set = "Silly",
+            skip_materialize = true,
+            area = G.pack_cards
+        }
     end,
     ease_background_colour = function(self)
         ease_colour(G.C.DYN_UI.MAIN, HEX("d66a5e"))
@@ -122,7 +177,18 @@ SMODS.Booster {
     draw_hand = true,
     kind = "Silly",
     create_card = function(self, card, i)
-        return SMODS.create_card({set = "Silly", skip_materialize = true, area = G.pack_cards})
+        if next(SMODS.find_card('j_fmod_gumball_machine')) and i == 1 then
+            return {
+                key = 'c_fmod_juggler',
+                skip_materialize = true,
+                area = G.pack_cards
+            }
+        end
+        return {
+            set = "Silly",
+            skip_materialize = true,
+            area = G.pack_cards
+        }
     end,
     ease_background_colour = function(self)
         ease_colour(G.C.DYN_UI.MAIN, HEX("d66a5e"))
@@ -144,7 +210,18 @@ SMODS.Booster {
     draw_hand = true,
     kind = "Silly",
     create_card = function(self, card, i)
-        return SMODS.create_card({set = "Silly", skip_materialize = true, area = G.pack_cards})
+        if next(SMODS.find_card('j_fmod_gumball_machine')) and i == 1 then
+            return {
+                key = 'c_fmod_juggler',
+                skip_materialize = true,
+                area = G.pack_cards
+            }
+        end
+        return {
+            set = "Silly",
+            skip_materialize = true,
+            area = G.pack_cards
+        }
     end,
     ease_background_colour = function(self)
         ease_colour(G.C.DYN_UI.MAIN, HEX("d66a5e"))
@@ -166,6 +243,13 @@ SMODS.Booster {
     draw_hand = true,
     kind = "Silly",
     create_card = function(self, card, i)
+        if next(SMODS.find_card('j_fmod_gumball_machine')) and i == 1 then
+            return {
+                key = 'c_fmod_juggler',
+                skip_materialize = true,
+                area = G.pack_cards
+            }
+        end
         return SMODS.create_card({set = "Silly", skip_materialize = true, area = G.pack_cards})
     end,
     ease_background_colour = function(self)
