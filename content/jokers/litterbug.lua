@@ -24,24 +24,38 @@ SMODS.Joker {
                 card = card
             }
         end
-
         if context.press_play and #G.hand.cards - #G.hand.highlighted > 0 then
             local selected_card = nil
+            local cards = {}
             G.E_MANAGER:add_event(Event({
                 func = function()
-                    selected_card = pseudorandom_element(G.hand.cards, pseudoseed('litterbug'))
-                    G.hand:add_to_highlighted(selected_card, true)
-                    play_sound('card1', 1)
-                    if not selected_card.debuff and not SMODS.has_no_rank(selected_card) then
-                        card.ability.extra.mult_gain = (0.01 * selected_card.base.nominal)
-                        SMODS.scale_card(card, {
-                            ref_table = card.ability.extra,
-                            ref_value = 'mult',
-                            scalar_value = 'mult_gain',
-                            message_key = 'a_xmult',
-                        })
+                    for i = 1, #G.hand.cards do
+                        if not G.hand.cards[i].highlighted then
+                            table.insert(cards, G.hand.cards[i])
+                        end
                     end
-                    G.FUNCS.discard_cards_from_highlighted(nil, true)
+                    selected_card = pseudorandom_element(cards, 'litterbug')
+                    if selected_card then
+                        if not selected_card.highlighted then
+                            G.hand:add_to_highlighted(selected_card, true)
+                        end
+                        play_sound('card1', 1)
+                        if not selected_card.debuff and not SMODS.has_no_rank(selected_card) then
+                            card.ability.extra.mult_gain = (0.01 * selected_card.base.nominal)
+                            SMODS.scale_card(card, {
+                                ref_table = card.ability.extra,
+                                ref_value = 'mult',
+                                scalar_value = 'mult_gain',
+                                message_key = 'a_xmult',
+                            })
+                        end
+                    end
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            if card == SMODS.find_card('j_fmod_litterbug')[#SMODS.find_card('j_fmod_litterbug')] then G.FUNCS.discard_cards_from_highlighted(nil, true) end
+                            return true
+                        end
+                    }))
                     return true
                 end
             }))
