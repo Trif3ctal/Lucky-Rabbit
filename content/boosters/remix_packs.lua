@@ -12,14 +12,16 @@ SMODS.Booster {
     pos = { x = 0, y = 2 },
     draw_hand = true,
     kind = "Remix",
-    create_card = function(self, card, i) -- this implementation SUCKS
-        local types = {"Joker", "Playing Card"}
-        for k, v in ipairs(SMODS.ConsumableType.ctype_buffer) do
-            types[#types + 1] = v
-        end
-        for k = 1, i do
-            return SMODS.create_card({set = pseudorandom_element(types, "remix_sm_" .. k), skip_materialize = true, area = G.pack_cards})
-        end
+    create_card = function(self, card, i)
+        local types = {"Joker", "Playing Card", "Consumeables"}
+        local set = pseudorandom_element(types, "remix_sm")
+        return {
+            set = set,
+            skip_materialize = true,
+            area = G.pack_cards,
+            seal = set == 'Playing Card' and SMODS.poll_seal({ mod = 10, key = 'rmx_seal' }),
+            edition = set == 'Playing Card' and poll_edition('rmx_edition', 2, true)
+        }
     end,
     ease_background_colour = function(self)
         ease_colour(G.C.DYN_UI.MAIN, HEX("c3d7e3"))
@@ -40,14 +42,16 @@ SMODS.Booster {
     pos = { x = 1, y = 2 },
     draw_hand = true,
     kind = "Remix",
-    create_card = function(self, card, i) -- this implementation SUCKS
-        local types = {"Joker", "Playing Card"}
-        for k, v in ipairs(SMODS.ConsumableType.ctype_buffer) do
-            types[#types + 1] = v
-        end
-        for k = 1, i do
-            return SMODS.create_card({set = pseudorandom_element(types, "remix_sm_" .. k), skip_materialize = true, area = G.pack_cards})
-        end
+    create_card = function(self, card, i)
+        local types = {"Joker", "Playing Card", "Consumeables"}
+        local set = pseudorandom_element(types, "remix_sm")
+        return {
+            set = set,
+            skip_materialize = true,
+            area = G.pack_cards,
+            seal = set == 'Playing Card' and SMODS.poll_seal({ mod = 10, key = 'rmx_seal' }),
+            edition = set == 'Playing Card' and poll_edition('rmx_edition', 2, true)
+        }
     end,
     ease_background_colour = function(self)
         ease_colour(G.C.DYN_UI.MAIN, HEX("d76c1a"))
@@ -68,14 +72,16 @@ SMODS.Booster {
     pos = { x = 2, y = 2 },
     draw_hand = true,
     kind = "Remix",
-    create_card = function(self, card, i) -- this implementation SUCKS
-        local types = {"Joker", "Playing Card"}
-        for k, v in ipairs(SMODS.ConsumableType.ctype_buffer) do
-            types[#types + 1] = v
-        end
-        for k = 1, i do
-            return SMODS.create_card({set = pseudorandom_element(types, "remix_sm_" .. k), skip_materialize = true, area = G.pack_cards})
-        end
+    create_card = function(self, card, i)
+        local types = {"Joker", "Playing Card", "Consumeables"}
+        local set = pseudorandom_element(types, "remix_jm")
+        return {
+            set = set,
+            skip_materialize = true,
+            area = G.pack_cards,
+            seal = set == 'Playing Card' and SMODS.poll_seal({ mod = 10, key = 'rmx_seal' }),
+            edition = set == 'Playing Card' and poll_edition('rmx_edition', 2, true)
+        }
     end,
     ease_background_colour = function(self)
         ease_colour(G.C.DYN_UI.MAIN, HEX("ab7de5"))
@@ -96,14 +102,16 @@ SMODS.Booster {
     pos = { x = 3, y = 2 },
     draw_hand = true,
     kind = "Remix",
-    create_card = function(self, card, i) -- this implementation SUCKS
-        local types = {"Joker", "Playing Card"}
-        for k, v in ipairs(SMODS.ConsumableType.ctype_buffer) do
-            types[#types + 1] = v
-        end
-        for k = 1, i do
-            return SMODS.create_card({set = pseudorandom_element(types, "remix_sm_" .. k), skip_materialize = true, area = G.pack_cards})
-        end
+    create_card = function(self, card, i)
+        local types = {"Joker", "Playing Card", "Consumeables"}
+        local set = pseudorandom_element(types, "remix_mg")
+        return {
+            set = set,
+            skip_materialize = true,
+            area = G.pack_cards,
+            seal = set == 'Playing Card' and SMODS.poll_seal({ mod = 10, key = 'rmx_seal' }),
+            edition = set == 'Playing Card' and poll_edition('rmx_edition', 2, true)
+        }
     end,
     ease_background_colour = function(self)
         ease_colour(G.C.DYN_UI.MAIN, HEX("59c69a"))
