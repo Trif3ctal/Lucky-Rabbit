@@ -165,6 +165,7 @@ local files = {
             "girl_next_door",
             "prodigy_child",
             "nightmare_eyes",
+            "backpack_hero",
             "steve",
             "pomni",
             "ransome",

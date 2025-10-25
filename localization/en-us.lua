@@ -586,6 +586,14 @@ return {
                     "contain a {C:attention}Juggler{} card"
                 }
             },
+            j_fmod_backpack_hero = {
+                name = "Backpack Hero",
+                text = {
+                    "This Joker gains {X:mult,C:white}X#1#{} Mult for",
+                    "each unique {C:attention}suit/rank combination",
+                    "scored {C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
+                }
+            }
         },
         Tag = {
             tag_fmod_appraisal = {
