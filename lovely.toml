@@ -27,17 +27,6 @@ payload = "if G.GAME.used_vouchers.v_fmod_reroll_superfluity and G.GAME.round_sc
 match_indent = true
 times = 1
 
-# -------- juggler --------
-
-[[patches]]
-[patches.pattern]
-target = 'game.lua'
-pattern = '''used_vouchers = {},'''
-position = "after"
-payload = '''juggler_count = 0,'''
-match_indent = true
-times = 1
-
 # -------- fennex deck ---------
 
 [[patches]]
@@ -70,16 +59,6 @@ end
 '''
 
 # -------- trapeze --------
-
-[[patches]]
-[patches.pattern]
-target = 'game.lua'
-pattern = '''juggler_count = 0,'''
-position = "after"
-payload = '''trapeze_count = 0,'''
-match_indent = true
-times = 1
-
 [[patches]]
 [patches.pattern]
 target = "functions/common_events.lua"
@@ -89,33 +68,6 @@ payload = '''if center.key == 'c_fmod_trapeze' and G.GAME.trapeze_count >= 5 the
     center = G.P_CENTERS[pseudorandom_element({"c_soul", "c_fmod_soully", MINTY and "c_minty_wand", GB and "c_gb_shatter", next(SMODS.find_mod("VISIBILITY")) and "c_vis_hamsa"}, pseudoseed("trapeze"))]
     G.GAME.trapeze_count = 0
 end'''
-match_indent = true
-times = 1
-
-# -------- saffron shield blind --------
-
-[[patches]]
-[patches.pattern]
-target = "game.lua"
-pattern = "most_played_poker_hand = 'High Card',"
-position = "after"
-payload = "most_played_rank = 'Ace',"
-match_indent = true
-times = 1
-
-[[patches]]
-[patches.pattern]
-target = "functions/state_events.lua"
-pattern = "G.GAME.current_round.most_played_poker_hand = _handname"
-position = "after"
-payload = '''local _rankname, played = 'Ace', -1
-            for k, v in pairs(G.GAME.cards_played) do
-                if G.GAME.cards_played[k].total > played then
-                    played = G.GAME.cards_played[k].total
-                    _rankname = k
-                end
-            end
-        G.GAME.current_round.most_played_rank = _rankname'''
 match_indent = true
 times = 1
 
@@ -192,30 +144,6 @@ target = "functions/common_events.lua"
 pattern = '''if card then drawn = true end'''
 position = "after"
 payload = '''if card and (LR_UTIL.has_marking(card) == "fmod_pinhole_mark") then drawn = false end'''
-match_indent = true
-times = 1
-
-# -------- hyperfixation --------
-
-[[patches]]
-[patches.pattern]
-target = 'game.lua'
-pattern = '''trapeze_count = 0,'''
-position = "after"
-payload = '''hyperfix_card = {
-    rank = 'Ace',
-    suit = 'Spades',
-},'''
-match_indent = true
-times = 1
-
-[[patches]]
-[patches.pattern]
-target = 'game.lua'
-pattern = '''idol_card = {suit = 'Spades', rank = 'Ace'},'''
-position = "after"
-payload = '''hyperfix_card = {rank = '2'},
-'''
 match_indent = true
 times = 1
 

@@ -16,7 +16,7 @@ end
 
 function LR_UTIL.reset_hyperfix_rank()
     -- If this function somehow isn't working, fail fast
-    G.GAME.current_round.hyperfix_card.rank = "This is a bug"
+    G.GAME.current_round.hyperfix_card = {rank = "This is a bug"}
     local valid_hyperfix_cards = {}
     for k, v in ipairs(G.playing_cards) do
         if not SMODS.has_no_rank(v) and v.base.value ~= G.GAME.hyperfix_card.rank then
@@ -266,8 +266,23 @@ end
 
 function SMODS.current_mod.reset_game_globals(run_start)
     if run_start then
+        G.GAME.hyperfix_card = {
+            rank = 'Ace',
+            suit = 'Spades'
+        }
+        G.GAME.juggler_count = 0
+        G.GAME.trapeze_count = 0
         G.GAME.hyperfix_card.rank, G.GAME.hyperfix_card.suit = LR_UTIL.reset_hyperfix_full_card()
     end
+    G.GAME.current_round.most_played_rank = 'Ace'
+    local _rankname, played = 'Ace', -1
+    for k, v in pairs(G.GAME.cards_played) do
+        if G.GAME.cards_played[k].total > played then
+            played = G.GAME.cards_played[k].total
+            _rankname = k
+        end
+    end
+    G.GAME.current_round.most_played_rank = _rankname
     LR_UTIL.reset_hyperfix_rank()
     LR_UTIL.reset_ncradle_card()
 end
