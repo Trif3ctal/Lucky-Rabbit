@@ -48,7 +48,8 @@ SMODS.Joker {
 				}
 			end
 		end
-		if context.end_of_round and G.GAME.blind.boss and not context.blueprint then
+		if context.end_of_round and context.cardarea == G.jokers
+		and G.GAME.blind.boss and not context.blueprint then
 			card.ability.extra.played_hands = {}
 			card.ability.extra.mult = 0
 			return {

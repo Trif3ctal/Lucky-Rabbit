@@ -33,7 +33,8 @@ SMODS.Joker {
                 }
             end
 		end
-        if context.end_of_round and card.ability.extra.total_size > 0 then
+        if context.end_of_round and context.cardarea == G.jokers
+        and card.ability.extra.total_size > 0 then
             G.hand:change_size(-card.ability.extra.total_size)
             card.ability.extra.total_size = 0
         end
