@@ -40,6 +40,7 @@ SMODS.Joker{
     pos = { x = 1, y = 1 },
     cost = 6,
     blueprint_compat = true,
+    perishable_compat = false,
     calculate = function(self, card, context)
         if context.repetition and context.cardarea == G.play then
             local hyperfix_id = SMODS.Ranks[G.GAME.hyperfix_card.rank].id
