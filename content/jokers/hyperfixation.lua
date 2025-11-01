@@ -9,12 +9,23 @@ SMODS.Joker{
         }
     },
     loc_vars = function(self, info_queue, card)
+        if not G.GAME.hyperfix_card then
+            G.GAME.hyperfix_card = {
+                rank = 'Ace',
+                suit = 'Spades'
+            }
+        end
+        if not G.GAME.current_round.hyperfix_card then
+            G.GAME.current_round.hyperfix_card = {
+                rank = '2'
+            }
+        end
         return {
             vars = {
-                localize(G.GAME.hyperfix_card.rank, 'ranks'), 
+                localize(G.GAME.hyperfix_card.rank, 'ranks'),
                 localize(G.GAME.hyperfix_card.suit, 'suits_plural'),
                 card.ability.extra.retriggers,
-                G.GAME.current_round.hyperfix_card.rank and localize(G.GAME.current_round.hyperfix_card.rank, 'ranks') or 'None',
+                localize(G.GAME.current_round.hyperfix_card.rank, 'ranks'),
                 card.ability.extra.amt_needed,
                 card.ability.extra.current_amt,
                 card.ability.extra.retriggers == 1 and "" or "s",
