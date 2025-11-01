@@ -7,6 +7,7 @@ SMODS.Joker {
 	unlocked = true,
 	discovered = false,
 	blueprint_compat = true,
+    perishable_compat = false,
 	config = {
         extra = {
             chip_gain = 10,

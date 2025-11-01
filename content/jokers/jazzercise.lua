@@ -19,6 +19,7 @@ SMODS.Joker{
     pos = { x = 9, y = 2 },
     cost = 4,
     blueprint_compat = false,
+    perishable_compat = false,
     calculate = function(self, card, context)
         if context.remove_playing_cards and not context.blueprint then
             for i = 1, #context.removed do

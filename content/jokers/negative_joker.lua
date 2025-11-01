@@ -19,6 +19,7 @@ SMODS.Joker{
     discovered = false,
     pos = { x = 6, y = 0 },
     blueprint_compat = true,
+    perishable_compat = false,
     cost = 4,
     calculate = function(self, card, context)
         if context.setting_blind and not context.blueprint then
