@@ -249,7 +249,6 @@ pattern = '''self.sell_cost = math.max(1, math.floor(self.cost/2)) + (self.abili
 position = "after"
 payload = '''if next(SMODS.find_card("j_fmod_tem_shop")) then
     self.sell_cost = math.max(1, math.floor((self.cost/4) * 3)) + (self.ability.extra_value or 0)
-    print("sell cost evaluated on " .. self.config.center.key)
 end'''
 times = 1
 match_indent = true
