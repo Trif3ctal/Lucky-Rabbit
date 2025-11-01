@@ -18,6 +18,7 @@ SMODS.Joker{
     pos = { x = 6, y = 2 },
 	cost = 8,
 	blueprint_compat = true,
+    perishable_compat = false,
 	calculate = function(self,card,context)
 		if context.individual and context.cardarea == G.hand and not context.end_of_round and context.other_card:get_id() == 7 then
             if SMODS.pseudorandom_probability(card, 'claw', 1, card.ability.extra.odds, 'fmod_claw') and not context.blueprint then

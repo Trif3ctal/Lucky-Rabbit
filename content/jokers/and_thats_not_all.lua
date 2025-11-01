@@ -16,6 +16,7 @@ SMODS.Joker {
     unlocked = true,
     discovered = false,
     blueprint_compat = true,
+    perishable_compat = false,
     cost = 5,
     enhancement_gate = 'm_bonus',
     calculate = function(self, card, context)
