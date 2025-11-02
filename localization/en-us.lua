@@ -593,6 +593,15 @@ return {
                     "each unique {C:attention}suit/rank combination",
                     "scored {C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
                 }
+            },
+            j_fmod_barbershop_joker = {
+                name = "Barbershop Joker",
+                text = {
+                    "{C:attention}Balances{} {C:chips}Chips{} and {C:mult}Mult{} by {C:purple}#1#%",
+                    "Increases by {C:purple}#2#%{} when an {C:attention}adjacent",
+                    "Joker is triggered {C:inactive}(Resets after",
+                    "{C:inactive}hand played)"
+                }
             }
         },
         Tag = {
@@ -1282,6 +1291,7 @@ return {
             a_fmod_skee = "+#1# Tickets!",
             a_fmod_uses = "-#1# Use",
             a_fmod_hsize_loss = "-#1# Hand Size",
+            a_fmod_balance = "#1#%"
         },
         labels = {
             fmod_ink_mark = "Inked",
