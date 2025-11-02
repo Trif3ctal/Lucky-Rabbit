@@ -169,6 +169,7 @@ local files = {
             "life_star",
             "true_gluttony",
             "barbershop_joker",
+            "ufo_sighting",
             "steve",
             "pomni",
             "ransome",

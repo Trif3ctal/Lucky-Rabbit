@@ -619,6 +619,14 @@ return {
                     "multiplier by {X:purple,C:white}+X#1#{} {C:inactive}(Currently {X:purple,C:white}X#2#{C:inactive})",
                     "{C:inactive}(Must have room)"
                 }
+            },
+            j_fmod_ufo_sighting = {
+                name = "UFO Sighting",
+                text = {
+                    "Level up {C:attention}first hand{} of",
+                    "round if played with {C:money}$#1#",
+                    "or less"
+                }
             }
         },
         Tag = {
