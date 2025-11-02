@@ -609,6 +609,16 @@ return {
                     "Any {C:attention}item{} that affects a {C:attention}suit{}",
                     "now only affects {C:clubs}Clubs{}"
                 }
+            },
+            j_fmod_life_star = {
+                name = "Life Star",
+                text = {
+                    "When a {C:attention}Joker{} or {C:attention}Playing Card{} is",
+                    "{C:attention}destroyed{}, create a copy with a",
+                    "random {C:dark_edition}Edition{} and increase base {C:attention}Blind{}",
+                    "multiplier by {X:purple,C:white}+X#1#{} {C:inactive}(Currently {X:purple,C:white}X#2#{C:inactive})",
+                    "{C:inactive}(Must have room)"
+                }
             }
         },
         Tag = {
