@@ -602,6 +602,13 @@ return {
                     "Joker is triggered {C:inactive}(Resets after",
                     "{C:inactive}hand played)"
                 }
+            },
+            j_fmod_true_gluttony = {
+                name = "True Gluttony",
+                text = {
+                    "Any {C:attention}item{} that affects a {C:attention}suit{}",
+                    "now only affects {C:clubs}Clubs{}"
+                }
             }
         },
         Tag = {

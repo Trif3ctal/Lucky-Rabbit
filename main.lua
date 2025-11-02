@@ -166,6 +166,7 @@ local files = {
             "prodigy_child",
             "nightmare_eyes",
             "backpack_hero",
+            "true_gluttony",
             "barbershop_joker",
             "steve",
             "pomni",

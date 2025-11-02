@@ -262,6 +262,15 @@ function SMODS.showman(card_key)
     return show(card_key)
 end
 
+local issuit = Card.is_suit
+function Card:is_suit(suit, bypass_debuff, flush_calc)
+    local ret = issuit(self, suit, bypass_debuff, flush_calc)
+    if next(SMODS.find_card('j_fmod_true_gluttony')) and not flush_calc then
+        ret = self.base.suit == 'Clubs'
+    end
+    return ret
+end
+
 ------ misc ------
 
 function SMODS.current_mod.reset_game_globals(run_start)
