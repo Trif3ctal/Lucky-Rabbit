@@ -260,6 +260,7 @@ local files = {
             "reaper",
             "recursive",
             "tricky",
+            "remix"
         },
         directory = "content/decks"
     },
@@ -269,6 +270,7 @@ local files = {
             "lunchbreak",
             "boost",
             "appraisal",
+            "vinyl"
         },
         directory = "content/tags"
     },

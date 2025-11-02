@@ -641,6 +641,13 @@ return {
                     "Gives a free",
                     "{V:1}Mega Silly Pack{}"
                 }
+            },
+            tag_fmod_vinyl = {
+                name = "Vinyl Tag",
+                text = {
+                    "Gives a free",
+                    "{C:attention}Mega Remix Pack"
+                }
             }
         },
         Blind = {
@@ -784,6 +791,13 @@ return {
                     "{C:attention}13{} random Cards in",
                     "deck are {C:attention}Marked",
                     "Start with {C:money}$2{} less"
+                }
+            },
+            b_fmod_remix = {
+                name = "Remix Deck",
+                text = {
+                    "Start run with the {C:planet,T:v_fmod_grab_bag}Grab Bag",
+                    "and {C:attention,T:v_fmod_gachapon}Gachapon{} Vouchers"
                 }
             }
         },
