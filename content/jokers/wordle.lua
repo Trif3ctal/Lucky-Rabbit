@@ -16,6 +16,7 @@ SMODS.Joker{
     pos = { x = 9, y = 1 },
     cost = 4,
     blueprint_compat = true,
+    perishable_compat = false,
     calculate = function(self, card, context)
         if context.joker_main then
             return {

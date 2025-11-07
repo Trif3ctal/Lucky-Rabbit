@@ -61,37 +61,25 @@ function LR_UTIL.reset_hyperfix_full_card()
 end
 
 function LR_UTIL.get_food_jokers(seed)
-    local possible_jokers = {
-        'j_gros_michel',
-        'j_egg',
-        'j_ice_cream',
-        'j_cavendish',
-        'j_turtle_bean',
-        'j_diet_cola',
-        'j_popcorn',
-        'j_ramen',
-        'j_selzer',
-        'j_fmod_pub_burger'
-    }
-    if G.P_CENTER_POOLS.Joker then for k, v in pairs(G.P_CENTER_POOLS.Joker) do
-        if v.pools and v.pools.Food then
-            possible_jokers[#possible_jokers+1] = v.key
+    local possible_jokers = {}
+    for _, v in ipairs(get_current_pool('Food', nil, nil, seed)) do
+        if v ~= 'UNAVAILABLE' then
+            table.insert(possible_jokers, v)
         end
     end
-    end
-    local key = pseudorandom_element(possible_jokers, pseudoseed(seed)) or 'j_gros_michel'
+    local key = pseudorandom_element(possible_jokers, pseudoseed(seed))
+    if key == 'j_joker' then key = 'j_gros_michel' end
     return key
 end
 
 function LR_UTIL.get_fmod_legendaries(seed)
     local possible_jokers = {}
-    if G.P_CENTER_POOLS.Joker then for k, v in pairs(G.P_CENTER_POOLS.Joker) do
-        if v.pools and v.pools.Fmod_Legendary then
-            possible_jokers[#possible_jokers+1] = v.key
+    for _, v in ipairs(get_current_pool('Fmod_Legendary', nil, nil, seed)) do
+        if v ~= 'UNAVAILABLE' then
+            table.insert(possible_jokers, v)
         end
     end
-    end
-    local key = pseudorandom_element(possible_jokers, pseudoseed(seed)) or 'j_fmod_steve'
+    local key = pseudorandom_element(possible_jokers, pseudoseed(seed))
     return key
 end
 
