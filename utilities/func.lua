@@ -146,6 +146,14 @@ function LR_UTIL.marking_tooltip(mark)
     }
 end
 
+function LR_UTIL.remove_marking(card)
+    for k, _ in pairs(card and card.ability or {}) do
+        if LR_UTIL.is_marking(k) then
+            card.ability[k] = nil
+        end
+    end
+end
+
 ------ hooks ------
 
 -- (starts crying) talisman compatibility

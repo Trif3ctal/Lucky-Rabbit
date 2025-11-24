@@ -282,3 +282,14 @@ for i=1, #SMODS.find_card("j_fmod_double_down") do
 end'''
 times = 2
 match_indent = true
+
+
+# -------- prevent a card from having multiple markings when copied --------
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = 'new_card:set_base(other.config.card)'
+position = "after"
+match_indent = true
+payload = "LR_UTIL.remove_marking(new_card)"
