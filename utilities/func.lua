@@ -230,9 +230,6 @@ function end_round()
             end
         end
     end
-    if #remove_temp > 0 then
-        SMODS.calculate_context({ remove_playing_cards = true, removed = remove_temp })
-    end
 end
 
 local flip = Card.flip
