@@ -18,4 +18,18 @@ SMODS.Joker {
             end
         end
     end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            reminder_text = {
+                { text = "(" },
+                { ref_table = "card.joker_display_values", ref_value = "active" },
+                { text = ")" },
+            },
+            calc_function = function(card)
+                card.joker_display_values.active = G.GAME and G.GAME.current_round.hands_left <= 1 and
+                    localize("jdis_active") or localize("jdis_inactive")
+            end,
+        }
+    end
 }
