@@ -105,4 +105,25 @@ SMODS.Joker {
             end
         end
     end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            text = {
+                { text = "(" },
+                { ref_table = "card.ability.extra",              ref_value = "uses" },
+                { text = "/" },
+                { ref_table = "card.joker_display_values", ref_value = "start_count" },
+                { text = ")" },
+            },
+            reminder_text = {
+                { text = "(" },
+                { ref_table = "card.joker_display_values", ref_value = "localized_text", colour = G.C.ORANGE },
+                { text = ")" },
+            },
+            calc_function = function(card)
+                card.joker_display_values.start_count = card.joker_display_values.start_count or card.ability.extra.uses
+                card.joker_display_values.localized_text = localize("Four of a Kind", 'poker_hands')
+            end,
+        }
+    end
 }

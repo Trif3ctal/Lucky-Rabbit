@@ -35,5 +35,28 @@ SMODS.Joker {
                 end
             end
         end
-	end
+	end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            text = {
+                { ref_table = "card.joker_display_values", ref_value = "count", retrigger_type = "mult" },
+                { text = "x",                              scale = 0.35 },
+                { text = "$1",                             colour = G.C.GOLD },
+            },
+            calc_function = function(card)
+                local count = 0
+                local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+                if text ~= 'Unknown' then
+                    for _, scoring_card in pairs(scoring_hand) do
+                        if scoring_card.ability.detective_played then
+                            count = count +
+                                JokerDisplay.calculate_card_triggers(scoring_card, scoring_hand)
+                        end
+                    end
+                end
+                card.joker_display_values.count = count
+            end
+        }
+    end
 }

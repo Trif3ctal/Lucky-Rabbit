@@ -21,5 +21,20 @@ SMODS.Joker {
                 }
             end
         end
-    end
+    end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            text = {
+                border_nodes = {
+                    { text = "X" },
+                    { ref_table = "card.joker_display_values", ref_value = "xmult", retrigger_type = "exp" }
+                }
+            },
+            calc_function = function(card)
+                local xmult = card.ability.extra.xmult * ((G.deck and G.deck.cards) and #G.deck.cards or 52)
+                card.joker_display_values.xmult = xmult > 1 and xmult or 1
+            end
+        }
+    end,
 }

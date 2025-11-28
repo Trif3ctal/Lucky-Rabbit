@@ -64,7 +64,21 @@ SMODS.Joker {
                 message = localize('k_reset'),
             }
         end
-    end
+    end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            reminder_text = {
+                { text = "(" },
+                { ref_table = "card.joker_display_values", ref_value = "localized_text", colour = lighten(G.C.SUITS[(G.GAME.current_round.ncradle_card or {}).suit or 'Spades'], 0.35) },
+                { text = ")" },
+            },
+            calc_function = function(card)
+                local suit = (G.GAME.current_round.ncradle_card or {}).suit or 'Spades'
+                card.joker_display_values.localized_text = localize(suit, 'suits_plural')
+            end
+        }
+    end,
 }
 
 function LR_UTIL.reset_ncradle_card()

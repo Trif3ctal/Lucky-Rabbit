@@ -27,14 +27,20 @@ SMODS.Joker {
                     colour = G.C.RED
                 }
             else
-                SMODS.scale_card(card, {
-                    operation = '-',
-                    ref_table = card.ability.extra,
-                    ref_value = 'xmult',
-                    scalar_value = 'mult_loss',
-                    message_key = 'a_xmult_minus',
-                    message_colour = G.C.MULT
-                })
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'before',
+                    func = function()
+                        SMODS.scale_card(card, {
+                            operation = '-',
+                            ref_table = card.ability.extra,
+                            ref_value = 'xmult',
+                            scalar_value = 'mult_loss',
+                            message_key = 'a_xmult_minus',
+                            message_colour = G.C.MULT
+                        })
+                        return true
+                    end
+                }))
             end
         end
         if context.joker_main then
@@ -42,5 +48,18 @@ SMODS.Joker {
                 xmult = card.ability.extra.xmult
             }
         end
+    end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            text = {
+                {
+                    border_nodes = {
+                        { text = "X" },
+                        { ref_table = "card.ability.extra", ref_value = "xmult", retrigger_type = "exp" }
+                    }
+                }
+            }
+        }
     end
 }

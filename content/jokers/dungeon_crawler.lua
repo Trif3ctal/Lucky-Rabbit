@@ -72,5 +72,18 @@ SMODS.Joker {
                 end
             end
 		end
+	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			text = {
+            { text = "(", colour = G.C.UI.TEXT_INACTIVE },
+            { ref_table = "card.joker_display_values", ref_value = "localized_text", colour = lighten(G.C.SUITS["Spades"], 0.35) },
+            { text = ")", colour = G.C.UI.TEXT_INACTIVE }
+        },
+		calc_function = function(card)
+			card.joker_display_values.localized_text = localize("Spades", 'suits_plural')
+		end
+		}
 	end
 }

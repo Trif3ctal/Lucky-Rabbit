@@ -33,6 +33,30 @@ SMODS.Joker {
             card:set_cost()
             play_sound("coin" .. pseudorandom("lottery3", 1, 7))
         end
-    end
+    end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            reminder_text = {
+                { text = "(" },
+                { text = "$",         colour = G.C.GOLD },
+                { ref_table = "card", ref_value = "sell_cost", colour = G.C.GOLD },
+                { text = ")" },
+            },
+            reminder_text_config = { scale = 0.35 },
+            extra = {
+                {
+                    { text = "(" },
+                    { ref_table = "card.joker_display_values", ref_value = "odds" },
+                    { text = ")" },
+                }
+            },
+            extra_config = { colour = G.C.GREEN, scale = 0.3 },
+            calc_function = function(card)
+                local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'bloodstone')
+                card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { numerator, denominator } }
+            end
+        }
+    end,
 }
 
