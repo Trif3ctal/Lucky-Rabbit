@@ -282,3 +282,30 @@ for i=1, #SMODS.find_card("j_fmod_double_down") do
 end'''
 times = 2
 match_indent = true
+
+
+# -------- prevent a card from having multiple markings when copied --------
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = 'new_card:set_base(other.config.card)'
+position = "after"
+match_indent = true
+payload = "LR_UTIL.remove_marking(new_card)"
+
+
+# -------- trapeze properly becomes soully when copied --------
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = "new_card:set_ability(other.config.center)"
+position = "after"
+match_indent = true
+payload = '''
+if other.config.center.key == 'c_fmod_trapeze' and G.GAME.trapeze_count >= 5 then
+    new_card:set_ability(G.P_CENTERS[pseudorandom_element({"c_soul", "c_fmod_soully", MINTY and "c_minty_wand", GB and "c_gb_shatter", next(SMODS.find_mod("VISIBILITY")) and "c_vis_hamsa"}, pseudoseed("trapeze"))])
+    G.GAME.trapeze_count = 0
+end
+'''

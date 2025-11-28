@@ -134,8 +134,8 @@ return {
                 name = "Pomni",
                 text = {
                     "After skipping {C:attention}#2#{} Blinds, {C:attention}-#1#{} Ante",
-                    "{C:green}#3# in #4#{} chance for {C:attention}-#5#{} Antes instead",
-                    "{C:inactive}(Currently {C:attention}#6#{C:inactive}/#2#)"
+                    "{C:green}25%{} chance for {C:attention}-#3#{} Antes instead",
+                    "{C:inactive}(Currently {C:attention}#4#{C:inactive}/#2#)"
                 }
             },
             j_fmod_loonette = {

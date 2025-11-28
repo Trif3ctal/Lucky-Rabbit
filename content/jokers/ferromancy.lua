@@ -1,5 +1,18 @@
 SMODS.Enhancement:take_ownership('m_steel',
     {
+        loc_vars = function(self, info_queue, card)
+            if #SMODS.find_card('j_fmod_ferromancy') > 0 then
+                return {
+                    vars = { SMODS.signed_dollars(card.ability.h_dollars or 5) },
+                    key = 'm_gold'
+                }
+            else
+                return {
+                    vars = { card.ability.h_x_mult or 1.5 },
+                    key = 'm_steel'
+                }
+            end
+        end,
         update = function(self, card, dt)
             if #SMODS.find_card('j_fmod_ferromancy') > 0 then
                 card.ability.h_x_mult = 0
@@ -20,12 +33,13 @@ SMODS.Enhancement:take_ownership('m_gold',
         loc_vars = function(self, info_queue, card)
             if #SMODS.find_card('j_fmod_ferromancy') > 0 then
                 return {
-                    vars = { (card.ability.h_x_mult or 2) },
+                    vars = { card.ability.h_x_mult or 2 },
                     key = 'm_steel'
                 }
             else
                 return {
-                    vars = { '$' .. card.ability.h_dollars },
+                    vars = { SMODS.signed_dollars(card.ability.h_dollars or 3) },
+                    key = 'm_gold'
                 }
             end
         end,

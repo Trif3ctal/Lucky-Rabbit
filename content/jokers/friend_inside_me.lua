@@ -42,14 +42,6 @@ SMODS.Joker {
                 remove = true,
                 message = localize('k_copied_ex'),
                 colour = G.C.CHIPS,
-                func = function()
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            SMODS.calculate_context({ playing_card_added = true, cards = cards })
-                            return true
-                        end
-                    }))
-                end
             }
         end
         if context.end_of_round and context.cardarea == G.jokers and not context.blueprint then

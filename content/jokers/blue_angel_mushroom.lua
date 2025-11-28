@@ -7,6 +7,7 @@ SMODS.Joker {
 	unlocked = true,
 	discovered = false,
 	blueprint_compat = false,
+    eternal_compat = false,
 	config = { extra = { life = 3, uses = 0 } },
 	loc_vars = function(self, info_queue, card)
 		return {

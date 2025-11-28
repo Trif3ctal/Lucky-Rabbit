@@ -13,6 +13,7 @@ SMODS.Joker {
     pos = { x = 8, y = 3 },
     discovered = false,
     blueprint_compat = true,
+    perishable_compat = false,
     cost = 4,
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.mult, card.ability.extra.base, card.ability.extra.discard } }
