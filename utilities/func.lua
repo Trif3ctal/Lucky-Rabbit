@@ -61,23 +61,35 @@ function LR_UTIL.reset_hyperfix_full_card()
 end
 
 function LR_UTIL.get_food_jokers(seed)
-    local possible_jokers = {
-        'j_gros_michel',
-        'j_egg',
-        'j_ice_cream',
-        'j_cavendish',
-        'j_turtle_bean',
-        'j_diet_cola',
-        'j_popcorn',
-        'j_ramen',
-        'j_selzer',
-        'j_fmod_pub_burger'
-    }
-    if G.P_CENTER_POOLS.Joker then for k, v in pairs(G.P_CENTER_POOLS.Joker) do
-        if v.pools and v.pools.Food then
-            possible_jokers[#possible_jokers+1] = v.key
+    local food_jokers
+    if G.P_CENTER_POOLS.Food then
+        -- If another mod makes the Food joker pool exist, use that.
+        -- It might contain jokers that aren't normally considered a Food
+        food_jokers = {}
+        for _, v in ipairs(G.P_CENTER_POOLS.Food) do
+            food_jokers[v.key] = true
         end
+    else
+        -- List of vanilla food jokers.
+        food_jokers = {
+            j_gros_michel = true,
+            j_egg = true,
+            j_ice_cream = true,
+            j_cavendish = true,
+            j_turtle_bean = true,
+            j_diet_cola = true,
+            j_popcorn = true,
+            j_ramen = true,
+            j_selzer = true,
+        }
+        -- For modded food jokers, check if .pools.Food is true instead
     end
+    local possible_jokers = {}
+    for _, v in ipairs(get_current_pool('Joker', nil, nil, seed)) do
+        if v ~= 'UNAVAILABLE'
+        and (food_jokers[v] or (G.P_CENTERS[v].pools and G.P_CENTERS[v].pools.Food)) then
+            table.insert(possible_jokers, v)
+        end
     end
     local key = pseudorandom_element(possible_jokers, pseudoseed(seed)) or 'j_gros_michel'
     return key
@@ -85,13 +97,15 @@ end
 
 function LR_UTIL.get_fmod_legendaries(seed)
     local possible_jokers = {}
-    if G.P_CENTER_POOLS.Joker then for k, v in pairs(G.P_CENTER_POOLS.Joker) do
-        if v.pools and v.pools.Fmod_Legendary then
-            possible_jokers[#possible_jokers+1] = v.key
+    for _, v in ipairs(get_current_pool('Joker', nil, true, seed)) do
+        local joker = G.P_CENTERS[v]
+        if v ~= 'UNAVAILABLE'
+        and G.P_CENTERS[v].pools and G.P_CENTERS[v].pools.Fmod_Legendary then
+            table.insert(possible_jokers, v)
         end
     end
-    end
-    local key = pseudorandom_element(possible_jokers, pseudoseed(seed)) or 'j_fmod_steve'
+    -- like The Soul, if all legendaries are exhausted, return j_joker
+    local key = pseudorandom_element(possible_jokers, pseudoseed(seed)) or 'j_joker'
     return key
 end
 
