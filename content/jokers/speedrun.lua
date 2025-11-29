@@ -27,6 +27,7 @@ SMODS.Joker {
         return { vars = { card.ability.extra.h_size, card.ability.extra.dollars, card.ability.extra.h_size_loss } }
     end,
     calculate = function(self, card, context)
+        -- abandon all hope, ye who enter here
         if context.setting_blind and not context.blueprint then
             card.children.timer = UIBox { definition = { n = G.UIT.ROOT,
                 config = { align = "bm", colour = { 0, 0, 0, 0 } },

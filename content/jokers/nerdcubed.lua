@@ -30,7 +30,9 @@ SMODS.Joker{
         ---@type JDJokerDefinition
         return {
             reminder_text = {
-                { text = "(3)" }
+                { text = "(" },
+                { text = "3", colour = G.C.ORANGE },
+                { text = ")" }
             },
         }
     end,

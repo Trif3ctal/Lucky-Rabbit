@@ -35,7 +35,7 @@ SMODS.Joker {
         return {
             text = {
                 { text = "+" },
-                { ref_table = "card.extra.ability", ref_value = "chips", retrigger_type = "mult" }
+                { ref_table = "card.ability.extra", ref_value = "chips", retrigger_type = "mult" }
             },
             text_config = { colour = G.C.CHIPS },
         }

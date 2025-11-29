@@ -58,5 +58,17 @@ if LR_CONFIG.silly_enabled then
                 end
             end
         end,
+        joker_display_def = function(JokerDisplay)
+            ---@type JDJokerDefinition
+            return {
+                reminder_text = {
+                    { text = "(" },
+                    { ref_table = "card.ability.extra", ref_value = "discards_remaining" },
+                    { text = "/" },
+                    { ref_table = "card.ability.extra", ref_value = "discards" },
+                    { text = ")" },
+                },
+            }
+        end,
     }
 end

@@ -104,5 +104,27 @@ SMODS.Joker {
             end
             delay(0.2)
         end
-    end
+    end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            text = {
+                { text = "+" },
+                { ref_table = "card.ability.extra", ref_value = "mult" }
+            },
+            extra = {
+                {
+                    { text = "(" },
+                    { ref_table = "card.joker_display_values", ref_value = "probability" },
+                    { text = ")" }
+                }
+            },
+            text_config = { colour = G.C.MULT },
+            extra_config = { colour = G.C.GREEN, scale = 0.3 },
+            calc_function = function(card)
+                local num, denom = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'fmod_prodigy')
+                card.joker_display_values.probability = localize { type = 'variable', key = "jdis_odds", vars = { num, denom } }
+            end
+        }
+    end,
 }

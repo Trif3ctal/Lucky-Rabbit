@@ -47,6 +47,16 @@ if LR_CONFIG.enhancements_enabled then
                     colour = G.C.PURPLE
                 }
             end
-        end
+        end,
+        joker_display_def = function(JokerDisplay)
+            ---@type JDJokerDefinition
+            return {
+                reminder_text = {
+                    { text = "(" },
+                    { text = localize("Four of a Kind", "poker_hands") , colour = G.C.ORANGE },
+                    { text = ")" }
+                },
+            }
+        end,
     }
 end

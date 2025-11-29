@@ -58,4 +58,28 @@ SMODS.Joker {
             card.ability.extra.base = 0
         end
     end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            extra = {
+                {
+                    { text = "(" },
+                    { ref_table = "card.joker_display_values", ref_value = "times_left" },
+                    { text = "/" },
+                    { ref_table = "card.joker_display_values", ref_value = "max_times" },
+                    { text = ")" },
+                },
+            },
+            reminder_text = {
+                { text = "(" },
+                { text = localize("Five of a Kind", "poker_hands"),  colour = G.C.ORANGE },
+                { text = ")" }
+            },
+            extra_config = { colour = G.C.UI.TEXT_INACTIVE, scale = 0.3 },
+            calc_function = function(card)
+                card.joker_display_values.times_left = card.ability.extra.max_times - card.ability.extra.base
+                card.joker_display_values.max_times = card.ability.extra.max_times
+            end
+        }
+    end,
 }
