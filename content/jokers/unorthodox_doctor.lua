@@ -65,4 +65,27 @@ SMODS.Joker {
             end
         end
     end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            reminder_text = {
+                { text = "(" },
+                { text = localize("Full House", "poker_hands"), colour = G.C.ORANGE },
+                { text = ")" }
+            },
+            calc_function = function(card)
+                local copied_joker, copied_debuff = JokerDisplay.calculate_blueprint_copy(card)
+                JokerDisplay.copy_display(card, copied_joker, copied_debuff)
+            end,
+            get_blueprint_joker = function(card)
+                if card.ability.extra.copied_id then
+                    for k, v in ipairs(G.jokers.cards) do
+                        if v.sort_id == card.ability.extra.copied_id then
+                            return v
+                        end
+                    end
+                end
+            end
+        }
+    end,
 }

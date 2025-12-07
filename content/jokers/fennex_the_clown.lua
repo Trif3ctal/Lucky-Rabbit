@@ -40,5 +40,18 @@ SMODS.Joker {
     end,
     in_pool = function (self, args)
         return not args or not args.source or args.source ~= 'sou'
+    end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            text = {
+                {
+                    border_nodes = {
+                        { text = "X" },
+                        { ref_table = "card.ability.extra", ref_value = "xmult", retrigger_type = "exp" }
+                    }
+                }
+            },
+        }
     end
 }

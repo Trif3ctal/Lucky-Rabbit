@@ -38,5 +38,22 @@ SMODS.Joker{
             end
             card.ability.extra.flag = true
         end
-    end
+    end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            text = {
+                { text = "+" },
+                { ref_table = "card.ability.extra", ref_value = "chips", retrigger_type = "mult" }
+            },
+            text_config = { colour = G.C.CHIPS },
+            reminder_text = {
+                { text = "(" },
+                { ref_table = "card.ability.extra",              ref_value = "uses" },
+                { text = "/" },
+                { ref_table = "card.ability.extra",              ref_value = "rounds" },
+                { text = ")" },
+            },
+        }
+    end,
 }

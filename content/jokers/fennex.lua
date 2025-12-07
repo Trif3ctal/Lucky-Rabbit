@@ -34,5 +34,17 @@ SMODS.Joker{
             end
             card.ability.extra.rerolls = 10
         end
+    end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            reminder_text = {
+                { text = "(" },
+                { ref_table = "card.ability.extra",              ref_value = "rerolls" },
+                { text = "/" },
+                { ref_table = "card.ability.extra", ref_value = "total_rerolls" },
+                { text = ")" },
+            },
+        }
     end
 }

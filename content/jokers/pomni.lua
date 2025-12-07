@@ -49,5 +49,22 @@ SMODS.Joker {
     end,
     in_pool = function (self, args)
         return not args or not args.source or args.source ~= 'sou'
+    end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            extra = {
+                {
+                    { text = "(" },
+                    { ref_table = "card.joker_display_values", ref_value = "odds" },
+                    { text = ")" },
+                }
+            },
+            extra_config = { colour = G.C.GREEN, scale = 0.3 },
+            calc_function = function(card)
+                local numerator, denominator = 1, card.ability.extra.odds
+                card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { numerator, denominator } }
+            end
+        }
     end
 }

@@ -64,5 +64,50 @@ SMODS.Joker {
                 card.ability.extra.inactive_hands = math.max(card.ability.extra.inactive_hands - 1, 0)
             end
         end
+    end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            text = {
+                {
+                    border_nodes = {
+                        { text = "X" },
+                        { ref_table = "card.joker_display_values", ref_value = "x_mult", retrigger_type = "exp" }
+                    }
+                }
+            },
+            reminder_text = {
+                { text = "(" },
+                { ref_table = "card.joker_display_values", ref_value = "active_text" },
+                { text = ")" },
+            },
+            calc_function = function(card)
+                card.joker_display_values.x_mult = 1
+                local dist = nil
+                if card.ability.extra.inactive_hands == 0 then
+                    local text, _, scoring_hand = JokerDisplay.evaluate_hand()
+                    if text ~= 'Unknown' then
+                        local first_card = JokerDisplay.calculate_leftmost_card(scoring_hand)
+                        local last_card = JokerDisplay.calculate_rightmost_card(scoring_hand)
+                        if first_card ~= last_card and not SMODS.has_no_rank(first_card) and not SMODS.has_no_rank(last_card) then
+                            local function adjusted_id(_card)
+                                local id = _card:get_id()
+                                if id >= 11 and id <= 13 then
+                                    return 10
+                                elseif id == 14 then
+                                    return 11
+                                else
+                                    return id
+                                end
+                            end
+                            dist = adjusted_id(first_card) - adjusted_id(last_card) > 1 and adjusted_id(first_card) - adjusted_id(last_card) or 1
+                        end
+                    end
+                end
+                local remaining = card.ability.extra.inactive_hands
+                card.joker_display_values.x_mult = dist or 1
+                card.joker_display_values.active_text = localize { type = 'variable', key = (remaining == 0 and 'loyalty_active' or 'loyalty_inactive'), vars = { remaining } }
+            end
+        }
     end
 }

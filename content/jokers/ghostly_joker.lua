@@ -50,5 +50,27 @@ SMODS.Joker {
                 card.ability.extra.fours = card.ability.extra.fours - 1
             end
         end
+    end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            reminder_text = {
+                { text = "(" },
+                { ref_table = "card.ability.extra",        ref_value = "fours" },
+                { text = "/" },
+                { ref_table = "card.joker_display_values", ref_value = "start_count" },
+                { text = ")" },
+            },
+            extra = {
+                {
+                    { text = "(" },
+                    { text = "4", colour = G.C.ORANGE },
+                    { text = ")" },
+                }
+            },
+            calc_function = function(card)
+                card.joker_display_values.start_count = card.joker_display_values.start_count or card.ability.extra.fours
+            end,
+        }
     end
 }

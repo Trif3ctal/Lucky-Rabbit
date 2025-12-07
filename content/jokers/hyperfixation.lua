@@ -76,5 +76,31 @@ SMODS.Joker{
                 end
             end
         end
+    end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            extra = {
+                    { text = "(" },
+                    { ref_table = "card.joker_display_values", ref_value = "hyperfix_card", colour = G.C.FILTER },
+                    { text = ")" },
+            },
+            reminder_text = {
+                {
+                    { text = "(" },
+                    { ref_table = "card.joker_display_values", ref_value = "hyperfix_current_card", colour = G.C.ORANGE },
+                    { text = ")" },
+                }
+            },
+            calc_function = function(card)
+                card.joker_display_values.hyperfix_current_card = localize(G.GAME.current_round.hyperfix_card.rank, 'ranks')
+                card.joker_display_values.hyperfix_card = localize { type = 'variable', key = "jdis_rank_of_suit", vars = { localize(G.GAME.hyperfix_card.rank, 'ranks'), localize(G.GAME.hyperfix_card.suit, 'suits_plural') } }
+            end,
+            retrigger_function = function(card, scoring_hand, held_in_hand, joker_card)
+                if held_in_hand then return 0 end
+                local hyperfix_id = SMODS.Ranks[G.GAME.hyperfix_card.rank].id
+                return card:get_id() == hyperfix_id and card:is_suit(G.GAME.hyperfix_card.suit) and joker_card.ability.extra.retriggers * JokerDisplay.calculate_joker_triggers(joker_card) or 0
+            end
+        }
     end
 }

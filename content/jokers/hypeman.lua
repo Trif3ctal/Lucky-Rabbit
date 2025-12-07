@@ -40,4 +40,23 @@ SMODS.Joker {
             end
         end
     end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            text = {
+                { text = "+" },
+                { ref_table = "card.joker_display_values", ref_value = "mult", retrigger_type = "mult" }
+            },
+            text_config = { colour = G.C.MULT },
+            calc_function = function(card)
+                local mult = 0
+                for i = 1, #G.playing_cards do
+                    if SMODS.has_enhancement(G.playing_cards[i], "m_mult") then
+                        mult = mult + 1
+                    end
+                end
+                card.joker_display_values.mult = (mult * card.ability.extra.mult) or 0
+            end
+        }
+    end
 }

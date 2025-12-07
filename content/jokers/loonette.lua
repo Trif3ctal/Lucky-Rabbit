@@ -48,5 +48,27 @@ SMODS.Joker {
     end,
     in_pool = function (self, args)
         return not args or not args.source or args.source ~= 'sou'
+    end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            text = {
+                {
+                    border_nodes = {
+                        { text = "X" },
+                        { ref_table = "card.joker_display_values", ref_value = "xmult", retrigger_type = "exp" }
+                    }
+                }
+            },
+            reminder_text = {
+                { text = "(" },
+                { ref_table = "card.joker_display_values", ref_value = "localized_text", colour = G.C.ORANGE },
+                { text = ")" },
+            },
+            calc_function = function(card)
+                card.joker_display_values.xmult = card.ability.extra.xmult
+                card.joker_display_values.localized_text = localize("k_numbered_cards")
+            end,
+        }
     end
 }

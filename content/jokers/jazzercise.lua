@@ -43,5 +43,17 @@ SMODS.Joker{
     end,
     remove_from_deck = function(self, card, from_debuff)
         G.hand:change_size(-card.ability.extra.h_size)
-    end
+    end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            reminder_text = {
+                { text = "(" },
+                { ref_table = "card.ability.extra",              ref_value = "destroy_amt" },
+                { text = "/" },
+                { ref_table = "card.ability.extra",              ref_value = "destroy" },
+                { text = ")" },
+            },
+        }
+    end,
 }

@@ -14,5 +14,18 @@ SMODS.Joker {
                 repetitions = card.ability.extra.retriggers,
             }
         end
-    end
+    end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			reminder_text = {
+            { text = "(" },
+            { ref_table = "card.joker_display_values", ref_value = "localized_text", colour = lighten(G.C.SUITS["Diamonds"], 0.35) },
+            { text = ")" }
+        },
+		calc_function = function(card)
+			card.joker_display_values.localized_text = localize("Diamonds", 'suits_plural')
+		end
+		}
+	end
 }

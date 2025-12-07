@@ -25,5 +25,18 @@ SMODS.Joker {
                 }
             end
 		end
+	end,
+	joker_display_def = function(JokerDisplay)
+		---@type JDJokerDefinition
+		return {
+			reminder_text = {
+            { text = "(" },
+            { ref_table = "card.joker_display_values", ref_value = "localized_text", colour = lighten(G.C.SUITS["Hearts"], 0.35) },
+            { text = ")" }
+        },
+		calc_function = function(card)
+			card.joker_display_values.localized_text = localize("Hearts", 'suits_plural')
+		end
+		}
 	end
 }

@@ -66,5 +66,28 @@ SMODS.Joker {
             end
             return ret
         end
-    end
+    end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            text = {
+                { text = "+",                              colour = G.C.MULT },
+                { ref_table = "card.ability.extra", ref_value = "mult", colour = G.C.MULT, retrigger_type = "mult" },
+                { text = " +",                             colour = G.C.CHIPS },
+                { ref_table = "card.ability.extra", ref_value = "chips",  colour = G.C.CHIPS,  retrigger_type = "mult" },
+                { text = " " },
+                {
+                    border_nodes = {
+                        { text = "X" },
+                        { ref_table = "card.ability.extra", ref_value = "xmult", retrigger_type = "exp" }
+                    }
+                }
+            },
+            reminder_text = {
+                { text = "(" },
+                { text = localize("Three of a Kind", "poker_hands"), colour = G.C.ORANGE },
+                { text = ")" }
+            },
+        }
+    end,
 }

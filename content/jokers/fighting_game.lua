@@ -38,5 +38,28 @@ SMODS.Joker {
             G.hand:change_size(-card.ability.extra.total_size)
             card.ability.extra.total_size = 0
         end
-	end
+	end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            reminder_text = {
+                { text = "(" },
+                { ref_table = "card.joker_display_values", ref_value = "localized_text", colour = lighten(G.C.SUITS["Clubs"], 0.35) },
+                { text = ")" }
+            },
+            extra = {
+                {
+                    { text = "(" },
+                    { ref_table = "card.joker_display_values", ref_value = "odds" },
+                    { text = ")" },
+                }
+            },
+            extra_config = { colour = G.C.GREEN, scale = 0.3 },
+            calc_function = function(card)
+                local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'fmod_fight')
+                card.joker_display_values.odds = localize { type = 'variable', key = "jdis_odds", vars = { numerator, denominator } }
+                card.joker_display_values.localized_text = localize("Clubs", 'suits_plural')
+            end
+        }
+    end
 }

@@ -25,5 +25,15 @@ SMODS.Joker{
                 }
             end
         end
-    end
+    end,
+    joker_display_def = function(JokerDisplay)
+        ---@type JDJokerDefinition
+        return {
+            reminder_text = {
+                { text = "(" },
+                { text = "3", colour = G.C.ORANGE },
+                { text = ")" }
+            },
+        }
+    end,
 }
