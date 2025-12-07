@@ -309,3 +309,46 @@ if other.config.center.key == 'c_fmod_trapeze' and G.GAME.trapeze_count >= 5 the
     G.GAME.trapeze_count = 0
 end
 '''
+
+
+# -------- premium currency booster reroll patch --------
+
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''
+for i = 1, G.GAME.shop.joker_max - #G.shop_jokers.cards do
+  local new_shop_card = create_card_for_shop(G.shop_jokers)
+  G.shop_jokers:emplace(new_shop_card)
+  new_shop_card:juice_up()
+end
+'''
+position = "after"
+match_indent = true
+payload = '''
+if next(SMODS.find_card("j_fmod_premium_currency")) then
+    for i = #G.shop_booster.cards, 1, -1 do
+        local c = G.shop_booster:remove_card(G.shop_booster.cards[i])
+        c:remove()
+        c = nil
+    end
+
+    for i = 1, G.GAME.starting_params.boosters_in_shop + (G.GAME.modifiers.extra_boosters or 0) - G.GAME.current_round.boosters_opened do
+        local key = get_pack('shop_pack').key
+        local card = Card(G.shop_booster.T.x + G.shop_booster.T.w/2,
+        G.shop_booster.T.y, G.CARD_W*1.27, G.CARD_H*1.27, G.P_CARDS.empty, G.P_CENTERS[key], {bypass_discovery_center = true, bypass_discovery_ui = true})
+        create_shop_card_ui(card, 'Booster', G.shop_booster)
+        card.ability.booster_pos = i
+        card:start_materialize()
+        G.shop_booster:emplace(card)
+    end
+end
+'''
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = "self.opening = true"
+position = "after"
+match_indent = true
+payload = "G.GAME.current_round.boosters_opened = (G.GAME.current_round.boosters_opened or 0) + 1"

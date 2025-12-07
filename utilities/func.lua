@@ -313,6 +313,7 @@ function SMODS.current_mod.reset_game_globals(run_start)
     G.GAME.current_round.most_played_rank = _rankname
     LR_UTIL.reset_hyperfix_rank()
     LR_UTIL.reset_ncradle_card()
+    G.GAME.current_round.boosters_opened = 0
 end
 
 SMODS.current_mod.set_debuff = function(card)

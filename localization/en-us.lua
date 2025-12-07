@@ -627,6 +627,29 @@ return {
                     "round if played with {C:money}$#1#",
                     "or less"
                 }
+            },
+            j_fmod_555_hotline = {
+                name = "555 Hotline",
+                text = {
+                    "Give {C:money}$#1#{} after {C:attention}5 {C:inactive}[#2#]",
+                    "{C:attention}fives{} have been scored"
+                }
+            },
+            j_fmod_premium_currency = {
+                name = "Premium Currency",
+                text = {
+                    "{C:attention}Rerolling{} also rerolls",
+                    "unpurchased {C:attention}Booster Packs{}"
+                }
+            },
+            j_fmod_commission = {
+                name = "Commission",
+                text = {
+                    "When {C:attention}Blind{} is selected, destroy Joker",
+                    "to the {C:attention}left{} and gain its {C:attention}sell value",
+                    "At {C:money}$#1#{}, self-destruct and",
+                    "{C:attention}duplicate{} Joker to the {C:attention}right",
+                }
             }
         },
         Tag = {
