@@ -657,6 +657,13 @@ return {
                     "{C:dark_edition}Editions{} trigger on",
                     "cards {C:attention}held in hand"
                 }
+            },
+            j_fmod_defenestration = {
+                name = "Defenestration",
+                text = {
+                    "{C:mult}+#1#{} Mult if current Blind",
+                    "is a {C:attention}Boss Blind"
+                }
             }
         },
         Tag = {

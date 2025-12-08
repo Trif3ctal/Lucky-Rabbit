@@ -174,6 +174,7 @@ local files = {
             "555_hotline",
             "commission",
             "premium_currency",
+            "defenestration",
             "steve",
             "pomni",
             "ransome",
