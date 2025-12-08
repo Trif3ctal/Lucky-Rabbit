@@ -650,6 +650,13 @@ return {
                     "At {C:money}$#1#{}, self-destruct and",
                     "{C:attention}duplicate{} Joker to the {C:attention}right",
                 }
+            },
+            j_fmod_actually_useful_gun_mode = {
+                name = "Actually Useful Gun Mode",
+                text = {
+                    "{C:dark_edition}Editions{} trigger on",
+                    "cards {C:attention}held in hand"
+                }
             }
         },
         Tag = {

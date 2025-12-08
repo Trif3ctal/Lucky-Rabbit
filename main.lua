@@ -145,6 +145,7 @@ local files = {
             "comic_book_ad",
             "lottery",
             "debut_album",
+            "actually_useful_gun_mode",
             "zany_to_the_max",
             "friend_inside_me",
             "prismatic_joker",
