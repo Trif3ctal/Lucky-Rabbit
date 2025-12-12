@@ -664,6 +664,14 @@ return {
                     "{C:mult}+#1#{} Mult if current Blind",
                     "is a {C:attention}Boss Blind"
                 }
+            },
+            j_fmod_sleazy_joker = {
+                name = "Sleazy Joker",
+                text = {
+                    "{C:mult}+#1#{} Mult per {C:attention}Marked",
+                    "card in full deck",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)"
+                }
             }
         },
         Tag = {
