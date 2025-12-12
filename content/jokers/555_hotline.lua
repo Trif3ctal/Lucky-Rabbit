@@ -5,7 +5,7 @@ SMODS.Joker {
     config = {
         extra = {
             fives = 5,
-            money = 25
+            money = 15
         }
     },
     unlocked = true,
