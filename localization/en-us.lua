@@ -672,6 +672,14 @@ return {
                     "card in full deck",
                     "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)"
                 }
+            },
+            j_fmod_drummer_joker = {
+                name = "Drummer Joker",
+                text = {
+                    "Gains {X:mult,C:white}X#1#{} Mult whenever",
+                    "a {C:attention}Copycat Card{} is scored",
+                    "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
+                }
             }
         },
         Tag = {

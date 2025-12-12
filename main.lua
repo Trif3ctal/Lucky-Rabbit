@@ -172,6 +172,7 @@ local files = {
             "barbershop_joker",
             "ufo_sighting",
             "sleazy_joker",
+            "drummer_joker",
             "555_hotline",
             "commission",
             "premium_currency",
