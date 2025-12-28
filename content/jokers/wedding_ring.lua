@@ -2,12 +2,13 @@ SMODS.Joker{
     key = "wedding_ring",
     config = {
         extra = {
-            rounds = 3,
+            rounds = 0,
+            max = 3,
             xmult = 3,
         }
     },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.xmult, math.max(0, card.ability.extra.rounds) } }
+        return { vars = { card.ability.extra.xmult, math.max((card.ability.extra.max - card.ability.extra.rounds), 0) } }
     end,
     rarity = 2,
     atlas = "Jokers",
@@ -17,10 +18,10 @@ SMODS.Joker{
     blueprint_compat = true,
     cost = 5,
     calculate = function(self, card, context)
-        if context.end_of_round and context.cardarea == G.jokers and card.ability.extra.rounds > 0 and not context.blueprint then
-            card.ability.extra.rounds = card.ability.extra.rounds - 1
+        if context.end_of_round and context.cardarea == G.jokers and card.ability.extra.rounds <= card.ability.extra.max and not context.blueprint then
+            card.ability.extra.rounds = card.ability.extra.rounds + 1
         end
-        if context.joker_main and card.ability.extra.rounds <= 0 then
+        if context.joker_main and card.ability.extra.rounds >= card.ability.extra.max then
             return {
                 xmult = card.ability.extra.xmult
             }
@@ -30,17 +31,23 @@ SMODS.Joker{
         ---@type JDJokerDefinition
         return {
             text = {
-                { text = "+" },
-                { ref_table = "card.ability.extra", ref_value = "chips", retrigger_type = "mult" }
+                {
+                    border_nodes = {
+                        { text = "X" },
+                        { ref_table = "card.joker_display_values", ref_value = "xmult", retrigger_type = "exp" }
+                    }
+                }
             },
-            text_config = { colour = G.C.CHIPS },
             reminder_text = {
                 { text = "(" },
-                { ref_table = "card.ability.extra",              ref_value = "uses" },
-                { text = "/" },
                 { ref_table = "card.ability.extra",              ref_value = "rounds" },
+                { text = "/" },
+                { ref_table = "card.ability.extra",              ref_value = "max" },
                 { text = ")" },
             },
+            calc_function = function(card)
+                card.joker_display_values.xmult = card.ability.extra.rounds >= card.ability.extra.max and card.ability.extra.xmult or 1
+            end
         }
     end,
 }
