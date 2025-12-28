@@ -180,6 +180,7 @@ local files = {
             "wedding_ring",
             "balancing_act",
             "gas_pump",
+            "metal_face_villain",
             "steve",
             "pomni",
             "ransome",

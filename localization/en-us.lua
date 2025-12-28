@@ -704,6 +704,14 @@ return {
                     "{C:attention}catches fire",
                     "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)"
                 }
+            },
+            j_fmod_metal_face_villain = {
+                name = "Metal Face Villain",
+                text = {
+                    "Played {C:attention}Steel Cards{} give {C:mult}Mult",
+                    "equal to {C:attention}#1#{} times their",
+                    "{C:attention}rank",
+                }
             }
         },
         Tag = {
