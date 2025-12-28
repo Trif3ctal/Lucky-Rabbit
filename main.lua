@@ -177,6 +177,7 @@ local files = {
             "commission",
             "premium_currency",
             "defenestration",
+            "wedding_ring",
             "steve",
             "pomni",
             "ransome",

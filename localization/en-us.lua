@@ -680,6 +680,13 @@ return {
                     "a {C:attention}Copycat Card{} is scored",
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"
                 }
+            },
+            j_fmod_wedding_ring = {
+                name = "Wedding Ring",
+                text = {
+                    "Gives {X:mult,C:white}X#1#{} Mult if",
+                    "held for {C:attention}#2#{} rounds"
+                }
             }
         },
         Tag = {
