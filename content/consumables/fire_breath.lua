@@ -26,7 +26,7 @@ SMODS.Consumable {
         delay(0.6)
     end,
     can_use = function(self, card)
-        if #G.jokers.highlighted == card.ability.extra.cards and #G.jokers.cards >= 2 then
+        if #G.jokers.highlighted == card.ability.extra.cards and #G.jokers.cards >= 2 and not G.jokers.highlighted[1].ability.eternal then
             return true
         end
     end,
