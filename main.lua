@@ -179,6 +179,7 @@ local files = {
             "defenestration",
             "wedding_ring",
             "balancing_act",
+            "gas_pump",
             "steve",
             "pomni",
             "ransome",

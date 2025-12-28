@@ -695,6 +695,15 @@ return {
                     "{C:attention}discards{} have been",
                     "used this round"
                 }
+            },
+            j_fmod_gas_pump = {
+                name = "Gas Pump",
+                text = {
+                    "Gains {C:mult}+#1#{} Mult per hand",
+                    "played, {C:attention}resets{} if score",
+                    "{C:attention}catches fire",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)"
+                }
             }
         },
         Tag = {
