@@ -687,6 +687,14 @@ return {
                     "Gives {X:mult,C:white}X#1#{} Mult if",
                     "held for {C:attention}#2#{} rounds"
                 }
+            },
+            j_fmod_balancing_act = {
+                name = "Balancing Act",
+                text = {
+                    "{C:chips}+#1#{} Chips if no",
+                    "{C:attention}discards{} have been",
+                    "used this round"
+                }
             }
         },
         Tag = {

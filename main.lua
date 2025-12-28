@@ -178,6 +178,7 @@ local files = {
             "premium_currency",
             "defenestration",
             "wedding_ring",
+            "balancing_act",
             "steve",
             "pomni",
             "ransome",
