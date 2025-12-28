@@ -301,6 +301,7 @@ function SMODS.current_mod.reset_game_globals(run_start)
         G.GAME.juggler_count = 0
         G.GAME.trapeze_count = 0
         G.GAME.hyperfix_card.rank, G.GAME.hyperfix_card.suit = LR_UTIL.reset_hyperfix_full_card()
+        G.GAME.fmod_last_silly = nil
     end
     G.GAME.current_round.most_played_rank = 'Ace'
     local _rankname, played = 'Ace', -1
@@ -318,4 +319,19 @@ end
 
 SMODS.current_mod.set_debuff = function(card)
     if LR_UTIL.has_marking(card) == 'fmod_ink_mark' then return "prevent_debuff" end
+end
+
+function SMODS.current_mod.calculate(self, context)
+    if context.using_consumeable then
+        if context.consumeable.ability.set == "Silly" then
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    G.GAME.fmod_last_silly = context.consumeable.config.center_key
+                    return true
+                end
+            }))
+        end
+    end
 end

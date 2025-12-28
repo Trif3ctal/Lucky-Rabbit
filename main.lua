@@ -236,6 +236,7 @@ local files = {
             "barker",
             "hall_of_mirrors",
             "suspenders",
+            "laughter",
             "soully",
             "crisis"
         },
@@ -353,6 +354,7 @@ if LR_CONFIG.silly_enabled then
             ["c_fmod_barker"] = true,
             ["c_fmod_suspenders"] = true,
             ["c_fmod_hall_of_mirrors"] = true,
+            ["c_fmod_laughter"] = true,
             ["c_fmod_crisis"] = true,
         },
         loc_txt = {

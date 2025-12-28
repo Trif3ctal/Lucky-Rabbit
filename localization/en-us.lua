@@ -1127,6 +1127,15 @@ return {
                     "Select up to {C:attention}#1#{} cards",
                     "to {C:attention}mark{} with {C:attention}Gilded"
                 }
+            },
+            c_fmod_laughter = {
+                name = "Laughter",
+                text = {
+                    "Creates the last",
+                    "{V:1}Silly Card{} used during",
+                    "this run",
+                    "{s:0.8,V:1}Laughter{s:0.8} excluded",
+                }
             }
         },
         Voucher = {
