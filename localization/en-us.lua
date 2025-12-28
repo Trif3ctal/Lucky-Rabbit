@@ -712,6 +712,15 @@ return {
                     "equal to {C:attention}#1#{} times their",
                     "{C:attention}rank",
                 }
+            },
+            j_fmod_master_of_disguise = {
+                name = "Master of Disguise",
+                text = {
+                    "If played hand is a {C:attention}High",
+                    "{C:attention}Card{}, create a {C:attention}conversion{}",
+                    "{C:attention}consumable{} of that card's",
+                    "{C:attention}suit {C:inactive}(Must have room)"
+                }
             }
         },
         Tag = {
