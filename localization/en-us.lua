@@ -1048,8 +1048,8 @@ return {
             c_fmod_unicycle = {
                 name = "Unicycle",
                 text = {
-                    "Select up to {C:attention}#1#{} cards to",
-                    "{C:attention}mark{} with a {C:attention}Crease{}",
+                    "Select {C:attention}#1#{} card to {C:attention}mark{}",
+                    "with a {C:attention}Crease{}",
                 }
             },
             c_fmod_cannon = {

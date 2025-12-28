@@ -3,7 +3,7 @@ if LR_CONFIG.markings_enabled then
         key = "unicycle",
         set = "Silly",
         config = {
-            max_highlighted = 2
+            max_highlighted = 1
         },
         loc_vars = function(self, info_queue, card)
             info_queue[#info_queue + 1] = LR_UTIL.marking_tooltip("crease")
