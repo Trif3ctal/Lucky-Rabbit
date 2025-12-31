@@ -279,6 +279,13 @@ local files = {
         },
         directory = "content/decks"
     },
+    sleeves = {
+        list = {
+            "clown",
+            "fennex"
+        },
+        directory = "content/decks/cardsleeves"
+    },
     tags = {
         list = {
             "goofy",
@@ -413,6 +420,10 @@ end
 
 if LR_CONFIG.remix_enabled then
     assert(SMODS.load_file("content/boosters/remix_packs.lua"))()
+end
+
+if CardSleeves then
+    LR_UTIL.load_files(files.sleeves.list, files.sleeves.directory)
 end
 
 -- define marking objects

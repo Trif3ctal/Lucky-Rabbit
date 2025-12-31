@@ -1273,6 +1273,41 @@ return {
                 }
             }
         },
+        Sleeve = {
+            sleeve_fmod_clown = {
+                name = "Clown Sleeve",
+                text = {
+                    "Start run with the",
+                    "{V:1,T:v_fmod_circus}#1#{} Voucher"
+                }
+            },
+            sleeve_fmod_clown_alt = {
+                name = "Clown Sleeve",
+                text = {
+                    "Start run with the",
+                    "{V:1,T:v_fmod_circus}#1#{} and {V:1,T:v_fmod_showtime}#2#",
+                    "Vouchers"
+                }
+            },
+            sleeve_fmod_fennex = {
+                name = "Fennex Sleeve",
+                text = {
+                    "Start run with the",
+                    "{C:attention,T:j_fmod_fennex}Fennex{} Joker,",
+                    "{C:legendary}Lucky Rabbit{C:attention} Jokers{} are",
+                    "{X:green,C:white}#1#X{} more likely to appear"
+                }
+            },
+            sleeve_fmod_fennex_alt = {
+                name = "Fennex Sleeve",
+                text = {
+                    "Start run with",
+                    " {C:dark_edition}Negative {C:attention,T:j_fmod_fennex}Fennex{},",
+                    "{C:legendary}Lucky Rabbit{C:attention} Jokers{} are",
+                    "{X:green,C:white}#1#X{} more likely to appear",
+                }
+            }
+        },
         Other = {
             p_fmod_silly_small = {
                 name = "Silly Pack",

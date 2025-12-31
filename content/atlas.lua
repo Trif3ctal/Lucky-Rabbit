@@ -58,6 +58,12 @@ SMODS.Atlas {
     py = 95
 }
 
+SMODS.Atlas {
+    key = "Sleeves",
+    path = "Sleeves.png",
+    px = 73,
+    py = 95
+}
 
 SMODS.Atlas {
     key = 'peppered_diamonds_lc',
