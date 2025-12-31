@@ -53,7 +53,7 @@ pattern = "local blind_amt = get_blind_amount(G.GAME.round_resets.blind_ante)*bl
 position = "after"
 match_indent = true
 payload = '''
-if G.GAME.selected_back.effect.center.key == "b_fmod_reaper" and blind_choice.config.boss then
+if G.GAME.selected_back and G.GAME.selected_back.effect.center.key == "b_fmod_reaper" and blind_choice.config.boss then
     blind_amt = blind_amt * 2
 end
 '''

@@ -199,7 +199,7 @@ end
 
 local gnb = get_new_boss
 function get_new_boss()
-    if G.GAME.selected_back.effect.center.key == "b_fmod_reaper" then
+    if G.GAME.selected_back and G.GAME.selected_back.effect.center.key == "b_fmod_reaper" then
 		local boss = tostring(LR_UTIL.random_showdown_blind('reaper'))
 		if boss then G.FORCE_BOSS = boss end
 	else
@@ -214,7 +214,7 @@ end
 
 local reroll_ref = G.FUNCS.reroll_boss
 G.FUNCS.reroll_boss = function(e)
-	if G.GAME.selected_back.effect.center.key == "b_fmod_reaper" then
+	if G.GAME.selected_back and G.GAME.selected_back.effect.center.key == "b_fmod_reaper" then
 		local boss = tostring(LR_UTIL.random_showdown_blind('reaper'))
 		if boss then G.FORCE_BOSS = boss end
 	else
@@ -275,7 +275,7 @@ end
 -- recusive deck showman hook
 local show = SMODS.showman
 function SMODS.showman(card_key)
-    if G.GAME.selected_back.effect.center.key == "b_fmod_recursive" then
+    if G.GAME.selected_back and G.GAME.selected_back.effect.center.key == "b_fmod_recursive" then
         return true
     end
     return show(card_key)
