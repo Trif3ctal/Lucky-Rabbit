@@ -721,6 +721,42 @@ return {
                     "{C:attention}consumable{} of that card's",
                     "{C:attention}suit {C:inactive}(Must have room)"
                 }
+            },
+            j_fmod_charity = {
+                name = "Charity",
+                text = {
+                    "If {C:attention}scoring hand{} contains",
+                    "a card with a {C:attention}Gold Seal{},",
+                    "{C:green}#1# in #2#{} chance for another",
+                    "scoring card to gain a {C:attention}Gold Seal{}"
+                }
+            },
+            j_fmod_wisdom = {
+                name = "Wisdom",
+                text = {
+                    "This Joker gains {C:mult}+#1#{} Mult",
+                    "when a {C:purple}Purple Seal{} is triggered",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)"
+                }
+            },
+            j_fmod_perseverance = {
+                name = "Perseverance",
+                text = {
+                    "Cards with a {C:red}Red Seal{} have a",
+                    "{C:green}#1# in #2#{} chance to {C:attention}retrigger{},",
+                    "with the denominator increasing",
+                    "by {C:attention}1{} every time this card",
+                    "has retriggered this hand"
+                }
+            },
+            j_fmod_patience = {
+                name = "Patience",
+                text = {
+                    "After {C:attention}#1#{} {C:inactive}[#2#]{} cards with a {C:blue}Blue{}",
+                    "{C:blue}Seal{} are scored, create the {C:planet}Planet{}",
+                    "card for your most played {C:attention}Poker",
+                    "{C:attention}Hand"
+                }
             }
         },
         Tag = {
