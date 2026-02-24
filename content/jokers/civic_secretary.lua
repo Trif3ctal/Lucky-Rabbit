@@ -10,7 +10,7 @@ SMODS.Joker{
     discovered = false,
     pos = { x = 8, y = 1 },
 	cost = 6,
-	blueprint_compat = true,
+	blueprint_compat = false,
 	calculate = function(self,card,context)
 		if context.before then
 			card.ability.extra.active = true
@@ -18,28 +18,34 @@ SMODS.Joker{
 		if context.after then
 			card.ability.extra.active = false
 		end
-		if card.ability.extra.active then
-            local total_chips = 0
-            local total_mult = 0
-			for _, v in ipairs(G.jokers.cards) do
-				if v.ability.name ~= 'Blueprint' and v.ability.name ~= 'Brainstorm' and v.ability.name ~= "j_fmod_civic_secretary" then
-					context.blueprint = nil
-					local ret = SMODS.blueprint_effect(card, v, context)
-					if ret then
-						total_chips = total_chips + (ret.chips or 0)
-                        total_chips = total_chips + (ret.chip_mod or 0)
-                        total_mult = total_mult + (ret.mult or 0)
-                        total_mult = total_mult + (ret.mult_mod or 0)
-                        total_mult = total_mult + (ret.h_mult or 0)
+		if card.ability.extra.active and context.post_trigger and context.other_card and context.other_card.config
+		and context.other_card.config.center_key ~= "j_fmod_civic_secretary" and not context.blueprint then
+			if context.other_ret and context.other_ret.jokers
+			and (type(context.other_ret.jokers) == "table" and context.other_ret.jokers.chips and context.other_ret.jokers.chips ~= 0)
+			or (type(context.other_ret.jokers) == "table" and context.other_ret.jokers.chip_mod and context.other_ret.jokers.chip_mod ~= 0) then
+				return {
+					func = function()
+						SMODS.calculate_effect{
+							card = card,
+							chips = (context.other_ret.jokers.chips or 0) + (context.other_ret.jokers.chip_mod or 0)
+						}
+						return true
 					end
-				end
+				}
 			end
-            if to_big(total_chips) > to_big(0) or to_big(total_mult) > to_big(0) then
-                return {
-                    chips = total_chips,
-                    mult = total_mult,
-                }
-            end
+			if context.other_ret and context.other_ret.jokers
+			and (type(context.other_ret.jokers) == "table" and context.other_ret.jokers.mult and context.other_ret.jokers.mult ~= 0)
+			or (type(context.other_ret.jokers) == "table" and context.other_ret.jokers.mult_mod and context.other_ret.jokers.mult_mod ~= 0) then
+				return {
+					func = function()
+						SMODS.calculate_effect{
+							card = card,
+							mult = (context.other_ret.jokers.mult or 0) + (context.other_ret.jokers.mult_mod or 0)
+						}
+						return true
+					end
+				}
+			end
 		end
 	end,
 }
