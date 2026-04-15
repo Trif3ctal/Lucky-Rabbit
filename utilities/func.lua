@@ -302,6 +302,7 @@ function SMODS.current_mod.reset_game_globals(run_start)
         G.GAME.trapeze_count = 0
         G.GAME.hyperfix_card.rank, G.GAME.hyperfix_card.suit = LR_UTIL.reset_hyperfix_full_card()
         G.GAME.fmod_last_silly = nil
+        G.GAME.pair_count = 0
     end
     G.GAME.current_round.most_played_rank = 'Ace'
     local _rankname, played = 'Ace', -1
@@ -333,5 +334,11 @@ function SMODS.current_mod.calculate(self, context)
                 end
             }))
         end
+    end
+    if context.before and context.scoring_name == "Pair" then
+        G.GAME.pair_count = G.GAME.pair_count + 1
+    end
+    if context.ante_change then
+        G.GAME.pair_count = 0
     end
 end

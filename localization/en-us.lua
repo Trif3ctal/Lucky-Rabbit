@@ -757,6 +757,32 @@ return {
                     "card for your most played {C:attention}Poker",
                     "{C:attention}Hand"
                 }
+            },
+            j_fmod_moments_of_happiness = {
+                name = "The Moments of Happiness",
+                text = {
+                    "If the {C:attention}level{} of a played hand",
+                    "is less than the {C:attention}highest leveled{}",
+                    "hand, create a {V:1}Silly Card{}"
+                }
+            },
+            j_fmod_golden_idol = {
+                name = "The Golden Idol",
+                text = {
+                    "Cards held in hand gain one",
+                    "{C:attention}retrigger{} per quality {C:attention}shared",
+                    "with an {C:hearts}8 of Hearts{} with",
+                    "a {C:attention}Gold Seal",
+                }
+            },
+            j_fmod_mythbusters = {
+                name = "Mythbusters",
+                text = {
+                    "{C:mult}+#1#{} Mult if a {C:attention}Pair{} is played, if a",
+                    "played pair causes the {C:attention}score{} to catch",
+                    "fire, gain {C:mult}+#2#{} Mult per {C:attention}Pair{} played",
+                    "this {C:attention}ante{} {C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)"
+                }
             }
         },
         Tag = {
