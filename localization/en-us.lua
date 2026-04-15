@@ -745,7 +745,7 @@ return {
                     "Cards with a {C:red}Red Seal{} have a",
                     "{C:green}#1# in #2#{} chance to {C:attention}retrigger{},",
                     "with the denominator increasing",
-                    "by {C:attention}1{} every time this card",
+                    "by {C:attention}1{} each time the card",
                     "has retriggered this hand"
                 }
             },
