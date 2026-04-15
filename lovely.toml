@@ -96,19 +96,7 @@ end
 
 # -------- pinhole marking --------
 
-[[patches]]
-[patches.pattern]
-target = "functions/state_events.lua"
-pattern = '''draw_card(G.play,G.discard, it*100/play_count,'down', false, v)'''
-position = "at"
-payload = '''
-if LR_UTIL.has_marking(v) == "fmod_pinhole_mark" then
-    draw_card(G.play, G.deck, it*100/play_count, 'down', nil, v, 0.005, false, nil, math.max((21-k)/20,0.7))
-else
-    draw_card(G.play,G.discard, it*100/play_count,'down', false, v)
-end'''
-match_indent = true
-times = 1
+
 
 [[patches]]
 [patches.pattern]
